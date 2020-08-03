@@ -1,30 +1,25 @@
 package com.waldo.notesbites;
 
+import java.util.ArrayList;
+
 import javax.security.auth.SubjectDomainCombiner;
 
 public class Subject {
     private String name;
     private String description;
     private int imageResourceID;
+    private Module[] modules;
 
-
-    public static  final Subject[] subjects = {
-            new Subject("Artificial Intelligence","Amigoni is kind of a stick in the butt",R.drawable.ai),
-            new Subject("Internet of Things","I've no idea how to describe it",R.drawable.iot),
-            new Subject("Artificial Neural Networks","Matteucci is fun",R.drawable.ann2dl)
-
-    }
-
-    public Subject(String name, String description, int imageResourceID) {
+    public Subject(String name, String description, int imageResourceID, Module[] modules) {
         this.name = name;
         this.description = description;
         this.imageResourceID = imageResourceID;
+        this.modules = modules;
     }
 
     public String getName() {
         return name;
     }
-
 
 
     public String getDescription() {
@@ -36,8 +31,14 @@ public class Subject {
         return imageResourceID;
     }
 
+
+    public Module[] getModules() {
+        return modules;
+    }
+
+
     @Override
-    public String toString() {
-        return this.name;
+    public String toString(){
+        return new com.google.gson.Gson().toJson(this);
     }
 }

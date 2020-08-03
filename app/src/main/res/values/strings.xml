@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">NotesBites</string>
+    <string-array name="subjects">
+        <item>Artificial Intelligence</item>
+        <item>Internet of Things</item>
+        <item>Artificial Neural Networks</item>
+    </string-array>
 </resources>
