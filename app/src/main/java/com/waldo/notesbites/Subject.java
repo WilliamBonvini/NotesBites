@@ -5,17 +5,21 @@ import java.util.ArrayList;
 import javax.security.auth.SubjectDomainCombiner;
 
 public class Subject {
+    private int subjectID;
     private String name;
     private String description;
     private int imageResourceID;
     private Module[] modules;
 
-    public Subject(String name, String description, int imageResourceID, Module[] modules) {
+    public Subject(int subjectID, String name, String description, int imageResourceID, Module[] modules) {
+        this.subjectID = subjectID;
         this.name = name;
         this.description = description;
         this.imageResourceID = imageResourceID;
         this.modules = modules;
     }
+
+    public int getSubjectID(){ return subjectID; }
 
     public String getName() {
         return name;

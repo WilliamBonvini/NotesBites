@@ -13,6 +13,10 @@
         android:id="@+id/subject_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/subject_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <ListView
         android:id="@+id/list_of_modules"
         android:layout_width="match_parent"
