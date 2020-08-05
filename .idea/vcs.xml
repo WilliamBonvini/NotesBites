@@ -2,9 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Deep-Learning-PointNet-Project" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Notes" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Tesi" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/multi_model_fitting_neural_net" vcs="Git" />
   </component>
 </project>

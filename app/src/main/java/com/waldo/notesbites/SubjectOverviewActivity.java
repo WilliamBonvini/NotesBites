@@ -3,6 +3,10 @@ package com.waldo.notesbites;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
@@ -10,10 +14,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class SubjectOverviewActivity extends AppCompatActivity {
+    public static final String EXTRA_SUBJECTID = "subjectID";
+    private SQLiteDatabase db;
+    private Cursor cursor2;
+    String subjectTitleText;
+    String subjectDescriptionText;
+    int subjectPhotoID;
 
 
     @Override
@@ -22,47 +34,79 @@ public class SubjectOverviewActivity extends AppCompatActivity {
         // default stuff
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subject_overview);
-
-        // retrieve subject object
-        Intent intent = getIntent();
-        String jsonSubjectOverview = intent.getStringExtra("SubjectOverview");
-        Subject subject = new com.google.gson.Gson().fromJson(jsonSubjectOverview,Subject.class);
-
-        //retrieve the ID of the subject, in order to pass it to the Module Activity
-        final int subjectID = subject.getSubjectID();
-
-        // get reference to Views
-        TextView subjectTitleView = (TextView) findViewById(R.id.subject_title);
-        TextView subjectDescriptionView = (TextView) findViewById(R.id.subject_description);
-        ImageView subjectImageView = (ImageView) findViewById(R.id.subject_image);
+        // get reference to ListView
         ListView listOfModulesView = (ListView) findViewById(R.id.list_of_modules);
 
-        // populate first three Views
-        subjectTitleView.setText(subject.getName());
-        subjectDescriptionView.setText(subject.getDescription());
-        subjectImageView.setImageResource(subject.getImageResourceID());
+        // retrieve subject id
+        Intent oldIntent = getIntent();
+        final int subjectID = (int) oldIntent.getExtras().get(EXTRA_SUBJECTID);
+        //retrieve subject overview info from db
+        SQLiteOpenHelper databaseHelper = new DatabaseHelper(this);
+        try {
+            db = databaseHelper.getReadableDatabase();
+            Cursor cursor1 = db.query(
+                    "SUBJECT",
+                    new String[]{"NAME", "DESCRIPTION", "IMAGE_RESOURCE_ID"},
+                    "_id=?",
+                    new String[]{Integer.toString(subjectID)},
+                    null, null, null);
+            if (cursor1.moveToFirst()) {
+                subjectTitleText = cursor1.getString(0);
+                subjectDescriptionText = cursor1.getString(1);
+                subjectPhotoID = cursor1.getInt(2);
+                // get reference to first three Views
+                TextView subjectTitleView = (TextView) findViewById(R.id.subject_title);
+                TextView subjectDescriptionView = (TextView) findViewById(R.id.subject_description);
+                ImageView subjectImageView = (ImageView) findViewById(R.id.subject_image);
 
-        // the following populates the list view with data from the module array
-        ArrayAdapter<Subject> listAdapter = new ArrayAdapter(
-                this,
-                android.R.layout.simple_list_item_1,
-                subject.getModules());
-        listOfModulesView.setAdapter(listAdapter);
+                // populate first three Views
+                subjectTitleView.setText(subjectTitleText);
+                subjectDescriptionView.setText(subjectDescriptionText);
+                subjectImageView.setImageResource(subjectPhotoID);
+            }
+            cursor1.close();
 
 
-        // Create a listener for clicks on modules
+            cursor2 = db.query("MODULE",
+                    new String[]{"_id", "NAME"},
+                    "BELONGING_SUBJECT=?",
+                    new String[]{Integer.toString(subjectID)},
+                    null, null, null);
+
+            // the following code populates the list view with data from the names of the modules
+            SimpleCursorAdapter listAdapter = new SimpleCursorAdapter(this,
+                    android.R.layout.simple_list_item_1,
+                    cursor2,
+                    new String[]{"NAME"},
+                    new int[]{android.R.id.text1},
+                    0);
+
+            listOfModulesView.setAdapter(listAdapter);
+        }catch(SQLiteException e){
+            Toast toast = Toast.makeText(this,
+                    "Database Unavailable",
+                    Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
+        // the following code sends to ModuleActivity the id of the module tha has been clicked:
+        // Create a listener to listen for clicks in the list view
         AdapterView.OnItemClickListener itemClickListener =
                 new AdapterView.OnItemClickListener() {
-                    public void onItemClick(AdapterView<?> listDrinks,
-                                            View itemView,
+                    @Override
+                    public void onItemClick(AdapterView<?> listOfModulesView,
+                                            View view,
                                             int position,
-                                            long moduleID){
-                        // Pass the module the user clicks on to ModuleActivity
-                        Intent intent = new Intent(SubjectOverviewActivity.this,
-                                                    ModuleActivity.class);
-                        intent.putExtra(ModuleActivity.EXTRA_MODULEID,(int) moduleID);
-                        intent.putExtra(ModuleActivity.EXTRA_SUBJECTID, subjectID);
-                        startActivity(intent);
+                                            long id) {
+                        // Pass the id of the module the user clicked to ModuleActivity
+                        Intent newIntent = new Intent(SubjectOverviewActivity.this, ModuleActivity.class);
+
+                        //cursor2.move(position);
+                        //int moduleID = cursor2.getInt(0);
+                        newIntent.putExtra(ModuleActivity.EXTRA_MODULEID, (int)id);
+                        newIntent.putExtra(ModuleActivity.EXTRA_SUBJECT_NAME,subjectTitleText);
+                        startActivity(newIntent);
+
                     }
                 };
         // Assign the listener to the list view
@@ -70,4 +114,16 @@ public class SubjectOverviewActivity extends AppCompatActivity {
 
 
     }
+
+    /**
+     * method is overridden because the user should be able to scroll the listview as long as he wants, so
+     * we close cursor2 at the destruction of the activity, and not within the onCreate method.
+     */
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        cursor2.close();
+        db.close();
+    }
+
 }
