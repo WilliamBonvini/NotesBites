@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ModuleActivity"></activity>
         <activity android:name=".SubjectOverviewActivity" />
-        <activity android:name=".SubjectsListActivity">
+        <activity android:name=".GuestHomepageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

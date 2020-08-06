@@ -9,15 +9,13 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.view.View;
 
-import java.util.ArrayList;
-
-public class SubjectsListActivity extends Activity {
+public class GuestHomepageActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_subjectslist);
+        setContentView(R.layout.activity_guest_homepage);
 
         SQLiteOpenHelper databaseHelper = new DatabaseHelper(this);
         SQLiteDatabase db = databaseHelper.getReadableDatabase();
@@ -41,7 +39,7 @@ public class SubjectsListActivity extends Activity {
                                                 View itemView,
                                                 int position,
                                                 long id){
-                Intent intent = new Intent(SubjectsListActivity.this,
+                Intent intent = new Intent(GuestHomepageActivity.this,
                         SubjectOverviewActivity.class);
 
                 intent.putExtra(SubjectOverviewActivity.EXTRA_SUBJECTID,subjectsIDs[position]);
