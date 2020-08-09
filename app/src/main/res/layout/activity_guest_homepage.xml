@@ -7,12 +7,18 @@
     tools:context=".GuestHomepageActivity"
     >
 
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:textAppearance="?android:attr/textAppearanceLarge"
+       android:text="@string/guest_homepage_title"
+       />
    <ListView
        android:id="@+id/list_of_subjects"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:entries="@array/subjects"
        />
+
 
 
 </LinearLayout>

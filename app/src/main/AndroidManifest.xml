@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.waldo.notesbites">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -9,15 +10,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ModuleActivity"></activity>
-        <activity android:name=".SubjectOverviewActivity" />
-        <activity android:name=".GuestHomepageActivity">
+        <activity android:name=".SelectSubjectsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ModuleActivity"/>
+        <activity android:name=".SubjectOverviewActivity" />
+        <activity android:name=".GuestHomepageActivity"/>
+        <activity android:name=".PersonalAreaActivity"/>
+        <activity android:name=".HomepageActivity"/>
+        <activity android:name=".NotesActivity"/>
+        <activity android:name=".QuizActivity"/>
+        <activity android:name=".QuizResultsActivity"/>
+        <activity android:name=".SimpleSubjectOverviewActivity"/>
+        <activity android:name=".VideoContentActivity"/>
     </application>
 
 </manifest>
