@@ -6,23 +6,45 @@
     android:orientation="vertical"
     tools:context="com.waldo.notesbites.ModuleActivity">
 
-    <TextView
-        android:id="@+id/module_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+  <TextView
+      android:id="@+id/belongingSubject"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      />
 
-    <ImageView
-        android:id="@+id/module_image"
-        android:layout_width="190dp"
-        android:layout_height="190dp"
-        />
-    <TextView
-        android:id="@+id/module_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
+  <TextView
+      android:id="@+id/module_title"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      />
 
+  <TextView
+      android:id="@+id/module_description"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      />
+  <ImageButton
+      android:id="@+id/readableContentImageButton"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:src="@drawable/notes_icon_2x"
+      android:onClick="startNotesActivity"/>
+
+  <ImageButton
+      android:id="@+id/videoContentImageButton"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:src="@drawable/video_icon_2x"
+      android:onClick="startVideoContentActivity"/>
+  <ImageButton
+      android:id="@+id/quizImageButton"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:src="@drawable/quiz_icon_2x"
+      android:onClick="startQuizActivity"/>
 
 
 </LinearLayout>

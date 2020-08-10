@@ -22,10 +22,11 @@ import java.util.ArrayList;
 
 public class SelectSubjectsActivity extends Activity {
 
-    LinearLayout linearMain;
-    CheckBox checkBox;
-    SQLiteOpenHelper databaseHelper;
-    Intent selectSubjectsIntent;
+    // TODO: for all activities: deal with the database in a secondary thread (page 723 on)
+
+    private SQLiteOpenHelper databaseHelper;
+    private SQLiteDatabase db;
+    private Intent selectSubjectsIntent;
 
 
 
@@ -37,32 +38,29 @@ public class SelectSubjectsActivity extends Activity {
                 GuestHomepageActivity.class);
 
 
-
-        linearMain = (LinearLayout) findViewById(R.id.linear_select_subjects);
-        ArrayList<String> subjectsNames = new ArrayList<String>();
+        LinearLayout linearMain = (LinearLayout) findViewById(R.id.linear_select_subjects);
         databaseHelper = new DatabaseHelper(this);
-        SQLiteDatabase db = databaseHelper.getReadableDatabase();
+        db = databaseHelper.getReadableDatabase();
         Cursor cursor = db.query("SUBJECT",
-                                new String[]{"NAME"},
+                                new String[]{"NAME","SELECTED"},
                                 null,
                                 null,
                                 null,
                                 null,
                                 null);
-        if(cursor.moveToFirst()){
-            subjectsNames.add(cursor.getString(0));
-            while(cursor.moveToNext()){
-                subjectsNames.add(cursor.getString(0));
-            }
-        }
-        cursor.close();
-        for(int i=0;i<subjectsNames.size();i++){
-            checkBox = new CheckBox(this);
+
+        int i = 0;
+        while(cursor.moveToNext()){
+            CheckBox checkBox = new CheckBox(this);
             checkBox.setId(i);
-            checkBox.setText(subjectsNames.get(i));
+            checkBox.setText(cursor.getString(0));
+            boolean isSelected = cursor.getInt(1) == 1;
+            checkBox.setChecked(isSelected);
             checkBox.setOnClickListener(onCheckBoxClicked(checkBox));
             linearMain.addView(checkBox);
+            i++;
         }
+        cursor.close();
 
         //add bottom message below checkboxes
         TextView bottom_message = new TextView(this);
@@ -78,10 +76,6 @@ public class SelectSubjectsActivity extends Activity {
         button.setOnClickListener(onButtonClicked(button));
         linearMain.addView(button);
 
-        // TODO: put all the views in the layout and populate them by using their ids
-
-
-
     }
 
     private View.OnClickListener onCheckBoxClicked(final Button button){
@@ -90,12 +84,11 @@ public class SelectSubjectsActivity extends Activity {
 
             public void onClick(View v){
                 try{
-                    SQLiteDatabase db = databaseHelper.getWritableDatabase();
+                    db = databaseHelper.getWritableDatabase();
                     ContentValues contentValues = new ContentValues();
                     contentValues.put("SELECTED",((CheckBox)v).isChecked());        //((CheckBox)v).isChecked() ? 1 : 0);
                     db.update("SUBJECT",contentValues,"NAME=?",new String[]{((CheckBox)v).getText().toString()});
                     db.close();
-                    // TODO: 07/08/2020 implement: set to false field "selected" in SUBJECTS if user clicks again on checkbox, or. easier, update tables only when user clicks on confirm button
                 }catch (SQLiteException e){
                     Toast toast = Toast.makeText(v.getContext(),"Database unavailable",Toast.LENGTH_SHORT);
                     toast.show();
@@ -111,6 +104,13 @@ public class SelectSubjectsActivity extends Activity {
                 startActivity(selectSubjectsIntent);
             }
         };
+    }
+
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        // TODO: page 718. I don't think I need to implement it, but maybe I'll need to for some reason
     }
 
 }

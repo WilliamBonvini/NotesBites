@@ -16,8 +16,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class GuestHomepageActivity extends Activity {
-    ArrayList<String> subjectNamesList = new ArrayList<String>();
-
+    private ArrayList<String> subjectNamesList = new ArrayList<String>();
+    private Cursor cursor;
+    private SQLiteDatabase db;
 
 
     @Override
@@ -28,7 +29,7 @@ public class GuestHomepageActivity extends Activity {
         try {
             doStuff();
         } catch (SQLiteException e) {
-            Toast.makeText(this, "Database unavavailable", Toast.LENGTH_SHORT);
+            Toast.makeText(this, "Database unavavailable", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -37,23 +38,20 @@ public class GuestHomepageActivity extends Activity {
     private void doStuff(){
         // query selected subjects to display them in the layout
         SQLiteOpenHelper databaseHelper = new DatabaseHelper(this);
-        SQLiteDatabase db = databaseHelper.getReadableDatabase();
-        Cursor cursor = db.query("SUBJECT",
+        db = databaseHelper.getReadableDatabase();
+        cursor = db.query("SUBJECT",
                 new String[]{"_id","NAME"},
                 "SELECTED = 1",
-                null,//new String[]{Integer.toString(1)},
+                null,
                 null,null,null);
 
-        if(cursor.getCount()==0){
-            Log.println(Log.DEBUG,"baaad","no tuple returned!!!!");
-        }
+
 
         // populate array with selected subjects ids (we'll need it to pass selected subject to next layout)
         // at the same time populate array list with selected subjects names to display them in a ListView
         final int[] subjectsIDs = new int[cursor.getCount()];
         int i = 0;
         if(cursor.moveToFirst()){
-            Log.println(Log.ERROR,"good","something has been returned");
 
             subjectsIDs[i] = cursor.getInt(0);
             subjectNamesList.add(cursor.getString(1));
@@ -92,7 +90,12 @@ public class GuestHomepageActivity extends Activity {
         ListView listView = (ListView) findViewById(R.id.list_of_subjects);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(itemClickListener);
+    }
 
+    // Close the cursor and database in the onDestroy() method
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
         cursor.close();
         db.close();
     }
