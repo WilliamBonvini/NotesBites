@@ -1,5 +1,6 @@
 package com.waldo.notesbites;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -20,6 +21,8 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+import static android.widget.Toast.*;
+
 public class SelectSubjectsActivity extends Activity {
 
     // TODO: for all activities: deal with the database in a secondary thread (page 723 on)
@@ -27,15 +30,19 @@ public class SelectSubjectsActivity extends Activity {
     private SQLiteOpenHelper databaseHelper;
     private SQLiteDatabase db;
     private Intent selectSubjectsIntent;
+    private Intent visualizeOverview;
 
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_subjects);
         selectSubjectsIntent = new Intent(SelectSubjectsActivity.this,
                 GuestHomepageActivity.class);
+        visualizeOverview = new Intent(SelectSubjectsActivity.this,
+                SimpleSubjectOverviewActivity.class);
 
 
         LinearLayout linearMain = (LinearLayout) findViewById(R.id.linear_select_subjects);
@@ -52,15 +59,21 @@ public class SelectSubjectsActivity extends Activity {
         int i = 0;
         while(cursor.moveToNext()){
             CheckBox checkBox = new CheckBox(this);
+            Button btn = new Button(this);
             checkBox.setId(i);
+            btn.setId(10+i); //da modificare
             checkBox.setText(cursor.getString(0));
+            btn.setText(cursor.getString(0) + " overview");
+            btn.setOnClickListener(onBtnClicked(btn));
             boolean isSelected = cursor.getInt(1) == 1;
             checkBox.setChecked(isSelected);
             checkBox.setOnClickListener(onCheckBoxClicked(checkBox));
             linearMain.addView(checkBox);
+            linearMain.addView(btn);
             i++;
         }
         cursor.close();
+
 
         //add bottom message below checkboxes
         TextView bottom_message = new TextView(this);
@@ -90,7 +103,7 @@ public class SelectSubjectsActivity extends Activity {
                     db.update("SUBJECT",contentValues,"NAME=?",new String[]{((CheckBox)v).getText().toString()});
                     db.close();
                 }catch (SQLiteException e){
-                    Toast toast = Toast.makeText(v.getContext(),"Database unavailable",Toast.LENGTH_SHORT);
+                    Toast toast = makeText(v.getContext(),"Database unavailable", LENGTH_SHORT);
                     toast.show();
                 }
             }
@@ -112,5 +125,17 @@ public class SelectSubjectsActivity extends Activity {
         super.onRestart();
         // TODO: page 718. I don't think I need to implement it, but maybe I'll need to for some reason
     }
+
+     View.OnClickListener onBtnClicked(Button button) {
+         return new View.OnClickListener() {
+
+             public void onClick(View v) {
+                 //Toast toast = makeText(v.getContext(), "ciao ", LENGTH_SHORT);
+                 //toast.show();
+                 startActivity(visualizeOverview);
+             }
+
+         };
+     }
 
 }

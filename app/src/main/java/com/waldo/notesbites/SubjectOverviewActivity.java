@@ -48,7 +48,7 @@ public class SubjectOverviewActivity extends AppCompatActivity {
               "SUBJECT",
               new String[]{"NAME", "DESCRIPTION", "IMAGE_RESOURCE_ID"},
               "_id=?",
-              new String[]{Integer.toString(subjectID)},
+              new String[]{Integer.toString(subjectID)},    //perchè questo?
               null, null, null);
       if (cursor1.moveToFirst()) {
         subjectTitleText = cursor1.getString(0);
@@ -101,7 +101,7 @@ public class SubjectOverviewActivity extends AppCompatActivity {
                 // Pass the id of the module the user clicked to ModuleActivity
                 Intent newIntent = new Intent(SubjectOverviewActivity.this, ModuleActivity.class);
 
-                newIntent.putExtra(ModuleActivity.EXTRA_MODULEID, (int)id);
+                newIntent.putExtra(ModuleActivity.EXTRA_MODULEID, (int)id);     //??
                 newIntent.putExtra(ModuleActivity.EXTRA_SUBJECT_NAME,subjectTitleText);
                 startActivity(newIntent);
 
