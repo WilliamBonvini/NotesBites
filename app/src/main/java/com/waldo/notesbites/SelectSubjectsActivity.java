@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -29,7 +30,6 @@ public class SelectSubjectsActivity extends Activity {
 
     private SQLiteOpenHelper databaseHelper;
     private SQLiteDatabase db;
-    private Intent selectSubjectsIntent;
 
 
 
@@ -38,8 +38,7 @@ public class SelectSubjectsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_subjects);
-        selectSubjectsIntent = new Intent(SelectSubjectsActivity.this,
-                GuestHomepageActivity.class);
+
 
 
 
@@ -47,7 +46,7 @@ public class SelectSubjectsActivity extends Activity {
         databaseHelper = new DatabaseHelper(this);
         db = databaseHelper.getReadableDatabase();
         Cursor cursor = db.query("SUBJECT",
-                                new String[]{"NAME","SELECTED"},
+                                new String[]{"_id","NAME","SELECTED"},
                                 null,
                                 null,
                                 null,
@@ -56,18 +55,27 @@ public class SelectSubjectsActivity extends Activity {
 
         int i = 0;
         while(cursor.moveToNext()){
+            // create row
+            LinearLayout row = new LinearLayout(this);
+            row.setOrientation(LinearLayout.HORIZONTAL);
+            row.setId(cursor.getInt(0));
+
+            // create and populate checkbox
             CheckBox checkBox = new CheckBox(this);
-            Button btn = new Button(this);
-            checkBox.setId(i);
-            btn.setId(10+i); //da modificare
-            checkBox.setText(cursor.getString(0));
-            btn.setText(cursor.getString(0) + " overview");
-            btn.setOnClickListener(onBtnClicked(btn));
-            boolean isSelected = cursor.getInt(1) == 1;
+            checkBox.setText(cursor.getString(1));
+            boolean isSelected = cursor.getInt(2) == 1;
             checkBox.setChecked(isSelected);
             checkBox.setOnClickListener(onCheckBoxClicked(checkBox));
-            linearMain.addView(checkBox);
-            linearMain.addView(btn);
+            row.addView(checkBox);
+
+            // create and populate overview button
+            Button btn = new Button(this);
+            btn.setText(cursor.getString(1) + " overview");
+            btn.setOnClickListener(onOverviewButtonClicked(btn));
+            row.addView(btn);
+
+            // add row to main layout
+            linearMain.addView(row);
             i++;
         }
         cursor.close();
@@ -84,7 +92,7 @@ public class SelectSubjectsActivity extends Activity {
         button.setText(R.string.select_subjects_confirm_button_text);
         button.setWidth(LinearLayout.LayoutParams.MATCH_PARENT);
         button.setHeight(LinearLayout.LayoutParams.WRAP_CONTENT);
-        button.setOnClickListener(onButtonClicked(button));
+        button.setOnClickListener(onConfirmButtonClicked(button));
         linearMain.addView(button);
 
     }
@@ -97,7 +105,7 @@ public class SelectSubjectsActivity extends Activity {
                 try{
                     db = databaseHelper.getWritableDatabase();
                     ContentValues contentValues = new ContentValues();
-                    contentValues.put("SELECTED",((CheckBox)v).isChecked());        //((CheckBox)v).isChecked() ? 1 : 0);
+                    contentValues.put("SELECTED",((CheckBox)v).isChecked());
                     db.update("SUBJECT",contentValues,"NAME=?",new String[]{((CheckBox)v).getText().toString()});
                     db.close();
                 }catch (SQLiteException e){
@@ -108,10 +116,12 @@ public class SelectSubjectsActivity extends Activity {
         };
     }
 
-    private View.OnClickListener onButtonClicked(Button button){
+    private View.OnClickListener onConfirmButtonClicked(Button button){
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent selectSubjectsIntent = new Intent(SelectSubjectsActivity.this,
+                GuestHomepageActivity.class);
                 startActivity(selectSubjectsIntent);
             }
         };
@@ -124,13 +134,13 @@ public class SelectSubjectsActivity extends Activity {
         // TODO: page 718. I don't think I need to implement it, but maybe I'll need to for some reason
     }
 
-     View.OnClickListener onBtnClicked(Button button) {
+     View.OnClickListener onOverviewButtonClicked(Button button) {
          return new View.OnClickListener() {
 
              public void onClick(View v) {
-                 Intent visualizeOverview = new Intent(SelectSubjectsActivity.this,
-                         SimpleSubjectOverviewActivity.class);
-                 startActivity(visualizeOverview);
+                 Intent selectSubjectsOverview = new Intent(SelectSubjectsActivity.this, SimpleSubjectOverviewActivity.class);
+                 selectSubjectsOverview.putExtra(SimpleSubjectOverviewActivity.EXTRA_SUBJECT_ID,((ViewGroup)v.getParent()).getId());
+                 startActivity(selectSubjectsOverview);
              }
 
          };

@@ -48,15 +48,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + "READABLE_CONTENT TEXT);"
             );
             // insert data for AI
-            insertSubject(db,"AI","Amigoni is so funny!!!",R.drawable.ai,0,"OVERVIEEWWWW");
+            insertSubject(db,"AI","Amigoni is so funny!!!",R.drawable.ai,0,"This is the overview of Artificial Intelligence. \nIn this course you'll learn the fundamentals of logic and artificial reasoning.\nthe topics covered by the course are the following:\n");
             insertModule(db,"Introduction to AI - directly loaded from db","the most fun module ever!!",R.drawable.intro,"AI",1,"blablabla, this is the content");
             insertModule(db,"Peppa pig likes AI","didn't you know that???",R.drawable.m1,"AI",2,"blablabla, this is the content");
 
             // insert data for IOT
-            insertSubject(db,"IOT","IOT is sick broo!!!",R.drawable.iot,0,"OVERVIRWWERERIEIREI");
+            insertSubject(db,"IOT","IOT is sick broo!!!",R.drawable.iot,0,"This is the overview of IOT. \nThis course talks about lot of stuff that connects to the internet and is kind of dope. \nthe topics covered by the course are:\n");
             insertModule(db,"Introduction to IOT","well, you gotta start from somewhere!!",R.drawable.intro,"IOT",1,"stuff, this is the readable content of introduction to IOT!");
 
-            insertSubject(db,"ANN2DL","Matteucci used to have long hair!!!",R.drawable.ann2dl,0,"OVERVIEWEWWWEEWE");
+            insertSubject(db,"ANN2DL","Matteucci used to have long hair!!!",R.drawable.ann2dl,0,"Come on, you know what ANN are, the course is not so well taught, but the topic is very interesting.\nthe topics covered are:\n");
             insertModule(db,"Introduction to ANN2DL, yeeeey","you won't understand shit! no worries!!!",R.drawable.intro,"ANN2DL",1,"dabudidabuda!!!!");
 
         }

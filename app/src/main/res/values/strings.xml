@@ -9,4 +9,5 @@
     <string name="select_subjects_message_2">and many more to come!</string>
     <string name="select_subjects_confirm_button_text">confirm</string>
     <string name="guest_homepage_title">Guest Homepage</string>
+    <string name="simple_overview_goback_button">go back</string>
 </resources>
