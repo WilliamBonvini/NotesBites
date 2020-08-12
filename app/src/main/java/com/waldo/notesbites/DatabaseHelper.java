@@ -36,7 +36,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + "NAME TEXT,"
                     + "DESCRIPTION TEXT,"
                     + "IMAGE_RESOURCE_ID INTEGER,"
-                    + "SELECTED NUMERIC);");
+                    + "SELECTED NUMERIC,"
+                    + "OVERVIEW TEXT);");
             db.execSQL("CREATE TABLE MODULE("
                     + "_id INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + "NAME TEXT,"
@@ -47,15 +48,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + "READABLE_CONTENT TEXT);"
             );
             // insert data for AI
-            insertSubject(db,"AI","Amigoni is so funny!!!",R.drawable.ai,0);
+            insertSubject(db,"AI","Amigoni is so funny!!!",R.drawable.ai,0,"OVERVIEEWWWW");
             insertModule(db,"Introduction to AI - directly loaded from db","the most fun module ever!!",R.drawable.intro,"AI",1,"blablabla, this is the content");
             insertModule(db,"Peppa pig likes AI","didn't you know that???",R.drawable.m1,"AI",2,"blablabla, this is the content");
 
             // insert data for IOT
-            insertSubject(db,"IOT","IOT is sick broo!!!",R.drawable.iot,0);
+            insertSubject(db,"IOT","IOT is sick broo!!!",R.drawable.iot,0,"OVERVIRWWERERIEIREI");
             insertModule(db,"Introduction to IOT","well, you gotta start from somewhere!!",R.drawable.intro,"IOT",1,"stuff, this is the readable content of introduction to IOT!");
 
-            insertSubject(db,"ANN2DL","Matteucci used to have long hair!!!",R.drawable.ann2dl,0);
+            insertSubject(db,"ANN2DL","Matteucci used to have long hair!!!",R.drawable.ann2dl,0,"OVERVIEWEWWWEEWE");
             insertModule(db,"Introduction to ANN2DL, yeeeey","you won't understand shit! no worries!!!",R.drawable.intro,"ANN2DL",1,"dabudidabuda!!!!");
 
         }
@@ -72,7 +73,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                                      String name,
                                      String description,
                                      int resourceID,
-                                     int selected){
+                                     int selected,
+                                     String overview){
         // insert data using the insert() method
         // usually you should create one ContentValue object for each row of data you want to insert
         ContentValues subjectValues = new ContentValues();
@@ -80,6 +82,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         subjectValues.put("DESCRIPTION",description);
         subjectValues.put("IMAGE_RESOURCE_ID",resourceID);
         subjectValues.put("SELECTED",selected);
+        subjectValues.put("OVERVIEW",overview);
         db.insert("SUBJECT",null,subjectValues);
 
     }

@@ -30,7 +30,6 @@ public class SelectSubjectsActivity extends Activity {
     private SQLiteOpenHelper databaseHelper;
     private SQLiteDatabase db;
     private Intent selectSubjectsIntent;
-    private Intent visualizeOverview;
 
 
 
@@ -41,8 +40,7 @@ public class SelectSubjectsActivity extends Activity {
         setContentView(R.layout.activity_select_subjects);
         selectSubjectsIntent = new Intent(SelectSubjectsActivity.this,
                 GuestHomepageActivity.class);
-        visualizeOverview = new Intent(SelectSubjectsActivity.this,
-                SimpleSubjectOverviewActivity.class);
+
 
 
         LinearLayout linearMain = (LinearLayout) findViewById(R.id.linear_select_subjects);
@@ -130,8 +128,8 @@ public class SelectSubjectsActivity extends Activity {
          return new View.OnClickListener() {
 
              public void onClick(View v) {
-                 //Toast toast = makeText(v.getContext(), "ciao ", LENGTH_SHORT);
-                 //toast.show();
+                 Intent visualizeOverview = new Intent(SelectSubjectsActivity.this,
+                         SimpleSubjectOverviewActivity.class);
                  startActivity(visualizeOverview);
              }
 
