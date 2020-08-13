@@ -2,24 +2,16 @@ package com.waldo.notesbites;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.List;
 
 public class ModuleActivity extends AppCompatActivity {
 
@@ -78,7 +70,7 @@ public class ModuleActivity extends AppCompatActivity {
   }
 
   public void startQuizActivity(View view){
-    Intent intent = new Intent(ModuleActivity.this, QuizActivity.class);
+    Intent intent = new Intent(ModuleActivity.this, StartingScreenActivity.class);
     startActivity(intent);
   }
 

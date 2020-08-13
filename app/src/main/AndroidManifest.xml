@@ -23,10 +23,12 @@
         <activity android:name=".PersonalAreaActivity"/>
         <activity android:name=".HomepageActivity"/>
         <activity android:name=".NotesActivity"/>
-        <activity android:name=".QuizActivity"/>
+        <activity android:name=".StartingScreenActivity"/>
         <activity android:name=".QuizResultsActivity"/>
         <activity android:name=".SimpleSubjectOverviewActivity"/>
         <activity android:name=".VideoContentActivity"/>
+        <activity android:name=".QuizActivity"/>
+
     </application>
 
 </manifest>
