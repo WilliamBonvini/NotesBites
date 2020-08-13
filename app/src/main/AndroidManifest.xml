@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.waldo.notesbites">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -15,21 +14,32 @@
         <activity android:name=".SelectSubjectsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".ModuleActivity"/>
         <activity android:name=".SubjectOverviewActivity" />
-        <activity android:name=".GuestHomepageActivity"/>
-        <activity android:name=".PersonalAreaActivity"/>
-        <activity android:name=".HomepageActivity"/>
+        <activity
+            android:name=".GuestHomepageActivity"
+            android:label="@string/guest_homepage_title"/>
+        <activity android:name=".PersonalAreaActivity" android:label="Personal Area"/>
+        <activity android:name=".HomepageActivity" android:label="Homepage"/>
         <activity android:name=".NotesActivity"/>
         <activity android:name=".StartingScreenActivity"/>
         <activity android:name=".QuizResultsActivity"/>
-        <activity android:name=".SimpleSubjectOverviewActivity"/>
+
+        <activity android:name=".SimpleSubjectOverviewActivity"
+            android:parentActivityName=".SelectSubjectsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SelectSubjectsActivity" />
+        </activity>
+
+
         <activity android:name=".VideoContentActivity"/>
         <activity android:name=".QuizActivity"/>
+        <activity android:name=".SignInActivity" android:label="Sign In"/>
+        <activity android:name=".SignInPart2Activity" android:label="Sign In"/>
 
     </application>
 

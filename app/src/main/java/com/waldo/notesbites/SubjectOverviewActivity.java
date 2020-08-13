@@ -1,6 +1,7 @@
 package com.waldo.notesbites;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -34,6 +35,8 @@ public class SubjectOverviewActivity extends AppCompatActivity {
     // default stuff
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_subject_overview);
+    setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+
     // get reference to ListView
     ListView listOfModulesView = (ListView) findViewById(R.id.list_of_modules);
 

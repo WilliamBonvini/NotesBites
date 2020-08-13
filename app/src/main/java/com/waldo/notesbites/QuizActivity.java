@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.Collections;
 import java.util.List;
@@ -39,6 +40,8 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+
         textViewQuestion = findViewById(R.id.text_view_question);
         textViewScore = findViewById(R.id.text_view_score);
         textViewQuestionCount = findViewById(R.id.text_view_question_count);

@@ -5,6 +5,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.waldo.notesbites.SubjectOverviewActivity">
+
+  <include layout="@layout/toolbar_main"
+      android:id="@+id/toolbar"/>
+
   <TextView
       android:id="@+id/subject_title"
       android:layout_width="match_parent"

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 //import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -37,6 +38,7 @@ public class SignInPart2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin_part2);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
 
         sign_out = findViewById(R.id.log_out);
         nameTV = findViewById(R.id.name);

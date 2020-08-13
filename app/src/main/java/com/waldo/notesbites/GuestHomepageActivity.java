@@ -15,7 +15,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class GuestHomepageActivity extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+public class GuestHomepageActivity extends AppCompatActivity {
     private ArrayList<String> subjectNamesList = new ArrayList<String>();
     private Cursor cursor;
     private SQLiteDatabase db;
@@ -26,6 +29,8 @@ public class GuestHomepageActivity extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_homepage);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+
         try {
             doStuff();
         } catch (SQLiteException e) {

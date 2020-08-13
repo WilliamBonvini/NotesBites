@@ -6,6 +6,9 @@
     android:orientation="vertical"
     tools:context="com.waldo.notesbites.ModuleActivity">
 
+  <include layout="@layout/toolbar_main"
+      android:id="@+id/toolbar"/>
+
   <TextView
       android:id="@+id/belongingSubject"
       android:layout_width="wrap_content"

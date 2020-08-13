@@ -1,6 +1,5 @@
 package com.waldo.notesbites;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,12 +12,17 @@ import com.mukesh.MarkdownView;
 
 import java.io.File;
 
-public class NotesActivity extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+public class NotesActivity extends AppCompatActivity {
     public static final String MODULE_ID  = "MODULE_ID";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+
         Intent intent = getIntent();
         int moduleID = (int)intent.getExtras().get(MODULE_ID);
         DatabaseHelper databaseHelper = new DatabaseHelper(this);

@@ -1,7 +1,6 @@
 package com.waldo.notesbites;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -18,13 +17,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
 
-import java.util.ArrayList;
+import androidx.appcompat.widget.Toolbar;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import static android.widget.Toast.*;
 
-public class SelectSubjectsActivity extends Activity {
+public class SelectSubjectsActivity extends AppCompatActivity {
 
     // TODO: for all activities: deal with the database in a secondary thread (page 723 on)
 
@@ -38,6 +38,8 @@ public class SelectSubjectsActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_subjects);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+
 
 
 

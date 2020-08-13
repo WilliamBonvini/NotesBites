@@ -6,6 +6,11 @@
     android:id="@+id/linear_select_subjects"
     android:orientation="vertical">
 
+    <include
+        layout="@layout/toolbar_main"
+        android:id="@+id/toolbar"
+        />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,15 +21,5 @@
         android:layout_height="wrap_content"
         android:text="@string/select_subjects_message_1">
     </TextView>
-
-
-
-
-
-
-
-
-
-
 
 </LinearLayout>

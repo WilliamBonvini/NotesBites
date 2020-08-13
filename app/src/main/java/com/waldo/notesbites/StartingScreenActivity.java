@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class StartingScreenActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_QUIZ = 1;
@@ -20,6 +21,8 @@ public class StartingScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting_screen);
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+
         textViewHighscore = findViewById(R.id.text_view_highscore);
         loadHighscore();
         Button buttonStartQuiz = findViewById(R.id.button_start_quiz);

@@ -1,6 +1,5 @@
 package com.waldo.notesbites;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,7 +9,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class SimpleSubjectOverviewActivity extends Activity {
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+public class SimpleSubjectOverviewActivity extends AppCompatActivity {
     public static String EXTRA_SUBJECT_ID = "SubjectID";
     private String overview;
     private String subjectName;
@@ -18,6 +21,7 @@ public class SimpleSubjectOverviewActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simple_subject_overview);
+
 
         // retrieve subject name and overview template.
         Intent intent = getIntent();
@@ -31,9 +35,15 @@ public class SimpleSubjectOverviewActivity extends Activity {
         }
         cursor1.close();
 
-        // populate subject name view
-        TextView subjectNameView = findViewById(R.id.simple_overview_subject_name);
-        subjectNameView.setText(subjectName);
+        // populate toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(subjectName + " Overview");
+        setSupportActionBar(toolbar);
+
+        // Add up button
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
 
         // populate description/overview
         StringBuilder fullOverview = new StringBuilder();
@@ -51,9 +61,4 @@ public class SimpleSubjectOverviewActivity extends Activity {
         overviewView.setText(fullOverview);
     }
 
-
-    public void goBackToSelectSubjects(View view) {
-        Intent intent = new Intent(SimpleSubjectOverviewActivity.this, SelectSubjectsActivity.class);
-        startActivity(intent);
-    }
 }
