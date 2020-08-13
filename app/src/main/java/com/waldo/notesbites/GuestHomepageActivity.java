@@ -99,6 +99,11 @@ public class GuestHomepageActivity extends Activity {
         cursor.close();
         db.close();
     }
+
+    public void startSingInActivity(View view) {
+        Intent intent = new Intent(GuestHomepageActivity.this, SignInActivity.class);
+        startActivity(intent);
+    }
 }
 
 
