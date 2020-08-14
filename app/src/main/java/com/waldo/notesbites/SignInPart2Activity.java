@@ -23,8 +23,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-import java.net.URI;
-
 public class SignInPart2Activity extends AppCompatActivity {
 
     GoogleSignInClient mGoogleSignInClient;
@@ -93,7 +91,7 @@ public class SignInPart2Activity extends AppCompatActivity {
 
     public void startHomepageActivity(View view) {
         Intent intent = new Intent(SignInPart2Activity.this, HomepageActivity.class);
-        intent.putExtra(HomepageActivity.PERSONNAME, personName);
+        intent.putExtra(HomepageActivity.PERSON_NAME, personName);
         startActivity(intent);
     }
 }

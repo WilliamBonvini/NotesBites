@@ -6,17 +6,18 @@
 
 
     <include layout="@layout/toolbar_main"
-        android:id="@+id/toolbar"/>
+        android:id="@+id/toolbar" />
 
     <TextView
         android:id="@+id/homepage_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="homepage"
+        android:text="NotesBites"
         android:layout_below="@id/toolbar"
         android:layout_centerHorizontal="true"
-        android:textSize="35dp"
+        android:textSize="50dp"
         android:layout_marginTop="30dp"
+        android:textColor="@color/colorPrimary"
         />
 
     <TextView
@@ -25,10 +26,82 @@
         android:id="@+id/welcome_text"
         android:layout_below="@id/homepage_text"
         android:layout_centerHorizontal="true"
-        android:textSize="20dp"
-        android:text="prova"
-        android:layout_marginTop="30dp"
+        android:textSize="20sp"
+        android:text="welcome back"
+        android:layout_marginTop="20dp"
         />
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcome_text"
+        android:layout_marginTop="20dp"
+        android:text="Search Subjects"
+        android:layout_toStartOf="@id/divider"
+        android:layout_alignParentStart="true"
+        android:onClick="startSelectSubjectsActivity"
+        />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="5dp"
+        android:layout_height="match_parent"
+        android:background="?android:attr/listDivider"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/welcome_text"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/personal_area_button"
+        android:layout_below="@id/welcome_text"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@id/divider"
+        android:layout_alignParentEnd="true"
+        android:text="Personal Area"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/my_subjects"
+        android:text="My Subjects"
+        android:layout_below="@id/search_button"
+        android:textSize="25sp"
+        android:layout_marginTop="30dp"
+        android:layout_toStartOf="@id/divider"
+        android:layout_alignParentStart="true"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/recent_activities"
+        android:text="Recent Activities"
+        android:layout_below="@id/personal_area_button"
+        android:textSize="25sp"
+        android:layout_marginTop="30dp"
+        android:layout_toEndOf="@id/divider"
+        android:textAlignment="center"
+        android:layout_alignParentEnd="true"
+        />
+
+    <ListView
+        android:id="@+id/list_of_subjects"
+
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_below="@id/my_subjects"
+        android:layout_toStartOf="@id/divider"
+        android:layout_marginTop="20dp"
+
+        />
+
+
+
+
 
 
 </RelativeLayout>
