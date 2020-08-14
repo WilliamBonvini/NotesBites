@@ -1,5 +1,6 @@
 package com.waldo.notesbites;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -10,6 +11,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.media.Image;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,6 +33,7 @@ public class SubjectOverviewActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+
 
     // default stuff
     super.onCreate(savedInstanceState);
@@ -57,13 +60,20 @@ public class SubjectOverviewActivity extends AppCompatActivity {
         subjectTitleText = cursor1.getString(0);
         subjectDescriptionText = cursor1.getString(1);
         subjectPhotoID = cursor1.getInt(2);
+
+        // populate toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(subjectTitleText);
+        setSupportActionBar(toolbar);
+        // Add up button
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         // get reference to first three Views
-        TextView subjectTitleView = (TextView) findViewById(R.id.subject_title);
         TextView subjectDescriptionView = (TextView) findViewById(R.id.subject_description);
         ImageView subjectImageView = (ImageView) findViewById(R.id.subject_image);
 
         // populate first three Views
-        subjectTitleView.setText(subjectTitleText);
         subjectDescriptionView.setText(subjectDescriptionText);
         subjectImageView.setImageResource(subjectPhotoID);
       }
@@ -125,6 +135,18 @@ public class SubjectOverviewActivity extends AppCompatActivity {
     super.onDestroy();
     cursor2.close();
     db.close();
+  }
+
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        return true;
+    }
+
+    return(super.onOptionsItemSelected(item));
   }
 
 }
