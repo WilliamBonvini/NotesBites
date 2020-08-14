@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -59,6 +60,19 @@ public class SimpleSubjectOverviewActivity extends AppCompatActivity {
         cursor2.close();
         TextView overviewView = findViewById(R.id.simple_overview_text);
         overviewView.setText(fullOverview);
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return(super.onOptionsItemSelected(item));
     }
 
 }

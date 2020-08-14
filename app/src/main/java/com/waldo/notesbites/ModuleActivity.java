@@ -1,5 +1,6 @@
 package com.waldo.notesbites;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -10,6 +11,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,12 +21,15 @@ public class ModuleActivity extends AppCompatActivity {
   public static final String EXTRA_MODULEID = "moduleID";
   public static final String EXTRA_SUBJECT_NAME = "subjectName";
   private int moduleID;
+  private String moduleTitle;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_module);
-    setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+
+
+
 
 
 
@@ -40,16 +45,23 @@ public class ModuleActivity extends AppCompatActivity {
       Cursor cursor = db.query("MODULE",new String[]{"NAME","DESCRIPTION"},"_id=?",new String[]{Integer.toString(moduleID)},null,null,null);
       if(cursor.moveToFirst()){
         // get the data from the only tuple you have retrieved
-        String titleText = cursor.getString(0);
+        moduleTitle = cursor.getString(0);
         String descriptionText = cursor.getString(1);
 
         // populate the belonging subject text view
-        TextView belongingSubjectTextView = (TextView) findViewById(R.id.belongingSubject);
-        belongingSubjectTextView.setText(belongingSubject);
+        //TextView belongingSubjectTextView = (TextView) findViewById(R.id.belongingSubject);
+        //belongingSubjectTextView.setText(belongingSubject);
+
+        // set toolbar and add up button
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(belongingSubject + " - " + moduleTitle);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         // populate the module title
-        TextView moduleTitleTextView = (TextView)findViewById(R.id.module_title);
-        moduleTitleTextView.setText(titleText);
+        //TextView moduleTitleTextView = (TextView)findViewById(R.id.module_title);
+        //moduleTitleTextView.setText(moduleTitle);
 
         // populate the module description
         TextView moduleDescriptionTextView = (TextView) findViewById(R.id.module_description);
@@ -75,6 +87,18 @@ public class ModuleActivity extends AppCompatActivity {
   public void startQuizActivity(View view){
     Intent intent = new Intent(ModuleActivity.this, StartingScreenActivity.class);
     startActivity(intent);
+  }
+
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        return true;
+    }
+
+    return(super.onOptionsItemSelected(item));
   }
 
 
