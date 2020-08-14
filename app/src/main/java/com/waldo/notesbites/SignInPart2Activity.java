@@ -89,4 +89,9 @@ public class SignInPart2Activity extends AppCompatActivity {
                     }
                 });
     }
+
+    public void startHomepageActivity(View view) {
+        Intent intent = new Intent(SignInPart2Activity.this, HomepageActivity.class);
+        startActivity(intent);
+    }
 }
