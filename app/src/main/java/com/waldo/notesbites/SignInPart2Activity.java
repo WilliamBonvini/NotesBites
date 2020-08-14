@@ -33,6 +33,7 @@ public class SignInPart2Activity extends AppCompatActivity {
     TextView emailTV;
     TextView idTV;
     ImageView photoIV;
+    String personName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,7 @@ public class SignInPart2Activity extends AppCompatActivity {
 
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(SignInPart2Activity.this);
         if (acct != null) {
-            String personName = acct.getDisplayName();
+            personName = acct.getDisplayName();
             String personGivenName = acct.getGivenName();
             String personFamilyName = acct.getFamilyName();
             String personEmail = acct.getEmail();
@@ -92,6 +93,7 @@ public class SignInPart2Activity extends AppCompatActivity {
 
     public void startHomepageActivity(View view) {
         Intent intent = new Intent(SignInPart2Activity.this, HomepageActivity.class);
+        intent.putExtra(HomepageActivity.PERSONNAME, personName);
         startActivity(intent);
     }
 }
