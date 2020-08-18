@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+
 public class QuizResultsActivity extends AppCompatActivity {
     public static String EXTRA_SUBJECTID = "subjectID";
     private SQLiteDatabase db;
@@ -27,6 +28,10 @@ public class QuizResultsActivity extends AppCompatActivity {
 
         Intent oldIntent = getIntent();
         final int subjectID = (int) oldIntent.getExtras().get(EXTRA_SUBJECTID);
+        String subjectTitleText = null;
+//        DatabaseFunctions dbf = new DatabaseFunctions();
+//        subjectTitleText = dbf.getSubjectName(subjectID);
+//        textView.setText(subjectTitleText + "  Quiz Results");
 
         SQLiteOpenHelper databaseHelper = new DatabaseHelper(this);
         try {
