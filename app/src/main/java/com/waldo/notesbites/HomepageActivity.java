@@ -113,4 +113,9 @@ public class HomepageActivity extends AppCompatActivity {
         Intent intent = new Intent(HomepageActivity.this, SelectSubjectsActivity.class);
         startActivity(intent);
     }
+
+    public void startPersonalAreaActivity(View view) {
+        Intent intent = new Intent(HomepageActivity.this, PersonalAreaActivity.class);
+        startActivity(intent);
+    }
 }

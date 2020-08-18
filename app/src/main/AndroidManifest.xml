@@ -33,6 +33,7 @@
         <activity android:name=".SimpleSubjectOverviewActivity"/>
 
 
+
         <activity android:name=".VideoContentActivity"/>
         <activity android:name=".QuizActivity"/>
         <activity android:name=".SignInActivity" android:label="Sign In"/>

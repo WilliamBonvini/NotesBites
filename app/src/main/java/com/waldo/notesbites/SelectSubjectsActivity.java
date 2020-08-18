@@ -87,6 +87,7 @@ public class SelectSubjectsActivity extends AppCompatActivity {
         TextView bottom_message = new TextView(this);
         bottom_message.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         bottom_message.setText(R.string.select_subjects_message_2);
+        bottom_message.setTextSize(20);
         linearMain.addView(bottom_message);
 
         //add button to confirm selected subjects

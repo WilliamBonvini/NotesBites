@@ -113,6 +113,11 @@ public class GuestHomepageActivity extends AppCompatActivity {
         Intent intent = new Intent(GuestHomepageActivity.this, SignInActivity.class);
         startActivity(intent);
     }
+
+    public void startSelectSubjectsActivity(View view) {
+        Intent intent = new Intent(GuestHomepageActivity.this, SelectSubjectsActivity.class);
+        startActivity(intent);
+    }
 }
 
 

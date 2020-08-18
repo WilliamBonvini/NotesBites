@@ -11,12 +11,14 @@
        android:id="@+id/toolbar"/>
 
 
-   <TextView
+   <Button
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:textAppearance="?android:attr/textAppearanceLarge"
-       android:text="@string/guest_homepage_title"
-       />
+      android:text="@string/search_subjects"
+      android:id="@+id/btn_search"
+      android:onClick="startSelectSubjectsActivity"/>
+
+
    <ListView
        android:id="@+id/list_of_subjects"
        android:layout_width="match_parent"
@@ -28,7 +30,7 @@
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_marginTop="20dp"
-       android:text="SignIn"
+       android:text="@string/signin"
        android:onClick="startSingInActivity"
        />
 

@@ -59,7 +59,8 @@
         android:layout_marginTop="20dp"
         android:layout_toEndOf="@id/divider"
         android:layout_alignParentEnd="true"
-        android:text="Personal Area"
+        android:text="@string/personal_area"
+        android:onClick="startPersonalAreaActivity"
         />
 
     <TextView

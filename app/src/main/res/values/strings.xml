@@ -10,4 +10,7 @@
     <string name="select_subjects_confirm_button_text">confirm</string>
     <string name="guest_homepage_title">Guest Homepage</string>
     <string name="simple_overview_goback_button">go back</string>
+    <string name="search_subjects">Search Subjects</string>
+    <string name="signin">SignIn</string>
+    <string name="personal_area">Personal Area</string>
 </resources>
