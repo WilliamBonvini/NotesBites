@@ -1,5 +1,6 @@
 package com.waldo.notesbites;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -9,8 +10,16 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class DatabaseFunctions extends AppCompatActivity {
-    SQLiteOpenHelper databaseHelper = new DatabaseHelper(this);
-    private SQLiteDatabase db;
+    private Context context;
+
+
+    public DatabaseFunctions(Context context) {
+        this.context = context;
+        databaseHelper = new DatabaseHelper(this.context);
+    }
+    SQLiteOpenHelper databaseHelper;
+    SQLiteDatabase db;
+
 
     //NON FUNZIONA
     public String getSubjectName(int subjectID){
