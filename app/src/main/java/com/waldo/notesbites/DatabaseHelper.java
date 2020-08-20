@@ -55,6 +55,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + "RANK INTEGER,"
                     + "READABLE_CONTENT TEXT);"
             );
+            db.execSQL("CREATE TABLE QUIZ("
+                    + "_id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + "QUIZ_CONTENT TEXT,"
+                    + "QUIZ_RESULT TEXT);"
+            );
+
+
             final String SQL_CREATE_QUESTIONS_TABLE = "CREATE TABLE " +
                     QuestionsTable.TABLE_NAME + " ( " +
                     QuestionsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -74,7 +81,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             // insert data for IOT
             insertSubject(db,"IOT","IOT is sick broo!!!",R.drawable.iot,0,"This is the overview of IOT. \nThis course talks about lot of stuff that connects to the internet and is kind of dope. \nthe topics covered by the course are:\n");
-            insertModule(db,"Introduction to IOT","well, you gotta start from somewhere!!",R.drawable.intro,"IOT",1,"stuff, this is the readable content of introduction to IOT!");
+            insertModule(db,"The Things","well, you gotta start from somewhere!!",R.drawable.intro,"IOT",1,"stuff, this is the readable content of introduction to IOT!");
+            insertModule(db,"Communication Technologies for IOT","Module 2",R.drawable.m1,"IOT",2,"this is the readable content of module 2 of IOT!");
 
             insertSubject(db,"ANN2DL","Matteucci used to have long hair!!!",R.drawable.ann2dl,0,"Come on, you know what ANN are, the course is not so well taught, but the topic is very interesting.\nthe topics covered are:\n");
             insertModule(db,"Introduction to ANN2DL, yeeeey","you won't understand shit! no worries!!!",R.drawable.intro,"ANN2DL",1,"dabudidabuda!!!!");

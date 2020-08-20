@@ -4,11 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -33,7 +30,7 @@ public class QuizResultsActivity extends AppCompatActivity {
         String subjectTitleText = null;
         //Uso la funzione in DatabaseFunctions
         DatabaseFunctions dbf = new DatabaseFunctions(this);
-        subjectTitleText = dbf.getSubjectName(subjectID);
+        subjectTitleText = dbf.getSubjectName_fromID(subjectID);
         textView.setText(subjectTitleText + "  Quiz Results");
 
 //        SQLiteOpenHelper databaseHelper = new DatabaseHelper(this);

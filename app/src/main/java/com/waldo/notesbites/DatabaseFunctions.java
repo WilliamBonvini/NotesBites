@@ -21,8 +21,8 @@ public class DatabaseFunctions extends AppCompatActivity {
     SQLiteDatabase db;
 
 
-    //NON FUNZIONA
-    public String getSubjectName(int subjectID){
+
+    public String getSubjectName_fromID(int subjectID){
         String subjectTitleText = null;
         try {
             db = databaseHelper.getReadableDatabase();
@@ -48,5 +48,17 @@ public class DatabaseFunctions extends AppCompatActivity {
         }
         return subjectTitleText;
 
+    }
+
+    public int getSubjectID_fromModuleID(int moduleID){
+        int subjectID = -1;
+        db = databaseHelper.getReadableDatabase();
+        Cursor cursor1 = db.query("MODULE", null, "_id = ?",new String[]{Integer.toString(moduleID)}, null, null, null, null);
+        if(cursor1.moveToFirst()){
+            subjectID = cursor1.getInt(4);
+        }
+        cursor1.close();
+
+        return subjectID;
     }
 }
