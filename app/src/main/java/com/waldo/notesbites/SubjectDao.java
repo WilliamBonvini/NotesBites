@@ -27,6 +27,9 @@ public interface SubjectDao {
     @Query("SELECT * FROM subject_table ORDER BY name ASC")
     LiveData<List<Subject>> getAllSubjects();
 
+    @Query("SELECT * FROM subject_table WHERE selected == 1 ORDER BY name ASC")
+    LiveData<List<Subject>> getAllSubjectsSelected();
+
     @Query("UPDATE subject_table SET selected = 1 WHERE subjectID = :subjectID")
     void setSelectedTrue(int subjectID);
 

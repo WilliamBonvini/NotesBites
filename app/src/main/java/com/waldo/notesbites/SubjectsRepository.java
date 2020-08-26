@@ -2,22 +2,21 @@ package com.waldo.notesbites;
 
 import android.app.Application;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import java.util.List;
-import java.util.Objects;
 
 import androidx.lifecycle.LiveData;
-import androidx.room.Update;
 
 public class SubjectsRepository {
     private SubjectDao subjectDao;
     private LiveData<List<Subject>> allSubjects;
+    private LiveData<List<Subject>> allSubjectsSelected;
 
     public SubjectsRepository(Application application) {
         NBDatabase database = NBDatabase.getInstance(application);
         subjectDao = database.subjectDao();
         allSubjects = subjectDao.getAllSubjects();
+        allSubjectsSelected = subjectDao.getAllSubjectsSelected();
     }
 
     public void insert(Subject subject) {
@@ -41,8 +40,12 @@ public class SubjectsRepository {
     }
 
 
-    public LiveData<List<Subject>> getAllSubjects() {
+    public LiveData<List<com.waldo.notesbites.Subject>> getAllSubjects() {
         return allSubjects;
+
+    }
+    public LiveData<List<com.waldo.notesbites.Subject>> getAllSubjectsSelected() {
+        return allSubjectsSelected;
 
     }
 

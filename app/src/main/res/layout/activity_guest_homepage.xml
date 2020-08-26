@@ -19,10 +19,11 @@
       android:onClick="startSelectSubjectsActivity"/>
 
 
-   <ListView
-       android:id="@+id/list_of_subjects"
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/recycler_view"
        android:layout_width="match_parent"
-       android:layout_height="200dp"
+       android:layout_height="300dp"
+       tools:listitem="@layout/fragment_select_subjects_single_subject"
        />
 
    <Button
