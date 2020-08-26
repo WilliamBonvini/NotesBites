@@ -13,4 +13,5 @@
     <string name="search_subjects">Search Subjects</string>
     <string name="signin">SignIn</string>
     <string name="personal_area">Personal Area</string>
+    <string name="skip_sign_in">skip sign in</string>
 </resources>

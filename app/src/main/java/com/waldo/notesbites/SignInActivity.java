@@ -93,4 +93,9 @@ public class SignInActivity extends AppCompatActivity {
         }
         super.onStart();
     }
+
+    public void start_guest_homepage_activity(View view) {
+        Intent intent = new Intent(SignInActivity.this, GuestHomepageActivity.class);
+        startActivity(intent);
+    }
 }
