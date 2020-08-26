@@ -4,45 +4,52 @@ import java.util.ArrayList;
 
 import javax.security.auth.SubjectDomainCombiner;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "subject_table")
 public class Subject {
+    @PrimaryKey(autoGenerate = true)
     private int subjectID;
     private String name;
     private String description;
     private int imageResourceID;
-    private Module[] modules;
+    private String overview;
+    private boolean selected;
 
-    public Subject(int subjectID, String name, String description, int imageResourceID, Module[] modules) {
-        this.subjectID = subjectID;
+    public Subject(String name, String description, int imageResourceID, String overview, boolean selected) {
         this.name = name;
         this.description = description;
         this.imageResourceID = imageResourceID;
-        this.modules = modules;
+        this.overview = overview;
+        this.selected = selected;
     }
 
-    public int getSubjectID(){ return subjectID; }
+    public void setSubjectID(int subjectID) {
+        this.subjectID = subjectID;
+    }
+
+    public int getSubjectID() {
+        return subjectID;
+    }
 
     public String getName() {
         return name;
     }
 
-
     public String getDescription() {
         return description;
     }
-
 
     public int getImageResourceID() {
         return imageResourceID;
     }
 
-
-    public Module[] getModules() {
-        return modules;
+    public String getOverview() {
+        return overview;
     }
 
-
-    @Override
-    public String toString(){
-        return new com.google.gson.Gson().toJson(this);
+    public boolean isSelected() {
+        return selected;
     }
 }

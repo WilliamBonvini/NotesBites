@@ -1,47 +1,59 @@
 package com.waldo.notesbites;
 
+import java.net.URL;
+
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "module_table")
 public class Module {
-    private String title;
+    @PrimaryKey(autoGenerate = true)
+    private int moduleID;
+    private String name;
     private String description;
-    private int imageResourceID;
-    private int readableContentID;
-    private int videoContentID;
-    private int quizID;
+    private int priority;
+    private String mdContent;
+    private String videoURL;
+    private String belongingSubject;
 
-
-
-    public Module(String title,String description,int imageResourceID) {
-        this.title = title;
+    public Module(String name, String description,int priority, String mdContent, String videoURL,String belongingSubject) {
+        this.name = name;
         this.description = description;
-        this.imageResourceID = imageResourceID;
+        this.priority = priority;
+        this.mdContent = mdContent;
+        this.videoURL = videoURL;
+        this.belongingSubject = belongingSubject;
     }
 
-    @Override
-    public String toString() {
-        return title;
+    public void setModuleID(int moduleID){
+        this.moduleID = moduleID;
     }
 
-    public String getTitle() {
-        return title;
+    public int getModuleID() {
+        return moduleID;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public int getImageResourceID() {
-        return imageResourceID;
+    public int getPriority(){
+        return priority;
     }
 
-    public int getReadableContentID() {
-        return readableContentID;
+    public String getMdContent() {
+        return mdContent;
     }
 
-    public int getVideoContentID() {
-        return videoContentID;
+    public String getVideoURL() {
+        return videoURL;
     }
 
-    public int getQuizID() {
-        return quizID;
+    public String getBelongingSubject(){
+        return belongingSubject;
     }
 }
