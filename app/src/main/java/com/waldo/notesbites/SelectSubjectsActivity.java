@@ -68,6 +68,8 @@ public class SelectSubjectsActivity extends AppCompatActivity{
         Log.w("duuuuuuuuuuung","duuuuuuuuuuuuuung");
         startActivity(intent);
     }
+
+
 }
 /*
 package com.waldo.notesbites;
