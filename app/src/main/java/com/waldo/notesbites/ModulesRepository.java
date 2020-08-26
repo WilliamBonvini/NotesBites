@@ -18,5 +18,9 @@ public class ModulesRepository {
         return moduleDao.getAllModulesBySubjectName(subjectName);
     }
 
+    public LiveData<List<String>> getModuleNamesBySubjectID(int subjectID){
+        return moduleDao.getModuleNamesBySubjectID(subjectID);
+    }
+
 
 }

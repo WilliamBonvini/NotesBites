@@ -26,4 +26,8 @@ public interface ModuleDao {
             "ORDER BY priority")
     LiveData<List<Module>> getAllModulesBySubjectName(String belongingSubject);
 
+    @Query("SELECT name FROM module_table WHERE belongingSubject = " +
+                                                "(SELECT name FROM subject_table where subjectID = :subjectID)")
+    LiveData<List<String>> getModuleNamesBySubjectID(int subjectID);
+
 }

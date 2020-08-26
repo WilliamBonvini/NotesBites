@@ -2,8 +2,13 @@ package com.waldo.notesbites;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
+import java.util.List;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,9 +18,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 public class SimpleSubjectOverviewActivity extends AppCompatActivity {
     public static String EXTRA_SUBJECT_ID = "SubjectID";
-    private String overview;
-    private String subjectName;
     private SelectSubjectsViewModel selectSubjectsViewModel;
+    private SimpleSubjectOverviewViewModel simpleSubjectOverviewViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +30,13 @@ public class SimpleSubjectOverviewActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int subjectID = intent.getExtras().getInt(EXTRA_SUBJECT_ID);
 
-        // get the viewModel
+        // get the selectSubjectsViewModel
         selectSubjectsViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(SelectSubjectsViewModel.class);
         //modify UI accordingly
         selectSubjectsViewModel.getSubjectByID(subjectID).observe(this, new Observer<Subject>() {
             @Override
             public void onChanged(Subject subject) {
+
                 // populate toolbar
                 Toolbar toolbar = findViewById(R.id.toolbar);
                 toolbar.setTitle(subject.getName() + " Overview");
@@ -42,16 +47,34 @@ public class SimpleSubjectOverviewActivity extends AppCompatActivity {
                 actionBar.setDisplayHomeAsUpEnabled(true);
 
                 // populate description/overview
-                StringBuilder fullOverview = new StringBuilder();
-                fullOverview.append(subject.getOverview());
-                //.......
-
-
                 TextView overviewView = findViewById(R.id.simple_overview_text);
-                overviewView.setText(fullOverview);
+                overviewView.setText(subject.getOverview());
             }
 
         });
+
+        // get the SimpleSubjectOverviewViewModel
+        simpleSubjectOverviewViewModel = new ViewModelProvider(this,ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(SimpleSubjectOverviewViewModel.class);
+        simpleSubjectOverviewViewModel.getModuleNamesBySubjectID(subjectID).observe(this,new Observer<List<String>>(){
+            @Override
+            public void onChanged(List<String> moduleNames){
+                // populate textview with module names
+                TextView moduleNamesTextView = findViewById(R.id.simple_overview_module_names);
+                StringBuilder sb = new StringBuilder();
+
+                sb.append(("the list of modules are:\n"));
+                sb.append(moduleNames.get(0));
+                for (String moduleName:moduleNames.subList(1,moduleNames.size())) {
+                    sb.append(", ");
+                    sb.append(moduleName);
+                }
+                sb.append(".");
+
+                moduleNamesTextView.setText(sb);
+
+            }
+        });
+
 
 
     }

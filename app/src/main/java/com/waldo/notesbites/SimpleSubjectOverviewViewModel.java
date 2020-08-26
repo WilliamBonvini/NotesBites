@@ -10,11 +10,14 @@ import androidx.lifecycle.LiveData;
 
 public class SimpleSubjectOverviewViewModel extends AndroidViewModel {
 
-    private SubjectsRepository subjectsRepository;
+    private ModulesRepository modulesRepository;
 
     public SimpleSubjectOverviewViewModel(@NonNull Application application) {
         super(application);
-        subjectsRepository = new SubjectsRepository(application);
-        
+        modulesRepository = new ModulesRepository(application);
+    }
+
+    public LiveData<List<String>> getModuleNamesBySubjectID(int subjectID){
+        return modulesRepository.getModuleNamesBySubjectID(subjectID);
     }
 }
