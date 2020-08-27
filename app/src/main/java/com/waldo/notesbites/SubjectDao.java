@@ -39,7 +39,12 @@ public interface SubjectDao {
     @Query("SELECT * FROM subject_table WHERE subjectID = :subjectID")
     LiveData<Subject> getSubjectByID(int subjectID);
 
+    @Query("SELECT name FROM subject_table WHERE subjectID = :subjectID")
+    LiveData<String> getSubjectNameByID(int subjectID);
 
+    @Query("SELECT imageResourceID FROM subject_table WHERE subjectID = :subjectID")
+    LiveData<Integer> getImageIDFromID(int subjectID);
 
-
+    @Query("SELECT description FROM subject_table WHERE subjectID = :subjectID")
+    LiveData<String> getDescriptionFromID(int subjectID);
 }

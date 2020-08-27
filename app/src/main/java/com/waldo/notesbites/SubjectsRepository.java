@@ -61,7 +61,17 @@ public class SubjectsRepository {
         return subjectDao.getSubjectByID(subjectID);
     }
 
+    public LiveData<String> getSubjectNameFromID(int subjectID){
+        return subjectDao.getSubjectNameByID(subjectID);
+    }
 
+    public LiveData<Integer> getImageIDFromSubjectID(int subjectID) {
+        return subjectDao.getImageIDFromID(subjectID);
+    }
+
+    public LiveData<String> getDescriptionFromSubjectID(int subjectID) {
+        return subjectDao.getDescriptionFromID(subjectID);
+    }
 
 
     /////////////////////////// ASYNC TASKS ////////////////////////////////////

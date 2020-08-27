@@ -3,6 +3,7 @@ package com.waldo.notesbites;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -33,6 +34,8 @@ public class SubjectOverviewActivity extends AppCompatActivity {
   String subjectTitleText;
   String subjectDescriptionText;
   int subjectPhotoID;
+  private String subject;
+
 
 
 
@@ -43,20 +46,45 @@ public class SubjectOverviewActivity extends AppCompatActivity {
     Intent intent = getIntent();
     int subjectID = intent.getIntExtra("subjectID",0);
 
+
     setContentView(R.layout.activity_subject_overview);
 
     final RecyclerView recyclerView = findViewById(R.id.subject_overview_recycler_view);
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
     recyclerView.setHasFixedSize(true);
 
-    Toolbar toolbar = findViewById(R.id.toolbar);
-    toolbar.setTitle("Subject Overview");
-    setSupportActionBar(toolbar);
+
 
     final SubjectOverviewAdapter adapter = new SubjectOverviewAdapter();
     recyclerView.setAdapter(adapter);
 
     final SubjectOverviewViewModel subjectOverviewViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(SubjectOverviewViewModel.class);
+
+    subjectOverviewViewModel.getSubjectNameFromID(subjectID).observe(this, new Observer<String>() {
+      @Override
+      public void onChanged(String subjectName) {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(subjectName);
+        setSupportActionBar(toolbar);
+      }
+    });
+
+    subjectOverviewViewModel.getImageIDFromSubjectID(subjectID).observe(this, new Observer<Integer>() {
+      @Override
+      public void onChanged(Integer imageID) {
+        ImageView imageView = findViewById(R.id.subject_image);
+        imageView.setImageResource(imageID);
+      }
+    });
+
+    subjectOverviewViewModel.getDescriptionFromSubjectID(subjectID).observe(this, new Observer<String>() {
+      @Override
+      public void onChanged(String description) {
+        TextView textDescription = findViewById(R.id.subject_description);
+        textDescription.setText(description);
+      }
+    });
+
     subjectOverviewViewModel.getModulesFromSubject(subjectID).observe(this, new Observer<List<Module>>() {
       @Override
       public void onChanged(List<Module> modules) {

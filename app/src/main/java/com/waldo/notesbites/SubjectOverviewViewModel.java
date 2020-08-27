@@ -12,12 +12,14 @@ public class SubjectOverviewViewModel extends AndroidViewModel {
 
     private ModulesRepository modulesRepository;
     private LiveData<List<Module>> allModules;
+    private SubjectsRepository subjectsRepository;
 
 
 
     public SubjectOverviewViewModel(@NonNull Application application){
         super(application);
         modulesRepository = new ModulesRepository(application);
+        subjectsRepository = new SubjectsRepository(application);
         //allModules = modulesRepository.getAllModulesBySubjectName();
     }
 
@@ -27,6 +29,18 @@ public class SubjectOverviewViewModel extends AndroidViewModel {
 
     public LiveData<List<Module>> getModulesFromSubject(int subjectID){
         return modulesRepository.getModulesBySubjectID(subjectID);
+    }
+
+    public LiveData<String> getSubjectNameFromID(int subjectID){
+        return subjectsRepository.getSubjectNameFromID(subjectID);
+    }
+
+    public LiveData<Integer> getImageIDFromSubjectID(int subjectID){
+        return subjectsRepository.getImageIDFromSubjectID(subjectID);
+    }
+
+    public LiveData<String> getDescriptionFromSubjectID(int subjectID) {
+        return subjectsRepository.getDescriptionFromSubjectID(subjectID);
     }
 
 //    public void insert(Subject subject){
