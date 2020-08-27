@@ -3,6 +3,10 @@ package com.waldo.notesbites;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -21,20 +25,54 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 
 public class SubjectOverviewActivity extends AppCompatActivity {
-  public static final String EXTRA_SUBJECTID = "subjectID";
-  private SQLiteDatabase db;
-  private Cursor cursor2;
+  public static final int EXTRA_SUBJECTID =0;
   String subjectTitleText;
   String subjectDescriptionText;
   int subjectPhotoID;
 
 
+
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    Intent intent = getIntent();
+    int subjectID = intent.getIntExtra("subjectID",0);
+
+    setContentView(R.layout.activity_subject_overview);
+
+    final RecyclerView recyclerView = findViewById(R.id.subject_overview_recycler_view);
+    recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    recyclerView.setHasFixedSize(true);
+
+    Toolbar toolbar = findViewById(R.id.toolbar);
+    toolbar.setTitle("Subject Overview");
+    setSupportActionBar(toolbar);
+
+    final SubjectOverviewAdapter adapter = new SubjectOverviewAdapter();
+    recyclerView.setAdapter(adapter);
+
+    final SubjectOverviewViewModel subjectOverviewViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(SubjectOverviewViewModel.class);
+    subjectOverviewViewModel.getModulesFromSubject(subjectID).observe(this, new Observer<List<Module>>() {
+      @Override
+      public void onChanged(List<Module> modules) {
+        // update RecyclerView when data in the subjects data changes (the change could occur only to the column "selected")
+        adapter.setModules(modules);
+      }
+    });
 
 
+
+
+  }
+}
+
+
+/*
     // default stuff
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_subject_overview);
@@ -129,7 +167,7 @@ public class SubjectOverviewActivity extends AppCompatActivity {
   /**
    * method is overridden because the user should be able to scroll the listview as long as he wants, so
    * we close cursor2 at the destruction of the activity, and not within the onCreate method.
-   */
+
   @Override
   public void onDestroy(){
     super.onDestroy();
@@ -148,5 +186,4 @@ public class SubjectOverviewActivity extends AppCompatActivity {
 
     return(super.onOptionsItemSelected(item));
   }
-
-}
+*/

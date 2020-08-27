@@ -22,6 +22,7 @@ import java.util.List;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -31,6 +32,8 @@ public class GuestHomepageActivity extends AppCompatActivity {
     private ArrayList<String> subjectNamesList = new ArrayList<String>();
     private Cursor cursor;
     private SQLiteDatabase db;
+    private String subjectClickedName;
+    public int subjectClickedID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,21 +63,16 @@ public class GuestHomepageActivity extends AppCompatActivity {
             }
         });
 
-//        adapter.setOnItemClickListener(new GuestHomepageAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(Subject subject) {
-//                if (!subject.isSelected()){
-//                    guestHomepageViewModel.setSelectedTrue(subject.getSubjectID());
-//                    Log.w("com.waldo.notesbites","true!");
-//                }else{
-//                    guestHomepageViewModel.setSelectedFalse(subject.getSubjectID());
-//                    Log.w("com.waldo.notesbites","false!");
-//
-//                }
-//
-//
-//            }
-//        });
+        adapter.setOnItemClickListener(new GuestHomepageAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Subject subject) {
+                subjectClickedID = subject.getSubjectID();
+                Intent intent = new Intent(GuestHomepageActivity.this, SubjectOverviewActivity.class);
+                intent.putExtra("subjectID", subjectClickedID);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void startSelectSubjectsActivity(View view) {
@@ -84,6 +82,11 @@ public class GuestHomepageActivity extends AppCompatActivity {
 
     public void startSignInActivity(View view) {
         Intent intent = new Intent(GuestHomepageActivity.this, SignInActivity.class);
+        startActivity(intent);
+    }
+    public void startSubjectOverviewActivity(View view){
+        Intent intent = new Intent(GuestHomepageActivity.this, SubjectOverviewActivity.class);
+        //intent.putExtra(String.valueOf(SubjectOverviewActivity.EXTRA_SUBJECTID), subjectClickedID);
         startActivity(intent);
     }
 

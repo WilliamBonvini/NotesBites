@@ -29,10 +29,11 @@
       android:layout_height="200dp"
       android:layout_below="@id/subject_description"
       android:layout_marginTop="20dp"/>
-  <ListView
-      android:id="@+id/list_of_modules"
+
+  <androidx.recyclerview.widget.RecyclerView
+      android:id="@+id/subject_overview_recycler_view"
       android:layout_width="match_parent"
       android:layout_height="300dp"
-      android:layout_below="@id/subject_image"
-      android:layout_marginTop="20dp"/>
+      tools:listitem="@layout/fragment_subject_overview_activity"
+      />
 </RelativeLayout>

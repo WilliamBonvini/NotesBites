@@ -30,4 +30,7 @@ public interface ModuleDao {
                                                 "(SELECT name FROM subject_table where subjectID = :subjectID)")
     LiveData<List<String>> getModuleNamesBySubjectID(int subjectID);
 
+    @Query("SELECT * FROM module_table WHERE belongingSubject = " +
+            "(SELECT name FROM subject_table where subjectID = :subjectID)")
+    LiveData<List<Module>> getModuleBySubjectID(int subjectID);
 }

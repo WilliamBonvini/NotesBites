@@ -84,7 +84,7 @@ public class HomepageActivity extends AppCompatActivity {
                         Intent intent = new Intent(HomepageActivity.this,
                                 SubjectOverviewActivity.class);
 
-                        intent.putExtra(SubjectOverviewActivity.EXTRA_SUBJECTID, subjectsIDs[position]);
+                        //intent.putExtra(SubjectOverviewActivity.EXTRA_SUBJECTID, subjectsIDs[position]);
                         startActivity(intent);
 
                     }

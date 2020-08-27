@@ -3,7 +3,6 @@ package com.waldo.notesbites;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,7 +20,7 @@ public class GuestHomepageAdapter extends RecyclerView.Adapter<GuestHomepageAdap
     @Override
     public GuestHomepageHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_guesthomepage_single_subject, parent, false);
+                .inflate(R.layout.fragment_guest_homepage_single_subject, parent, false);
         return new GuestHomepageHolder(itemView);
     }
 
