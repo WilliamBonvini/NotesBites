@@ -29,8 +29,7 @@ public class SubjectOverviewAdapter extends RecyclerView.Adapter<SubjectOverview
     public void onBindViewHolder(@NonNull SubjectOverviewHolder holder, int position) {
         Module currentModule = modules.get(position);
         holder.textViewTitle.setText(currentModule.getName());
-        //holder.textViewDescription.setText(currentModule.getDescription());
-
+        holder.subjectOverviewModuleLayout.setId(currentModule.getModuleID());  // the line on the left is a masterpiece
     }
 
     @Override
@@ -45,14 +44,13 @@ public class SubjectOverviewAdapter extends RecyclerView.Adapter<SubjectOverview
 
     class SubjectOverviewHolder extends RecyclerView.ViewHolder {
         private TextView textViewTitle;
-        //private TextView textViewDescription;
-        private RelativeLayout subjectOverviewLayout;
+        private RelativeLayout subjectOverviewModuleLayout;
+
 
         public SubjectOverviewHolder(View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.subject_overview_module_name);
-            //textViewDescription = itemView.findViewById(R.id.guest_homepage_description);
-            subjectOverviewLayout = itemView.findViewById(R.id.subject_overview_activity_relative_layout);
+            subjectOverviewModuleLayout = itemView.findViewById(R.id.subject_overview_activity_relative_layout);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

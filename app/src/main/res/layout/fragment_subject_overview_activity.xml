@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:baselineAligned="false">
+        android:baselineAligned="false"
+        android:onClick="onClickStartModuleActivity">
 
 
             <CheckBox
@@ -24,7 +25,6 @@
                 android:id="@+id/subject_overview_module_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="startSubjectOverviewActivity"
                 android:text="Module"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_toEndOf="@+id/subject_overview_checkbox"/>

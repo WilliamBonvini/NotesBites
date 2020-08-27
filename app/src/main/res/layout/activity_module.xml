@@ -39,8 +39,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_gravity="center"
-      android:src="@drawable/video_icon_2x"
-      android:onClick="startVideoContentActivity"/>
+      android:src="@drawable/video_icon_2x"/>
   <ImageButton
       android:id="@+id/quizImageButton"
       android:layout_width="match_parent"

@@ -16,6 +16,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -93,9 +94,13 @@ public class SubjectOverviewActivity extends AppCompatActivity {
       }
     });
 
+  }
 
 
-
+  public void onClickStartModuleActivity(View view) {
+    Intent intent = new Intent(SubjectOverviewActivity.this, ModuleActivity.class);
+    intent.putExtra(ModuleActivity.EXTRA_MODULEID,view.getId());
+    startActivity(intent);
   }
 }
 

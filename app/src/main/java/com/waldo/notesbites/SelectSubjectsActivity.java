@@ -58,7 +58,6 @@ public class SelectSubjectsActivity extends AppCompatActivity{
 
     public void onClickStartSimpleSubjectOverview(View view) {
         Intent intent = new Intent(SelectSubjectsActivity.this, SimpleSubjectOverviewActivity.class);
-        Log.w("daang","daaaang");
         intent.putExtra(SimpleSubjectOverviewActivity.EXTRA_SUBJECT_ID,view.getId());
         startActivity(intent);
     }
