@@ -1,14 +1,17 @@
 package com.waldo.notesbites;
 import android.app.Activity;
 import android.database.Cursor;
+import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.content.Intent;
 import android.util.Log;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.view.View;
 import android.widget.Toast;
@@ -29,14 +32,13 @@ public class GuestHomepageActivity extends AppCompatActivity {
     private Cursor cursor;
     private SQLiteDatabase db;
 
-    private GuestHomepageViewModel guestHomepageViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guest_homepage);
 
-        final RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        final RecyclerView recyclerView = findViewById(R.id.guest_homepage_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
@@ -44,10 +46,12 @@ public class GuestHomepageActivity extends AppCompatActivity {
         toolbar.setTitle("Guest Homepage");
         setSupportActionBar(toolbar);
 
-        final SelectSubjectAdapter adapter = new SelectSubjectAdapter();
+        //final SelectSubjectAdapter adapter = new SelectSubjectAdapter();
+        final GuestHomepageAdapter adapter = new GuestHomepageAdapter();
         recyclerView.setAdapter(adapter);
 
-        guestHomepageViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(GuestHomepageViewModel.class);
+
+        final GuestHomepageViewModel guestHomepageViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(GuestHomepageViewModel.class);
         guestHomepageViewModel.getAllSubjectsSelected().observe(this, new Observer<List<Subject>>() {
             @Override
             public void onChanged(List<Subject> subjects) {
@@ -56,7 +60,7 @@ public class GuestHomepageActivity extends AppCompatActivity {
             }
         });
 
-//        adapter.setOnItemClickListener(new SelectSubjectAdapter.OnItemClickListener() {
+//        adapter.setOnItemClickListener(new GuestHomepageAdapter.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(Subject subject) {
 //                if (!subject.isSelected()){
@@ -78,7 +82,7 @@ public class GuestHomepageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void startSingInActivity(View view) {
+    public void startSignInActivity(View view) {
         Intent intent = new Intent(GuestHomepageActivity.this, SignInActivity.class);
         startActivity(intent);
     }

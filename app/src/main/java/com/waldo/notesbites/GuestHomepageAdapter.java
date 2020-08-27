@@ -15,14 +15,14 @@ import java.util.List;
 
 public class GuestHomepageAdapter extends RecyclerView.Adapter<GuestHomepageAdapter.GuestHomepageHolder> {
     private List<Subject> subjects = new ArrayList<>();
-    private SelectSubjectAdapter.OnItemClickListener listener;
+    private OnItemClickListener listener;
 
     @NonNull
     @Override
     public GuestHomepageHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_select_subjects_single_subject, parent, false);
-        return new GuestHomepageAdapter.GuestHomepageHolder(itemView);
+                .inflate(R.layout.fragment_guesthomepage_single_subject, parent, false);
+        return new GuestHomepageHolder(itemView);
     }
 
     @Override
@@ -30,18 +30,12 @@ public class GuestHomepageAdapter extends RecyclerView.Adapter<GuestHomepageAdap
         Subject currentSubject = subjects.get(position);
         holder.textViewTitle.setText(currentSubject.getName());
         holder.textViewDescription.setText(currentSubject.getDescription());
-        holder.infoButton.setId(currentSubject.getSubjectID());  // the line on the left is a masterpiece
-        /*boolean selected = currentSubject.isSelected();
-        if(selected){
-            holder.selectSubjectLayout.setBackgroundResource(R.color.colorAccent);
-        }else{
-            holder.selectSubjectLayout.setBackgroundResource(R.color.cardview_light_background);
-        }*/
+
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return subjects.size();
     }
 
     public void setSubjects(List<Subject> subjects) {
@@ -52,15 +46,13 @@ public class GuestHomepageAdapter extends RecyclerView.Adapter<GuestHomepageAdap
     class GuestHomepageHolder extends RecyclerView.ViewHolder {
         private TextView textViewTitle;
         private TextView textViewDescription;
-        private ImageButton infoButton;
-        private LinearLayout selectSubjectLayout;
+        private LinearLayout guestHomepageLayout;
 
         public GuestHomepageHolder(View itemView) {
             super(itemView);
-            textViewTitle = itemView.findViewById(R.id.select_subjects_subject_name);
-            textViewDescription = itemView.findViewById(R.id.select_subjects_description);
-            selectSubjectLayout = itemView.findViewById(R.id.select_subject_linear_layout);
-            infoButton = itemView.findViewById(R.id.select_subjects_info);
+            textViewTitle = itemView.findViewById(R.id.guest_homepage_subject_name);
+            textViewDescription = itemView.findViewById(R.id.guest_homepage_description);
+            guestHomepageLayout = itemView.findViewById(R.id.guest_homepage_linear_layout);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -77,7 +69,7 @@ public class GuestHomepageAdapter extends RecyclerView.Adapter<GuestHomepageAdap
         void onItemClick(Subject subject);
     }
 
-    public void setOnItemClickListener(SelectSubjectAdapter.OnItemClickListener listener) {
+    public void setOnItemClickListener(GuestHomepageAdapter.OnItemClickListener listener) {
         this.listener = listener;
     }
 

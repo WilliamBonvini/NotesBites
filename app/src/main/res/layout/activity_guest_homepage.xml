@@ -20,11 +20,12 @@
 
 
    <androidx.recyclerview.widget.RecyclerView
-       android:id="@+id/recycler_view"
+       android:id="@+id/guest_homepage_recycler_view"
        android:layout_width="match_parent"
        android:layout_height="300dp"
-       tools:listitem="@layout/fragment_select_subjects_single_subject"
+       tools:listitem="@layout/fragment_guesthomepage_single_subject"
        />
+
 
    <Button
        android:id="@+id/signIn"
@@ -32,7 +33,7 @@
        android:layout_height="wrap_content"
        android:layout_marginTop="20dp"
        android:text="@string/signin"
-       android:onClick="startSingInActivity"
+       android:onClick="startSignInActivity"
        />
 
 
