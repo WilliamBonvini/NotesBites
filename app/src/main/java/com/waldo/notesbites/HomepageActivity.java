@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
@@ -29,7 +31,7 @@ public class HomepageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
-        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
         Intent intent = getIntent();
         PERSON_NAME = (String) intent.getExtras().get(PERSON_NAME);
@@ -37,77 +39,88 @@ public class HomepageActivity extends AppCompatActivity {
         TextView welcome_text = findViewById(R.id.welcome_text);
         welcome_text.setText("welcome " + PERSON_NAME);
 
-        try {
-            doStuff();
-        } catch (SQLiteException e) {
-            Toast.makeText(this, "Database unavavailable", Toast.LENGTH_SHORT).show();
-        }
+        final RecyclerView recyclerView = findViewById(R.id.homepage_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+
+        final HomepageAdapter adapter = new HomepageAdapter();
+        //recyclerView.setAdapter(adapter);
+
+
 
     }
 
-    private void doStuff(){
-        // query selected subjects to display them in the layout
-        SQLiteOpenHelper databaseHelper = new DatabaseHelper(this);
-        db = databaseHelper.getReadableDatabase();
-        cursor = db.query("SUBJECT",
-                new String[]{"_id","NAME"},
-                "SELECTED = 1",
-                null,
-                null,null,null);
+//        try {
+//            doStuff();
+//        } catch (SQLiteException e) {
+//            Toast.makeText(this, "Database unavavailable", Toast.LENGTH_SHORT).show();
+//        }
 
 
 
-        // populate array with selected subjects ids (we'll need it to pass selected subject to next layout)
-        // at the same time populate array list with selected subjects names to display them in a ListView
-        final int[] subjectsIDs = new int[cursor.getCount()];
-        int i = 0;
-        if(cursor.moveToFirst()){
-
-            subjectsIDs[i] = cursor.getInt(0);
-            subjectNamesList.add(cursor.getString(1));
-
-            while(cursor.moveToNext()){
-                i++;
-                subjectsIDs[i] = cursor.getInt(0);
-                subjectNamesList.add(cursor.getString(1));
-            }
-        }
-
-
-        // create an OnItemCLickListener in order to change layout once the user clicks on a subject
-        AdapterView.OnItemClickListener itemClickListener =
-                new AdapterView.OnItemClickListener() {
-                    public void onItemClick(AdapterView<?> listView,
-                                            View itemView,
-                                            int position,
-                                            long id) {
-                        Intent intent = new Intent(HomepageActivity.this,
-                                SubjectOverviewActivity.class);
-
-                        //intent.putExtra(SubjectOverviewActivity.EXTRA_SUBJECTID, subjectsIDs[position]);
-                        startActivity(intent);
-
-                    }
-                };
-
-        // create adapter in order to dynamically populate list with the subjects the user is interested in
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                subjectNamesList);
-
-
-        // populate the list view and add the listener to it
-        ListView listView = (ListView) findViewById(R.id.list_of_subjects);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(itemClickListener);
-    }
-    // Close the cursor and database in the onDestroy() method
-    @Override
-    public void onDestroy(){
-        super.onDestroy();
-        cursor.close();
-        db.close();
-    }
+//    private void doStuff(){
+//        // query selected subjects to display them in the layout
+//        SQLiteOpenHelper databaseHelper = new DatabaseHelper(this);
+//        db = databaseHelper.getReadableDatabase();
+//        cursor = db.query("SUBJECT",
+//                new String[]{"_id","NAME"},
+//                "SELECTED = 1",
+//                null,
+//                null,null,null);
+//
+//
+//
+//        // populate array with selected subjects ids (we'll need it to pass selected subject to next layout)
+//        // at the same time populate array list with selected subjects names to display them in a ListView
+//        final int[] subjectsIDs = new int[cursor.getCount()];
+//        int i = 0;
+//        if(cursor.moveToFirst()){
+//
+//            subjectsIDs[i] = cursor.getInt(0);
+//            subjectNamesList.add(cursor.getString(1));
+//
+//            while(cursor.moveToNext()){
+//                i++;
+//                subjectsIDs[i] = cursor.getInt(0);
+//                subjectNamesList.add(cursor.getString(1));
+//            }
+//        }
+//
+//
+//        // create an OnItemCLickListener in order to change layout once the user clicks on a subject
+//        AdapterView.OnItemClickListener itemClickListener =
+//                new AdapterView.OnItemClickListener() {
+//                    public void onItemClick(AdapterView<?> listView,
+//                                            View itemView,
+//                                            int position,
+//                                            long id) {
+//                        Intent intent = new Intent(HomepageActivity.this,
+//                                SubjectOverviewActivity.class);
+//
+//                        //intent.putExtra(SubjectOverviewActivity.EXTRA_SUBJECTID, subjectsIDs[position]);
+//                        startActivity(intent);
+//
+//                    }
+//                };
+//
+//        // create adapter in order to dynamically populate list with the subjects the user is interested in
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+//                android.R.layout.simple_list_item_1,
+//                subjectNamesList);
+//
+//
+//        // populate the list view and add the listener to it
+//        ListView listView = (ListView) findViewById(R.id.list_of_subjects);
+//        listView.setAdapter(adapter);
+//        listView.setOnItemClickListener(itemClickListener);
+//    }
+//    // Close the cursor and database in the onDestroy() method
+//    @Override
+//    public void onDestroy(){
+//        super.onDestroy();
+//        cursor.close();
+//        db.close();
+//    }
 
     public void startSelectSubjectsActivity(View view) {
         Intent intent = new Intent(HomepageActivity.this, SelectSubjectsActivity.class);

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
 
     <include layout="@layout/toolbar_main"
@@ -89,15 +89,14 @@
         android:layout_alignParentEnd="true"
         />
 
-    <ListView
-        android:id="@+id/list_of_subjects"
-
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:layout_below="@id/my_subjects"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/homepage_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        tools:listitem="@layout/fragment_guest_homepage_single_subject"
+        android:layout_below="@+id/my_subjects"
         android:layout_toStartOf="@id/divider"
-        android:layout_marginTop="20dp"
-
+        android:layout_marginTop="15dp"
         />
 
 
