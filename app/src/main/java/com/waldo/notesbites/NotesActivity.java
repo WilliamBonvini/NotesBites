@@ -8,16 +8,48 @@ import android.widget.TextView;
 
 import com.mukesh.MarkdownView;
 
+import java.util.List;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 public class NotesActivity extends AppCompatActivity {
-    public static final String MODULE_ID  = "MODULE_ID";
+    public static final String MODULE_ID = "MODULE_ID";
+    private NotesViewModel notesViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
-        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+
+        Intent intent = getIntent();
+        int moduleID = (int)intent.getExtras().get(MODULE_ID);
+
+        notesViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(NotesViewModel.class);
+        notesViewModel.setModuleByModuleID(moduleID);
+
+        notesViewModel.getCurrentModule().observe(this,  new Observer<Module>() {
+            @Override
+            public void onChanged(Module module) {
+                MarkdownView markdownView = (MarkdownView) findViewById(R.id.markdown_view);
+                //markdownView.setMarkDownText("# Hello World\nThis is a simple markdown"); //Displays markdown text
+                markdownView.loadMarkdownFromAssets(module.getMdContent()); //Loads the markdown file from the assets folder
+            }
+        });
+
+
+
+    }
+}
+
+
+
+
+
+/*
 
         int subjectID = -1;
 
@@ -68,3 +100,8 @@ public class NotesActivity extends AppCompatActivity {
     }
 
 }
+
+
+
+
+*/

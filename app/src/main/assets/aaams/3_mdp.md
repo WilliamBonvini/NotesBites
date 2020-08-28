@@ -217,7 +217,7 @@ So you should continue with the third iteration.
 
 ***Complexity of Value Iteration***
 
-It is quadratic in the number of states $\cdot$ number ofactions.
+It is quadratic in the number of states $\cdot$ number of actions.
 
 ***Comparison between STRIPS and MDP***
 

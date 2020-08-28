@@ -79,15 +79,6 @@ public class HomepageActivity extends AppCompatActivity {
 
 
 
-        ///////////////////////// OBSERVER 3 //////////////////////////////////////
-       /* homepageViewModel.getClickedSubjectID().observe(this, new Observer<Integer>() {
-            @Override
-            public void onChanged(Integer subjectID) {
-                List<Module> pippo = homepageViewModel.getRecentModulesToBeDisplayed();
-                adapter_recent_module.setModules(pippo);
-            }
-        });
-        */
 
 
         //TODO: when we rotate the phone it says "welcome null" --> include it in a observe(), and the problem is solved
@@ -99,6 +90,16 @@ public class HomepageActivity extends AppCompatActivity {
                 //homepageViewModel.setRecentModulesBySubjectID(subject.getSubjectID());
                 homepageViewModel.itWasInConstructor(subject.getSubjectID());
 
+            }
+        });
+
+
+        adapter_recent_module.setOnItemClickListener(new HomepageRecentModulesAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Module module) {
+                Intent intent = new Intent(HomepageActivity.this,ModuleActivity.class);
+                intent.putExtra(ModuleActivity.EXTRA_MODULEID,module.getModuleID());
+                startActivity(intent);
             }
         });
 

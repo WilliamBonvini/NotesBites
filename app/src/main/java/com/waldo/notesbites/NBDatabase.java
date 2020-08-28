@@ -127,11 +127,11 @@ public abstract class NBDatabase extends RoomDatabase {
             subjectDao.insert(new Subject(SUBJECT_NAME,"as taught during the academic year 2019/2020",R.drawable.aaams,"Computer systems are increasingly distributed and interconnected. This trend naturally leads to the development of systems composed of autonomous decision-making entities, called autonomous agents, that interact with each other in complex environments. Agent-based systems are an abstraction of specific computing systems deployed in several applications, including electronic commerce, control of industrial processes, logistics, ambient intelligence, web services, robotics, space systems, and modeling of complex systems.\n" +
                     "\n" +
                     "This course aims at presenting general techniques for developing multiagent systems, independently of the applicative domains. In particular, the course will present methods for developing single agents, able to make rational decisions in situations affected by uncertainty, and for developing systems composed of multiple agents, with special emphasis on the interaction mechanisms between the agents. Moreover, some real-world applications of agent systems will be discussed. At the end of the course, students will acquire the ability to design and develop distributed systems based on the agent paradigm.",false));
-            moduleDao.insert(new Module("introduction to AAAMS","bangarang",1,"### mdContent of intro to AI\nciaaao","https://www.youtube.com/watch?v=jNQXAC9IVRw",SUBJECT_NAME));
-            moduleDao.insert(new Module("modulo2","bangarang",2,"### mdcontent2\nciaaao","https://www.youtube.com/watch?v=jNQXAC9IVRw",SUBJECT_NAME));
-            moduleDao.insert(new Module("modulo3","bangarang",3,"### mdContent3","https://www.youtube.com/watch?v=jNQXAC9IVRw",SUBJECT_NAME));
-            moduleDao.insert(new Module("modulo4","bangarang",4,"### mdContent4","https://www.youtube.com/watch?v=jNQXAC9IVRw",SUBJECT_NAME));
-            moduleDao.insert(new Module("modulo5","bangarang",5,"### mdContent5 \n ehi","https://www.youtube.com/watch?v=jNQXAC9IVRw",SUBJECT_NAME));
+            moduleDao.insert(new Module("introduction to AAAMS","bangarang",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",SUBJECT_NAME));
+            moduleDao.insert(new Module("modulo2","bangarang",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",SUBJECT_NAME));
+            moduleDao.insert(new Module("modulo3","bangarang",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",SUBJECT_NAME));
+            moduleDao.insert(new Module("modulo4","bangarang",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",SUBJECT_NAME));
+            moduleDao.insert(new Module("modulo5","bangarang",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",SUBJECT_NAME));
 
 
             return null;
