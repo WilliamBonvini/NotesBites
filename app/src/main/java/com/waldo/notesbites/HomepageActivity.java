@@ -87,7 +87,6 @@ public class HomepageActivity extends AppCompatActivity {
                 adapter_recent_module.setModules(pippo);
             }
         });
-
         */
 
 
@@ -97,7 +96,9 @@ public class HomepageActivity extends AppCompatActivity {
         adapter_subjects.setOnItemClickListener(new HomepageSubjectsAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Subject subject) {
-                homepageViewModel.setRecentModulesBySubjectID(subject.getSubjectID());
+                //homepageViewModel.setRecentModulesBySubjectID(subject.getSubjectID());
+                homepageViewModel.itWasInConstructor(subject.getSubjectID());
+
             }
         });
 
