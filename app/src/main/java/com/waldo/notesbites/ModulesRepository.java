@@ -5,6 +5,7 @@ import android.app.Application;
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 public class ModulesRepository {
     private ModuleDao moduleDao;
@@ -29,5 +30,9 @@ public class ModulesRepository {
 
     public LiveData<Module> getModuleByModuleID(int moduleID){
         return moduleDao.getModuleByModuleID(moduleID);
+    }
+
+    public LiveData<List<Module>> getRecentModules(int subjectID) {
+        return moduleDao.getRecentModulesBySubjectID(subjectID);
     }
 }

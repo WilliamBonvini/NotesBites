@@ -15,16 +15,19 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomepageActivity extends AppCompatActivity {
 
-    private ArrayList<String> subjectNamesList = new ArrayList<String>();
-    private Cursor cursor;
-    private SQLiteDatabase db;
+    public int subjectClickedID = -1;
+
 
     public static String PERSON_NAME = "PERSON_NAME";
     @Override
@@ -44,8 +47,50 @@ public class HomepageActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
         final HomepageAdapter adapter = new HomepageAdapter();
-        //recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
 
+        final HomepageViewModel homepageViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(HomepageViewModel.class);
+        homepageViewModel.getAllSubjectsSelected().observe(this, new Observer<List<Subject>>() {
+            @Override
+            public void onChanged(List<Subject> subjects) {
+                // update RecyclerView when data in the subjects data changes (the change could occur only to the column "selected")
+                adapter.setSubjects(subjects);
+            }
+        });
+
+        final RecyclerView recyclerView_recent_modules = findViewById(R.id.homepage_recent_module_recycler_view);
+        recyclerView_recent_modules.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView_recent_modules.setHasFixedSize(true);
+
+        final HomepageAdapterRecentModules adapter_recent_module = new HomepageAdapterRecentModules();
+        recyclerView_recent_modules.setAdapter(adapter_recent_module);
+
+        adapter.setOnItemClickListener(new HomepageAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Subject subject) {
+                subjectClickedID = subject.getSubjectID();
+            }
+        });
+
+
+
+        homepageViewModel.getRecentModules(subjectClickedID).observe(this, new Observer<List<Module>>() {
+            @Override
+            public void onChanged(List<Module> modules) {
+                // update RecyclerView when data in the subjects data changes (the change could occur only to the column "selected")
+                adapter_recent_module.setModules(modules);
+            }
+        });
+//
+//
+//        adapter.setOnItemClickListener(new HomepageAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(Subject subject) {
+//                subjectClickedID = subject.getSubjectID();
+//                recentModules = homepageViewModel.getRecentModules(subjectClickedID);
+//
+//            }
+//        });
 
 
     }

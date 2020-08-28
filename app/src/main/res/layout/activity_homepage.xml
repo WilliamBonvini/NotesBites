@@ -99,6 +99,16 @@
         android:layout_marginTop="15dp"
         />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/homepage_recent_module_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        tools:listitem="@layout/fragment_recent_modules"
+        android:layout_below="@+id/recent_activities"
+        android:layout_toEndOf="@id/divider"
+        android:layout_marginTop="15dp"
+        />
+
 
 
 

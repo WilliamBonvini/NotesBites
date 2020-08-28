@@ -7,20 +7,23 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
-public class GuestHomepageViewModel extends AndroidViewModel {
+public class HomepageViewModel extends AndroidViewModel {
 
     private SubjectsRepository subjectsRepository;
     private LiveData<List<Subject>> allSubjects;
     private LiveData<List<Subject>> allSubjectsSelected;
     private ModulesRepository modulesRepository;
+    private MutableLiveData<List<Module>> recentModules = new MutableLiveData<>();
 
 
-    public GuestHomepageViewModel(@NonNull Application application){
+    public HomepageViewModel(@NonNull Application application){
         super(application);
         subjectsRepository = new SubjectsRepository(application);
         allSubjects = subjectsRepository.getAllSubjects();
         allSubjectsSelected = subjectsRepository.getAllSubjectsSelected();
+        modulesRepository = new ModulesRepository(application);
     }
 
     public void insert(Subject subject){
@@ -52,7 +55,11 @@ public class GuestHomepageViewModel extends AndroidViewModel {
 
     public LiveData<Subject> getSubjectByID(int subjectID){
         return subjectsRepository.getSubjectByID(subjectID);
-    }
 
+    }
+    public MutableLiveData<List<Module>> getRecentModules(int subjectID){
+        recentModules.setValue(modulesRepository.getRecentModules(subjectID).getValue());
+        return recentModules;
+    }
 
 }
