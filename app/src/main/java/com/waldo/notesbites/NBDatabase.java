@@ -50,7 +50,7 @@ public abstract class NBDatabase extends RoomDatabase {
             SUBJECT_NAME = "Artificial Intelligence";
             ///////////////// AI
             subjectDao.insert(new Subject(SUBJECT_NAME,"as taught during the academic year 2018/2019",R.drawable.ai,"The goal of the course is to introduce the students to basic problems, models, and techniques of Artificial Intelligence (AI), and to enable them to model and solve specific AI problems. The course covers the most fundamental concepts, modelling approaches, and resolution methods of core AI, and also provides an introduction to the history of the discipline and to some philosophical issues involved. The teaching method is traditional (classroom lessons).",false ));
-            moduleDao.insert(new Module("introduction to AI","bangarang",1,"### mdContent of intro to AI\nciaaao","https://www.youtube.com/watch?v=jNQXAC9IVRw",SUBJECT_NAME));
+            moduleDao.insert(new Module("introduction to AI","bangarang",1,"### mdContent of intro to AI\nciaaao","https://www.youtube.com/watch?v=jNQXAC9IVRw","Artificial Intelligence"));
             moduleDao.insert(new Module("modulo2","bangarang",2,"### mdcontent2\nciaaao","https://www.youtube.com/watch?v=jNQXAC9IVRw",SUBJECT_NAME));
             moduleDao.insert(new Module("modulo3","bangarang",3,"### mdContent3","https://www.youtube.com/watch?v=jNQXAC9IVRw",SUBJECT_NAME));
             moduleDao.insert(new Module("modulo4","bangarang",4,"### mdContent4","https://www.youtube.com/watch?v=jNQXAC9IVRw",SUBJECT_NAME));

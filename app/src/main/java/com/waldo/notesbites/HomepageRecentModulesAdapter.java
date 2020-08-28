@@ -1,9 +1,9 @@
 package com.waldo.notesbites;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -13,8 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomepageAdapterRecentModules extends RecyclerView.Adapter<HomepageAdapterRecentModules.HomepageHolder> {
-    private List<Subject> subjects = new ArrayList<>();
+public class HomepageRecentModulesAdapter extends RecyclerView.Adapter<HomepageRecentModulesAdapter.HomepageHolder> {
     private OnItemClickListener listener;
     private List<Module> recentModules = new ArrayList<>();
 
@@ -45,10 +44,8 @@ public class HomepageAdapterRecentModules extends RecyclerView.Adapter<HomepageA
         return recentModules.size();
     }
 
-    public void setSubjects(List<Subject> subjects) {
-        this.subjects = subjects;
-        notifyDataSetChanged(); // we will replace it later with something better
-    }
+
+
     public void setModules(List<Module> recentModules) {
         this.recentModules = recentModules;
         notifyDataSetChanged();
@@ -81,7 +78,7 @@ public class HomepageAdapterRecentModules extends RecyclerView.Adapter<HomepageA
         void onItemClick(Module module);
     }
 
-    public void setOnItemClickListener(HomepageAdapterRecentModules.OnItemClickListener listener) {
+    public void setOnItemClickListener(HomepageRecentModulesAdapter.OnItemClickListener listener) {
         this.listener = listener;
     }
 

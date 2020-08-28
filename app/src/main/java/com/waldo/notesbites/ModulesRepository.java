@@ -32,7 +32,7 @@ public class ModulesRepository {
         return moduleDao.getModuleByModuleID(moduleID);
     }
 
-    public LiveData<List<Module>> getRecentModules(int subjectID) {
+    public LiveData<List<Module>> getRecentModulesBySubjectID(int subjectID) {
         return moduleDao.getRecentModulesBySubjectID(subjectID);
     }
 }

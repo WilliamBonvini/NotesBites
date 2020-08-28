@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomepageAdapter extends RecyclerView.Adapter<HomepageAdapter.HomepageHolder> {
+public class HomepageSubjectsAdapter extends RecyclerView.Adapter<HomepageSubjectsAdapter.HomepageHolder> {
     private List<Subject> subjects = new ArrayList<>();
     private OnItemClickListener listener;
 
@@ -78,7 +78,7 @@ public class HomepageAdapter extends RecyclerView.Adapter<HomepageAdapter.Homepa
         void onItemClick(Subject subject);
     }
 
-    public void setOnItemClickListener(HomepageAdapter.OnItemClickListener listener) {
+    public void setOnItemClickListener(HomepageSubjectsAdapter.OnItemClickListener listener) {
         this.listener = listener;
     }
 

@@ -1,9 +1,11 @@
 package com.waldo.notesbites;
 
 import android.app.Application;
+import android.util.Log;
 
 import java.util.List;
 
+import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
@@ -15,7 +17,8 @@ public class HomepageViewModel extends AndroidViewModel {
     private LiveData<List<Subject>> allSubjects;
     private LiveData<List<Subject>> allSubjectsSelected;
     private ModulesRepository modulesRepository;
-    private MutableLiveData<List<Module>> recentModules = new MutableLiveData<>();
+    private LiveData<List<Module>> recentModules;
+
 
 
     public HomepageViewModel(@NonNull Application application){
@@ -24,7 +27,12 @@ public class HomepageViewModel extends AndroidViewModel {
         allSubjects = subjectsRepository.getAllSubjects();
         allSubjectsSelected = subjectsRepository.getAllSubjectsSelected();
         modulesRepository = new ModulesRepository(application);
+
+        recentModules = new MutableLiveData<List<Module>>(){};
+
     }
+
+
 
     public void insert(Subject subject){
         subjectsRepository.insert(subject);
@@ -34,32 +42,20 @@ public class HomepageViewModel extends AndroidViewModel {
         subjectsRepository.update(subject);
     }
 
-    public void deleteAllSubjects(){
-        subjectsRepository.deleteAllSubjects();
-    }
-
-    public LiveData<List<Subject>> getAllSubjects(){
-        return allSubjects;
-    }
     public LiveData<List<Subject>> getAllSubjectsSelected(){
         return allSubjectsSelected;
     }
 
-    public void setSelectedTrue(int subjectID){
-        subjectsRepository.setSelectedTrue(subjectID);
-    }
 
-    public void setSelectedFalse(int subjectID){
-        subjectsRepository.setSelectedFalse(subjectID);
-    }
 
-    public LiveData<Subject> getSubjectByID(int subjectID){
-        return subjectsRepository.getSubjectByID(subjectID);
-
-    }
-    public MutableLiveData<List<Module>> getRecentModules(int subjectID){
-        recentModules.setValue(modulesRepository.getRecentModules(subjectID).getValue());
+    public LiveData<List<Module>> getRecentModulesToBeDisplayed(){
         return recentModules;
     }
+
+
+    public void setRecentModulesBySubjectID(int subjectID){
+        recentModules = modulesRepository.getRecentModulesBySubjectID(subjectID);
+    }
+
 
 }
