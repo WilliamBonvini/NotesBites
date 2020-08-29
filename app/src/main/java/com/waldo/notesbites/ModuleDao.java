@@ -43,4 +43,7 @@ public interface ModuleDao {
 
     @Query("SELECT moduleID FROM module_table WHERE name=:moduleName")
     int getModuleIDByModuleName(String moduleName);
+
+    @Query("SELECT mdContent FROM  module_table WHERE moduleID=:moduleID")
+    LiveData<String> getModuleContentByModuleID(int moduleID);
 }

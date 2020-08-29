@@ -35,6 +35,10 @@ public class ModulesRepository {
     public LiveData<List<Module>> getRecentModulesBySubjectID(int subjectID) {
         return moduleDao.getRecentModulesBySubjectID(subjectID);
     }
+
+    public LiveData<String> getModuleContentByModuleID(int moduleID){
+        return moduleDao.getModuleContentByModuleID(moduleID);
+    }
 }
 
 
