@@ -4,21 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
+    android:background="#A4B9BC"
     android:padding="16dp"
-    tools:context="com.waldo.notesbites.StartingScreenActivity">
+    tools:context="com.waldo.notesbites.StartingQuizActivity">
 
     <include layout="@layout/toolbar_main"
         android:id="@+id/toolbar"/>
 
     <TextView
+        android:id="@+id/text_module_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="My Awesome Quiz"
+        android:text="ModuleName"
         android:textColor="@android:color/black"
-        android:textSize="35sp" />
+        android:textSize="35sp"
+        android:layout_below="@id/toolbar"/>
     <TextView
         android:id="@+id/text_view_highscore"
         android:layout_width="wrap_content"
@@ -26,12 +28,13 @@
         android:layout_above="@id/button_start_quiz"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="32dp"
-        android:text="Highscore: 0"
+        android:text="Best score: 0"
         android:textSize="20sp" />
     <Button
         android:id="@+id/button_start_quiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="Start Quiz" />
+        android:text="@string/start_quiz"
+        android:onClick="startQuizActivity"/>
 </RelativeLayout>

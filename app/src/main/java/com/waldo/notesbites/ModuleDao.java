@@ -40,4 +40,7 @@ public interface ModuleDao {
     //TODO: modificare la query con nuova tabella
     @Query("SELECT * FROM module_table WHERE belongingSubjectID = :belongingSubjectID")
     LiveData<List<Module>> getRecentModulesBySubjectID(int belongingSubjectID);
+
+    @Query("SELECT moduleID FROM module_table WHERE name=:moduleName")
+    int getModuleIDByModuleName(String moduleName);
 }

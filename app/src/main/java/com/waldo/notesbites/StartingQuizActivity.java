@@ -10,31 +10,54 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
-public class StartingScreenActivity extends AppCompatActivity {
+import java.util.List;
+
+public class StartingQuizActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_QUIZ = 1;
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String KEY_HIGHSCORE = "keyHighscore";
     private TextView textViewHighscore;
     private int highscore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_starting_screen);
+        setContentView(R.layout.activity_starting_quiz);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+        Intent intent = getIntent();
+        int moduleID = intent.getIntExtra("moduleID",0);
 
-        textViewHighscore = findViewById(R.id.text_view_highscore);
-        loadHighscore();
-        Button buttonStartQuiz = findViewById(R.id.button_start_quiz);
-        buttonStartQuiz.setOnClickListener(new View.OnClickListener() {
+
+        StartingQuizViewModel startingQuizViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(StartingQuizViewModel.class);
+        startingQuizViewModel.getModuleNameByModuleID(moduleID).observe(this, new Observer<String>() {
             @Override
-            public void onClick(View v) {
-                startQuiz();
+            public void onChanged(String moduleName) {
+                TextView textView = findViewById(R.id.text_module_name);
+                textView.setText(moduleName);
             }
         });
+
+
+
+
+
+
+
+//        textViewHighscore = findViewById(R.id.text_view_highscore);
+//        loadHighscore();
+//        Button buttonStartQuiz = findViewById(R.id.button_start_quiz);
+//        buttonStartQuiz.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startQuiz();
+//            }
+//        });
     }
-    private void startQuiz() {
-        Intent intent = new Intent(StartingScreenActivity.this, QuizActivity.class);
+    public void startQuizActivity(View view) {
+        Intent intent = new Intent(StartingQuizActivity.this, QuizActivity.class);
         startActivityForResult(intent, REQUEST_CODE_QUIZ);
     }
     @Override

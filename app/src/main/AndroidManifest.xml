@@ -27,7 +27,7 @@
         <activity android:name=".PersonalAreaActivity" android:label="Personal Area"/>
         <activity android:name=".HomepageActivity" android:label="Homepage"/>
         <activity android:name=".NotesActivity"/>
-        <activity android:name=".StartingScreenActivity"/>
+        <activity android:name=".StartingQuizActivity"/>
         <activity android:name=".QuizResultsActivity"/>
 
         <activity android:name=".SimpleSubjectOverviewActivity"/>

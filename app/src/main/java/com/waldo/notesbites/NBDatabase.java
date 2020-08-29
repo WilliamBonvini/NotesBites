@@ -9,12 +9,14 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Subject.class,Module.class}, version = 1)
+@Database(entities = {Subject.class,Module.class,Quiz.class,QuizQuestion.class}, version = 1)
 public abstract class NBDatabase extends RoomDatabase {
 
     private static NBDatabase instance;
     public abstract SubjectDao subjectDao();
     public abstract ModuleDao moduleDao();
+    public abstract QuizDao quizDao();
+    public abstract QuizQuestionDao quizQuestionDao();
     public static synchronized NBDatabase getInstance(Context context){
         if(instance == null){
             instance = Room.databaseBuilder(context.getApplicationContext(),
@@ -38,25 +40,53 @@ public abstract class NBDatabase extends RoomDatabase {
     private static class PopulateDbAsyncTask extends AsyncTask<Void,Void,Void> {
         private SubjectDao subjectDao;
         private ModuleDao moduleDao;
+        private QuizDao quizDao;
+        private QuizQuestionDao quizQuestionDao;
 
         private PopulateDbAsyncTask(NBDatabase db){
             subjectDao = db.subjectDao();
             moduleDao = db.moduleDao();
+            quizDao = db.quizDao();
+            quizQuestionDao = db.quizQuestionDao();
         }
 
         @Override
         protected Void doInBackground(Void... voids){
             String SUBJECT_NAME;
             int subjectID;
+            int moduleID;
+            String moduleName;
+            int quizID;
+            String question;
+            String option1, option2, option3, option4, correctOption;
             SUBJECT_NAME = "Artificial Intelligence";
             ///////////////// AI
+            ////MODULE 1
             subjectDao.insert(new Subject(SUBJECT_NAME,"as taught during the academic year 2018/2019",R.drawable.ai,"The goal of the course is to introduce the students to basic problems, models, and techniques of Artificial Intelligence (AI), and to enable them to model and solve specific AI problems. The course covers the most fundamental concepts, modelling approaches, and resolution methods of core AI, and also provides an introduction to the history of the discipline and to some philosophical issues involved. The teaching method is traditional (classroom lessons).",false ));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
-            moduleDao.insert(new Module("introduction to AI","bangarang",1,"### mdContent of intro to AI\nciaaao","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo2","bangarang",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleName = "introduction to AI";
+            moduleDao.insert(new Module(moduleName,"bangarang",1,"### mdContent of intro to AI\nciaaao","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleID = moduleDao.getModuleIDByModuleName(moduleName);
+            quizDao.insert(new Quiz(moduleID, 0));
+            quizID = quizDao.getQuizIDbyModuleID(moduleID);
+            question = "domanda prova";
+            option1 = "risposta 1";
+            option2 = "risposta 2";
+            option3 = "risposta 3";
+            option4 = "risposta 4";
+            correctOption = "risposta 1";
+            quizQuestionDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
+
+            ////MODULE 2
+            moduleName = "modulo2";
+            moduleDao.insert(new Module(moduleName,"bangarang",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleID = moduleDao.getModuleIDByModuleName(moduleName);
+            quizDao.insert(new Quiz(moduleID, 0));
+
             moduleDao.insert(new Module("modulo3","bangarang",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleDao.insert(new Module("modulo4","bangarang",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleDao.insert(new Module("modulo5","bangarang",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+
 
 
 
