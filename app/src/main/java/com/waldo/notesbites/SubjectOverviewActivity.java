@@ -28,10 +28,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.Objects;
 
 
 public class SubjectOverviewActivity extends AppCompatActivity {
-  public static final int EXTRA_SUBJECTID =0;
+  public static final String EXTRA_SUBJECTID = "subject ID";
   String subjectTitleText;
   String subjectDescriptionText;
   int subjectPhotoID;
@@ -45,7 +46,7 @@ public class SubjectOverviewActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     Intent intent = getIntent();
-    int subjectID = intent.getIntExtra("subjectID",0);
+    int subjectID = Objects.requireNonNull(intent.getExtras()).getInt(SubjectOverviewActivity.EXTRA_SUBJECTID);
 
 
     setContentView(R.layout.activity_subject_overview);

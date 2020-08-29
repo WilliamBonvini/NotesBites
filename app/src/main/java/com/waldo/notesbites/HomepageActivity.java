@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -48,6 +50,9 @@ public class HomepageActivity extends AppCompatActivity {
         final HomepageRecentModulesAdapter adapter_recent_module = new HomepageRecentModulesAdapter();
         recyclerView_recent_modules.setAdapter(adapter_recent_module);
 
+        // reference goToSubjectButton
+        final Button goToSubjectsModulesButton = findViewById(R.id.homepage_go_to_subjects_modules_button);
+
         // instantiate view model
         final HomepageViewModel homepageViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(HomepageViewModel.class);
 
@@ -66,8 +71,9 @@ public class HomepageActivity extends AppCompatActivity {
         homepageViewModel.getRecentModulesToBeDisplayed().observe(this, new Observer<List<Module>>() {
             @Override
             public void onChanged(List<Module> modules) {
-                if(modules==null){
-
+                if(modules.size()==0){
+                    Toast.makeText(HomepageActivity.this, "No Recent Activity", Toast.LENGTH_SHORT).show();
+                    goToSubjectsModulesButton.setVisibility(View.VISIBLE);
                 }
                 else {
                     // update RecyclerView when data in the subjects data changes (the change could occur only to the column "selected")
@@ -88,7 +94,9 @@ public class HomepageActivity extends AppCompatActivity {
             @Override
             public void onItemClick(Subject subject) {
                 //homepageViewModel.setRecentModulesBySubjectID(subject.getSubjectID());
+                goToSubjectsModulesButton.setId(subject.getSubjectID());                    //  masterpiece
                 homepageViewModel.itWasInConstructor(subject.getSubjectID());
+
 
             }
         });
@@ -113,6 +121,13 @@ public class HomepageActivity extends AppCompatActivity {
 
     public void startPersonalAreaActivity(View view) {
         Intent intent = new Intent(HomepageActivity.this, PersonalAreaActivity.class);
+        startActivity(intent);
+    }
+
+    public void startSubjectOverviewActivity(View view) {
+        Intent intent = new Intent(HomepageActivity.this,SubjectOverviewActivity.class);
+        Log.w("subject id vale:",String.valueOf(view.getId()));
+        intent.putExtra(SubjectOverviewActivity.EXTRA_SUBJECTID,view.getId());
         startActivity(intent);
     }
 }

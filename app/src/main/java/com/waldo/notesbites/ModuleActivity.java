@@ -35,6 +35,8 @@ public class ModuleActivity extends AppCompatActivity {
     Log.w("ripeto, moduleID vale: ", String.valueOf(moduleID));
 
     moduleViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(ModuleViewModel.class);
+    moduleViewModel.updateLastOpenedDate(moduleID);  //TODO: è proprio il posto migliore in cui metterlo? ...
+    Log.w("moduleActivity","called OnCreate");
     moduleViewModel.getModuleByModuleID(moduleID).observe(this, new Observer<Module>() {
       @Override
       public void onChanged(final Module module) {

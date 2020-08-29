@@ -1,5 +1,6 @@
 package com.waldo.notesbites;
 
+import java.util.Date;
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
@@ -37,8 +38,8 @@ public interface ModuleDao {
     @Query("SELECT * FROM module_table WHERE moduleID=:moduleID")
     LiveData<Module> getModuleByModuleID(int moduleID);
 
-    //TODO: modificare la query con nuova tabella
-    @Query("SELECT * FROM module_table WHERE belongingSubjectID = :belongingSubjectID")
+
+    @Query("SELECT * FROM module_table WHERE belongingSubjectID = :belongingSubjectID and lastOpened <> null ORDER BY lastOpened  DESC LIMIT 3")
     LiveData<List<Module>> getRecentModulesBySubjectID(int belongingSubjectID);
 
     @Query("SELECT moduleID FROM module_table WHERE name=:moduleName")
@@ -46,4 +47,7 @@ public interface ModuleDao {
 
     @Query("SELECT mdContent FROM  module_table WHERE moduleID=:moduleID")
     LiveData<String> getModuleContentByModuleID(int moduleID);
+
+    @Query("UPDATE module_table SET lastOpened = :lastOpenedDate WHERE moduleID= :moduleID")
+    void updateLastOpenedDate(int moduleID, Date lastOpenedDate);
 }

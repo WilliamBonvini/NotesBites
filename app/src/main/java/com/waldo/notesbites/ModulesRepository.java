@@ -1,7 +1,9 @@
 package com.waldo.notesbites;
 
 import android.app.Application;
+import android.os.AsyncTask;
 
+import java.util.Date;
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
@@ -38,6 +40,29 @@ public class ModulesRepository {
 
     public LiveData<String> getModuleContentByModuleID(int moduleID){
         return moduleDao.getModuleContentByModuleID(moduleID);
+    }
+
+    public void updateLastOpenedDate(int moduleID){
+        new UpdateLastOpenedDateAsyncTask(moduleDao).execute(moduleID);
+    }
+
+
+
+    /////////////////////////// ASYNC TASKS ////////////////////////////////////
+
+    private static class UpdateLastOpenedDateAsyncTask extends AsyncTask<Integer, Void, Void> {
+        private ModuleDao moduleDao;
+
+        private UpdateLastOpenedDateAsyncTask(ModuleDao moduleDao) {
+            this.moduleDao = moduleDao;
+        }
+
+        @Override
+        protected Void doInBackground(Integer... moduleIDs) {
+            Date lastOpenedDate = new Date();
+            moduleDao.updateLastOpenedDate(moduleIDs[0],lastOpenedDate);
+            return null;
+        }
     }
 }
 

@@ -19,6 +19,11 @@ public class ModuleViewModel extends AndroidViewModel {
         return modulesRepository.getModuleByModuleID(moduleID);
     }
 
+    public void updateLastOpenedDate(int moduleID){
+        modulesRepository.updateLastOpenedDate(moduleID);
+
+    }
+
 
 
 }

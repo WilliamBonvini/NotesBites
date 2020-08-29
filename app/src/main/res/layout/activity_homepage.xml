@@ -108,6 +108,19 @@
         android:layout_toEndOf="@id/divider"
         android:layout_marginTop="15dp"
         />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/homepage_go_to_subjects_modules_button"
+        android:layout_below="@id/homepage_recent_module_recycler_view"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@id/divider"
+        android:layout_alignParentEnd="true"
+        android:text="@string/go_to_modules"
+        android:onClick="startSubjectOverviewActivity"
+        android:visibility="invisible"
+        />
+
 
 
 

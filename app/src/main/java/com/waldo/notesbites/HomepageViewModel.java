@@ -60,6 +60,7 @@ public class HomepageViewModel extends AndroidViewModel {
         recentModules.addSource(currentRecentModules, new Observer<List<Module>>() {
             @Override
             public void onChanged(List<Module> b) {
+
                 recentModules.setValue(b);
             }
         });

@@ -1,6 +1,7 @@
 package com.waldo.notesbites;
 
 import java.net.URL;
+import java.util.Date;
 
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -21,6 +22,8 @@ public class Module {
     private String mdContent;
     private String videoURL;
     private int belongingSubjectID;
+    private Date lastOpened;
+
 
     public Module(String name, String description,int priority, String mdContent, String videoURL,int belongingSubjectID) {
         this.name = name;
@@ -29,11 +32,14 @@ public class Module {
         this.mdContent = mdContent;
         this.videoURL = videoURL;
         this.belongingSubjectID = belongingSubjectID;
+        this.lastOpened = null;
     }
 
     public void setModuleID(int moduleID){
         this.moduleID = moduleID;
     }
+
+    public void setLastOpened(Date lastOpened){this.lastOpened = lastOpened;}  // lo vuole per forza, boh :D
 
     public int getModuleID() {
         return moduleID;
@@ -62,4 +68,6 @@ public class Module {
     public int getBelongingSubjectID(){
         return belongingSubjectID;
     }
+
+    public Date getLastOpened(){return lastOpened;}
 }
