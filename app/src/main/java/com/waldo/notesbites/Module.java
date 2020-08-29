@@ -20,15 +20,15 @@ public class Module {
     private int priority;
     private String mdContent;
     private String videoURL;
-    private String belongingSubject;
+    private int belongingSubjectID;
 
-    public Module(String name, String description,int priority, String mdContent, String videoURL,String belongingSubject) {
+    public Module(String name, String description,int priority, String mdContent, String videoURL,int belongingSubjectID) {
         this.name = name;
         this.description = description;
         this.priority = priority;
         this.mdContent = mdContent;
         this.videoURL = videoURL;
-        this.belongingSubject = belongingSubject;
+        this.belongingSubjectID = belongingSubjectID;
     }
 
     public void setModuleID(int moduleID){
@@ -59,7 +59,7 @@ public class Module {
         return videoURL;
     }
 
-    public String getBelongingSubject(){
-        return belongingSubject;
+    public int getBelongingSubjectID(){
+        return belongingSubjectID;
     }
 }

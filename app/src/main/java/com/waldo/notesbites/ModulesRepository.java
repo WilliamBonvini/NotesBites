@@ -15,8 +15,8 @@ public class ModulesRepository {
         moduleDao = database.moduleDao();
     }
 
-    public LiveData<List<Module>> getAllModulesBySubjectName(String subjectName){
-        return moduleDao.getAllModulesBySubjectName(subjectName);
+    public LiveData<List<Module>> getAllModulesBySubjectID(int subjectID){
+        return moduleDao.getAllModulesBySubjectID(subjectID);
     }
 
     public LiveData<List<String>> getModuleNamesBySubjectID(int subjectID){

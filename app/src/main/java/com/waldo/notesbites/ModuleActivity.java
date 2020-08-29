@@ -54,7 +54,7 @@ public class ModuleActivity extends AppCompatActivity {
         moduleDescriptionTextView.setText(module.getDescription());
 
         // set toolbar and add up button!
-        toolbar.setTitle(module.getBelongingSubject() + " - " + module.getName());
+        toolbar.setTitle(module.getName());
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);

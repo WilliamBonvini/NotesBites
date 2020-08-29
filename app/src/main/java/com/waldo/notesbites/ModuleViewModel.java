@@ -12,11 +12,13 @@ public class ModuleViewModel extends AndroidViewModel {
     public ModuleViewModel(@NonNull Application application) {
         super(application);
         modulesRepository = new ModulesRepository(application);
+
     }
 
     public LiveData<Module> getModuleByModuleID(int moduleID){
         return modulesRepository.getModuleByModuleID(moduleID);
     }
+
 
 
 }

@@ -23,24 +23,21 @@ public interface ModuleDao {
 
 
     @Query("SELECT * FROM module_table " +
-            "WHERE belongingSubject = :belongingSubject " +
+            "WHERE belongingSubjectID = :belongingSubjectID " +
             "ORDER BY priority")
-    LiveData<List<Module>> getAllModulesBySubjectName(String belongingSubject);
+    LiveData<List<Module>> getAllModulesBySubjectID(int belongingSubjectID);
 
-    @Query("SELECT name FROM module_table WHERE belongingSubject = " +
-                                                "(SELECT name FROM subject_table where subjectID = :subjectID)")
-    LiveData<List<String>> getModuleNamesBySubjectID(int subjectID);
+    @Query("SELECT name FROM module_table WHERE belongingSubjectID = :belongingSubjectID")
+    LiveData<List<String>> getModuleNamesBySubjectID(int belongingSubjectID);
 
-    @Query("SELECT * FROM module_table WHERE belongingSubject = " +
-            "(SELECT name FROM subject_table where subjectID = :subjectID)")
-    LiveData<List<Module>> getModulesBySubjectID(int subjectID);
+    @Query("SELECT * FROM module_table WHERE belongingSubjectID = :belongingSubjectID")
+    LiveData<List<Module>> getModulesBySubjectID(int belongingSubjectID);
 
 
     @Query("SELECT * FROM module_table WHERE moduleID=:moduleID")
     LiveData<Module> getModuleByModuleID(int moduleID);
 
     //TODO: modificare la query con nuova tabella
-    @Query("SELECT * FROM module_table WHERE belongingSubject = " +
-            "(SELECT name FROM subject_table where subjectID = :subjectID)")
-    LiveData<List<Module>> getRecentModulesBySubjectID(int subjectID);
+    @Query("SELECT * FROM module_table WHERE belongingSubjectID = :belongingSubjectID")
+    LiveData<List<Module>> getRecentModulesBySubjectID(int belongingSubjectID);
 }
