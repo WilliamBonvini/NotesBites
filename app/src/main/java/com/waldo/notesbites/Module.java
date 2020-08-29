@@ -3,9 +3,15 @@ package com.waldo.notesbites;
 import java.net.URL;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "module_table")
+import static androidx.room.ForeignKey.CASCADE;
+
+@Entity(tableName = "module_table", foreignKeys = @ForeignKey(entity = Subject.class,
+        parentColumns = "subjectID",
+        childColumns = "belongingSubjectID",
+        onDelete = CASCADE))
 public class Module {
     @PrimaryKey(autoGenerate = true)
     private int moduleID;

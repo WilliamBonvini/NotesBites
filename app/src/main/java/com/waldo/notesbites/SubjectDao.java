@@ -48,3 +48,8 @@ public interface SubjectDao {
     @Query("SELECT description FROM subject_table WHERE subjectID = :subjectID")
     LiveData<String> getDescriptionFromID(int subjectID);
 }
+
+
+
+
+

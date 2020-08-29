@@ -9,6 +9,19 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
+
+/*
+
+- Quiz
+- personal area
+
+
+
+- recent activities
+- markdown visualization
+ */
+
 public class DatabaseFunctions extends AppCompatActivity {
     private Context context;
 
