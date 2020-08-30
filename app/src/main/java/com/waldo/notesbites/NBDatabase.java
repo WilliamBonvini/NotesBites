@@ -119,11 +119,12 @@ public abstract class NBDatabase extends RoomDatabase {
                     "\n" +
                     "The course major goal is to provide students with the theoretical background and the practical skills to understand and use NN, and at the same time become familiar and with Deep Learning for solving complex engineering problems.",false));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
-            moduleDao.insert(new Module("introduction to ANN2DL","bangarang",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo2","bangarang",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo3","bangarang",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo4","bangarang",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo5","bangarang",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Introduction","bangarang",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Agents' building approaches","bangarang",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Markov Decision Processes","bangarang",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Game Theory","bangarang",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Nash Equilibrium","bangarang",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+
 
 
 
@@ -175,11 +176,25 @@ public abstract class NBDatabase extends RoomDatabase {
                     "\n" +
                     "This course aims at presenting general techniques for developing multiagent systems, independently of the applicative domains. In particular, the course will present methods for developing single agents, able to make rational decisions in situations affected by uncertainty, and for developing systems composed of multiple agents, with special emphasis on the interaction mechanisms between the agents. Moreover, some real-world applications of agent systems will be discussed. At the end of the course, students will acquire the ability to design and develop distributed systems based on the agent paradigm.",false));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
-            moduleDao.insert(new Module("introduction to AAAMS","bangarang",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo2","bangarang",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo3","bangarang",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo4","bangarang",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo5","bangarang",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Introduction","bangarang",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Agents' building approaches","bangarang",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Markov Decision Processes","bangarang",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Game Theory","bangarang",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Nash Equilibrium","bangarang",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Negotiation Part 1","bangarang",6,"aaams/6_negotiation_1.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Negotiation Part 2","bangarang",7,"aaams/7_negotiation_2.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Computational Social Choice Part 1","bangarang",8,"aaams/8_computational_social_choice_1.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Computational Social Choice Part 2","bangarang",9,"aaams/9_computational_social_choice_2.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Introduction to Auctions","bangarang",10,"aaams/10_auctions_1.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Multiple Items Auctions","bangarang",11,"aaams/11_auctions_multiple_items.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Computational Coalition Formation Part 1","bangarang",12,"aaams/12_computational_coal_form_1.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Computational Coalition Formation Part 2","bangarang",13,"aaams/13_computational_coal_form_2.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Multiagent Planning Part 1","bangarang",14,"aaams/14_multiagent_planning_1.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Multiagent Planning Part 2","bangarang",15,"aaams/15_multiagent_planning_2.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Introduction to DCOP","bangarang",16,"aaams/16_dcop.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("DCOP Algorithms","bangarang",17,"aaams/17_dcop_dpop_maxsum.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Multiagent Learning Part 1","bangarang",18,"aaams/18_multiagent_learning.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Multiagent Learning Part 2","bangarang",19,"aaams/19_multiagent_learning_2.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
 
 
             return null;
