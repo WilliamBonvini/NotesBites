@@ -78,6 +78,13 @@ public abstract class NBDatabase extends RoomDatabase {
             option4 = "risposta 4";
             correctOption = "risposta 1";
             quizQuestionDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
+            question = "domanda prova2";
+            option1 = "risposta 1";
+            option2 = "risposta 2";
+            option3 = "risposta 3";
+            option4 = "risposta 4";
+            correctOption = "risposta 2";
+            quizQuestionDao.insert(new QuizQuestion(question, 2, quizID,  option1, option2, option3, option4, correctOption));
 
             ////MODULE 2
             moduleName = "modulo2";
