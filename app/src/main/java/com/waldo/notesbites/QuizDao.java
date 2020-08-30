@@ -1,5 +1,6 @@
 package com.waldo.notesbites;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -21,4 +22,6 @@ public interface QuizDao {
     @Query("SELECT quizID FROM quiz_table WHERE belongingModuleID = :moduleID")
     int getQuizIDbyModuleID(int moduleID);
 
+    @Query("SELECT quizID FROM quiz_table WHERE belongingModuleID = :moduleID")
+    LiveData<Integer> getQuizID_liveData_byModuleID(int moduleID);
 }

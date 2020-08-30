@@ -4,6 +4,8 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
+import java.util.List;
+
 public class QuizRepository {
     private QuizDao quizDao;
     private QuizQuestionDao quizQuestionDao;
@@ -16,5 +18,13 @@ public class QuizRepository {
 
     public LiveData<String> getModuleNameByID(int moduleID){
         return quizQuestionDao.getModuleNameByModuleID(moduleID);
+    }
+
+    public LiveData<Integer> getQuizIDByModuleID(int moduleID) {
+        return quizDao.getQuizID_liveData_byModuleID(moduleID);
+    }
+
+    public LiveData<List<QuizQuestion>> getQuestionsByQuizID(int quizID) {
+        return quizQuestionDao.getQuestionsByQuizID(quizID);
     }
 }

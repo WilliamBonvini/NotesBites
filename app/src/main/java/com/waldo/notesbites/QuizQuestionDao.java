@@ -7,6 +7,8 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import java.util.List;
+
 @Dao
 public interface QuizQuestionDao {
 
@@ -22,5 +24,6 @@ public interface QuizQuestionDao {
     @Query("SELECT name FROM module_table WHERE moduleID = :moduleID")
     LiveData<String> getModuleNameByModuleID(int moduleID);
 
-
+    @Query("SELECT * FROM quiz_question_table WHERE belongingQuizID = :quizID")
+    LiveData<List<QuizQuestion>> getQuestionsByQuizID(int quizID);
 }

@@ -18,4 +18,8 @@ public class StartingQuizViewModel extends AndroidViewModel {
          LiveData<String> result = quizRepository.getModuleNameByID(moduleID);
          return result;
     }
+
+    public LiveData<Integer> getQuizIDByModuleID(int moduleID) {
+        return quizRepository.getQuizIDByModuleID(moduleID);
+    }
 }

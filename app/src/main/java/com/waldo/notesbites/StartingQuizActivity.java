@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,8 @@ public class StartingQuizActivity extends AppCompatActivity {
     public static final String KEY_HIGHSCORE = "keyHighscore";
     private TextView textViewHighscore;
     private int highscore;
+    public int quizID;
+    public int moduleID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,7 @@ public class StartingQuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_starting_quiz);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         Intent intent = getIntent();
-        int moduleID = intent.getIntExtra("moduleID",0);
+        moduleID = intent.getIntExtra("moduleID",0);
 
 
         StartingQuizViewModel startingQuizViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(StartingQuizViewModel.class);
@@ -39,12 +42,6 @@ public class StartingQuizActivity extends AppCompatActivity {
                 textView.setText(moduleName);
             }
         });
-
-
-
-
-
-
 
 //        textViewHighscore = findViewById(R.id.text_view_highscore);
 //        loadHighscore();
@@ -57,8 +54,15 @@ public class StartingQuizActivity extends AppCompatActivity {
 //        });
     }
     public void startQuizActivity(View view) {
-        Intent intent = new Intent(StartingQuizActivity.this, QuizActivity.class);
-        startActivityForResult(intent, REQUEST_CODE_QUIZ);
+        StartingQuizViewModel startingQuizViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(StartingQuizViewModel.class);
+        startingQuizViewModel.getQuizIDByModuleID(moduleID).observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer quizId) {
+                Intent intent = new Intent(StartingQuizActivity.this, QuizActivity.class);
+                intent.putExtra("QuizID", quizId);
+                startActivity(intent);
+            }
+        });
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
