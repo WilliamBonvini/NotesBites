@@ -49,6 +49,7 @@ public class SubjectOverviewActivity extends AppCompatActivity {
     int subjectID = Objects.requireNonNull(intent.getExtras()).getInt(SubjectOverviewActivity.EXTRA_SUBJECTID);
 
 
+
     setContentView(R.layout.activity_subject_overview);
 
     final RecyclerView recyclerView = findViewById(R.id.subject_overview_recycler_view);

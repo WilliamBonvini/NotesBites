@@ -68,7 +68,7 @@ public class GuestHomepageActivity extends AppCompatActivity {
             public void onItemClick(Subject subject) {
                 subjectClickedID = subject.getSubjectID();
                 Intent intent = new Intent(GuestHomepageActivity.this, SubjectOverviewActivity.class);
-                intent.putExtra("subjectID", subjectClickedID);
+                intent.putExtra(SubjectOverviewActivity.EXTRA_SUBJECTID, subjectClickedID);
                 startActivity(intent);
             }
         });
@@ -84,11 +84,7 @@ public class GuestHomepageActivity extends AppCompatActivity {
         Intent intent = new Intent(GuestHomepageActivity.this, SignInActivity.class);
         startActivity(intent);
     }
-    public void startSubjectOverviewActivity(View view){
-        Intent intent = new Intent(GuestHomepageActivity.this, SubjectOverviewActivity.class);
-        //intent.putExtra(String.valueOf(SubjectOverviewActivity.EXTRA_SUBJECTID), subjectClickedID);
-        startActivity(intent);
-    }
+
 
 
 
