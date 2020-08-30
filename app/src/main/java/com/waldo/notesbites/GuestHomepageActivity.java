@@ -84,8 +84,7 @@ public class GuestHomepageActivity extends AppCompatActivity {
         Intent intent = new Intent(GuestHomepageActivity.this, SignInActivity.class);
         startActivity(intent);
     }
-
-
+    
 
 
 

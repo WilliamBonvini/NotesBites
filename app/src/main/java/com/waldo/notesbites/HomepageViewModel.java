@@ -23,6 +23,7 @@ public class HomepageViewModel extends AndroidViewModel {
     private LiveData<List<Module>> oldRecentModules;
     private LiveData<List<Module>> currentRecentModules;
     private int oldSubjectID;
+    private boolean subjectJustPressed;
 
 
 
@@ -49,7 +50,7 @@ public class HomepageViewModel extends AndroidViewModel {
 
 
 
-    public void itWasInConstructor(int subjectID){
+    public void updateRecentModulesMediator(int subjectID){
         if(subjectID != oldSubjectID){
             Log.w("s","entered if");
             recentModules.removeSource(oldRecentModules);
@@ -71,6 +72,13 @@ public class HomepageViewModel extends AndroidViewModel {
 
     }
 
+    public boolean isSubjectJustPressed(){
+        return subjectJustPressed;
+    }
+
+    public void setSubjectJustPressed(boolean value){
+        subjectJustPressed = value;
+    }
 
 
 

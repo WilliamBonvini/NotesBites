@@ -10,8 +10,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -71,14 +69,17 @@ public class HomepageActivity extends AppCompatActivity {
         homepageViewModel.getRecentModulesToBeDisplayed().observe(this, new Observer<List<Module>>() {
             @Override
             public void onChanged(List<Module> modules) {
-                if(modules.size()==0){
+                if(modules.size()==0 && homepageViewModel.isSubjectJustPressed()){
                     Toast.makeText(HomepageActivity.this, "No Recent Activity", Toast.LENGTH_SHORT).show();
-                    goToSubjectsModulesButton.setVisibility(View.VISIBLE);
+                    homepageViewModel.setSubjectJustPressed(false);
                 }
-                else {
-                    // update RecyclerView when data in the subjects data changes (the change could occur only to the column "selected")
-                    adapter_recent_module.setModules(modules);
-                }
+
+                // update recent modules to be displayed
+                adapter_recent_module.setModules(modules);
+
+                // set go to subject button visible as soon as someone triggers a change in the recent modules to be displayed
+                goToSubjectsModulesButton.setVisibility(View.VISIBLE);
+
             }
         });
 
@@ -95,7 +96,9 @@ public class HomepageActivity extends AppCompatActivity {
             public void onItemClick(Subject subject) {
                 //homepageViewModel.setRecentModulesBySubjectID(subject.getSubjectID());
                 goToSubjectsModulesButton.setId(subject.getSubjectID());                    //  masterpiece
-                homepageViewModel.itWasInConstructor(subject.getSubjectID());
+                homepageViewModel.updateRecentModulesMediator(subject.getSubjectID());
+                homepageViewModel.setSubjectJustPressed(true);
+
 
 
             }

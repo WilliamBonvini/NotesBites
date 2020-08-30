@@ -39,7 +39,7 @@ public interface ModuleDao {
     LiveData<Module> getModuleByModuleID(int moduleID);
 
 
-    @Query("SELECT * FROM module_table WHERE belongingSubjectID = :belongingSubjectID and lastOpened <> null ORDER BY lastOpened  DESC LIMIT 3")
+    @Query("SELECT * FROM module_table WHERE belongingSubjectID = :belongingSubjectID and lastOpened IS NOT null ORDER BY lastOpened LIMIT 3")
     LiveData<List<Module>> getRecentModulesBySubjectID(int belongingSubjectID);
 
     @Query("SELECT moduleID FROM module_table WHERE name=:moduleName")

@@ -66,4 +66,7 @@ dependencies {
     implementation "io.noties.markwon:inline-parser:$markwon_version"
     implementation "io.noties.markwon:syntax-highlight:$markwon_version"
 
+
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.4'
+
 }
