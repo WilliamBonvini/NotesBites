@@ -59,7 +59,7 @@ public class StartingQuizActivity extends AppCompatActivity {
             @Override
             public void onChanged(Integer quizId) {
                 Intent intent = new Intent(StartingQuizActivity.this, QuizActivity.class);
-                intent.putExtra("QuizID", quizId);
+                intent.putExtra(QuizActivity.EXTRA_QUIZ_ID, quizId);
                 startActivity(intent);
             }
         });
