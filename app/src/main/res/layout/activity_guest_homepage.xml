@@ -1,48 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".GuestHomepageActivity"
     android:background="@drawable/background_gradient"
+    android:weightSum="4"
     >
 
-   <ImageView
-       android:id="@+id/image_logo"
-       android:layout_width="100dp"
-       android:layout_height="100dp"
-       android:src="@drawable/logo_trasparent"
-       android:layout_centerHorizontal="true"
-       />
+
 
 
 
    <LinearLayout
        android:id="@+id/button_linear_layout"
        android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
+       android:layout_height="0dp"
+       android:layout_weight="1"
        android:orientation="horizontal"
-       android:layout_below="@+id/image_logo"
-       android:layout_centerHorizontal="true"
+       android:weightSum="10"
       >
       <ImageButton
           android:id="@+id/btn_search"
-          android:layout_width="@android:dimen/app_icon_size"
-          android:layout_height="@android:dimen/app_icon_size"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
           android:text="@string/search_subjects"
           android:onClick="startSelectSubjectsActivity"
           android:background="@drawable/button_add"
           android:layout_marginTop="20dp"
-          android:layout_marginEnd="200dp"
+          android:layout_marginEnd="10dp"
+          android:layout_marginStart="10dp"
           android:src="@drawable/add_black"
+          android:layout_weight="2"
+          />
+      <ImageView
+          android:id="@+id/image_logo"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:src="@drawable/logo_trasparent"
+          android:layout_weight="5"
           />
 
       <com.google.android.gms.common.SignInButton
           android:id="@+id/sign_in_button"
-          android:layout_width="wrap_content"
+          android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_marginTop="20dp"
+          android:layout_weight="3"
           />
    </LinearLayout>
 
@@ -50,9 +55,10 @@
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/guest_homepage_recycler_view"
        android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
+       android:layout_height="0dp"
+       android:layout_weight="3"
        tools:listitem="@layout/fragment_guest_homepage_single_subject"
-       android:layout_below="@+id/button_linear_layout"
+       android:layout_marginTop="20dp"
 
        />
 
@@ -60,4 +66,4 @@
 
 
 
-</RelativeLayout>
+</LinearLayout>
