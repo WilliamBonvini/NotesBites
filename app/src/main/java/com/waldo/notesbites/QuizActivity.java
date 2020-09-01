@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,7 +31,7 @@ public class QuizActivity extends AppCompatActivity {
     private TextView textViewQuestion;
     private TextView textViewScore;
     private TextView textViewQuestionCount;
-    private RadioGroup rbGroup;
+    List<RadioButton> radioButtonList;
     private RadioButton rb1;
     private RadioButton rb2;
     private RadioButton rb3;
@@ -44,6 +46,7 @@ public class QuizActivity extends AppCompatActivity {
     private String correctAnswer;
     private int questionCounter;
     private int numberOfQuestions;
+    private int checkedRbID;
 
 
     QuizViewModel quizViewModel;
@@ -72,11 +75,16 @@ public class QuizActivity extends AppCompatActivity {
         textViewQuestion = findViewById(R.id.text_view_question);
         textViewScore = findViewById(R.id.text_view_score);
         textViewQuestionCount = findViewById(R.id.text_view_question_count);
-        rbGroup = findViewById(R.id.radio_group);
         rb1 = findViewById(R.id.radio_button1);
         rb2 = findViewById(R.id.radio_button2);
         rb3 = findViewById(R.id.radio_button3);
         rb4 = findViewById(R.id.radio_button4);
+        radioButtonList = new ArrayList<RadioButton>() {};
+        radioButtonList.add(rb1);
+        radioButtonList.add(rb2);
+        radioButtonList.add(rb3);
+        radioButtonList.add(rb4);
+
         buttonConfirmNext = findViewById(R.id.button_confirm_next);
         textColorDefaultRb = rb1.getTextColors();
 
@@ -114,10 +122,10 @@ public class QuizActivity extends AppCompatActivity {
                 // triggered if the user is clicking "confirm"
                 if (!answered) {
                     //the if is intered if at least one option is checked
-                    if (rbGroup.getCheckedRadioButtonId()!=-1) {
-                        rbSelected = findViewById(rbGroup.getCheckedRadioButtonId());
-                        int answerNr = rbGroup.indexOfChild(rbSelected) + 1;
+                    if (getCheckedRadioButtonId()!=-1) {
+                        rbSelected = findViewById(getCheckedRadioButtonId());
                         answered = true;
+                        clearCheck();
                         updateScore();
                         showSolution();
                         updateButton();
@@ -130,6 +138,7 @@ public class QuizActivity extends AppCompatActivity {
 
                 // triggered if the user is clicking "next" ( the program will observe achange in currentQuizQuestion and trigger the onChanged method
                 Log.w("QuizActivity","triggered onclick, you just cliked \"next\"");
+                clearCheck();
                 quizViewModel.incrementQuestionCounter();
                 quizViewModel.updatemCurrentQuizQuestion(quizViewModel.getQuestionCounter());
 
@@ -138,6 +147,15 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
+    private int getCheckedRadioButtonId() {
+        for (int i = 0; i < radioButtonList.size(); i++) {
+            if(radioButtonList.get(i).isChecked()){
+                return radioButtonList.get(i).getId();
+            }
+        }
+        return -1;
+
+    }
 
 
     private void showCurrentQuestion(QuizQuestion currentQuestion) {
@@ -174,10 +192,15 @@ public class QuizActivity extends AppCompatActivity {
         rb2.setTextColor(textColorDefaultRb);
         rb3.setTextColor(textColorDefaultRb);
         rb4.setTextColor(textColorDefaultRb);
-        rbGroup.clearCheck();
+        clearCheck();
     }
 
+    private void clearCheck() {
+        if(checkedRbID!=0){
+            ((RadioButton)findViewById(checkedRbID)).setChecked(false);
+        }
 
+    }
 
 
     private void updateScore(){
@@ -206,8 +229,8 @@ public class QuizActivity extends AppCompatActivity {
 
     private RadioButton findCorrectRb(){
         RadioButton temp;
-        for (int i = 0; i < rbGroup.getChildCount(); i++) {
-            temp = findViewById(rbGroup.getChildAt(i).getId());
+        for (int i = 0; i < radioButtonList.size(); i++) {
+            temp = findViewById(radioButtonList.get(i).getId());
             if(temp.getText().toString().equals(correctAnswer)){
                 return temp;
             }
@@ -229,6 +252,13 @@ public class QuizActivity extends AppCompatActivity {
         setResult(RESULT_OK, resultIntent);
         finish();
         Log.w("ehi","ehi");
+    }
+
+    public void checkCheck(View view) {
+        clearCheck();
+        RadioButton rb = (RadioButton)findViewById(view.getId());
+        checkedRbID = rb.getId();
+        rb.setChecked(true);
     }
     /*
     @Override
