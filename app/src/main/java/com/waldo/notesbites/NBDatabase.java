@@ -18,7 +18,6 @@ public abstract class NBDatabase extends RoomDatabase {
     public abstract SubjectDao subjectDao();
     public abstract ModuleDao moduleDao();
     public abstract QuizDao quizDao();
-    public abstract QuizQuestionDao quizQuestionDao();
     public static synchronized NBDatabase getInstance(Context context){
         if(instance == null){
             instance = Room.databaseBuilder(context.getApplicationContext(),
@@ -43,13 +42,11 @@ public abstract class NBDatabase extends RoomDatabase {
         private SubjectDao subjectDao;
         private ModuleDao moduleDao;
         private QuizDao quizDao;
-        private QuizQuestionDao quizQuestionDao;
 
         private PopulateDbAsyncTask(NBDatabase db){
             subjectDao = db.subjectDao();
             moduleDao = db.moduleDao();
             quizDao = db.quizDao();
-            quizQuestionDao = db.quizQuestionDao();
         }
 
         @Override
@@ -77,14 +74,14 @@ public abstract class NBDatabase extends RoomDatabase {
             option3 = "risposta 3";
             option4 = "risposta 4";
             correctOption = "risposta 1";
-            quizQuestionDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
+            quizDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
             question = "domanda prova2";
             option1 = "risposta 1";
             option2 = "risposta 2";
             option3 = "risposta 3";
             option4 = "risposta 4";
             correctOption = "risposta 2";
-            quizQuestionDao.insert(new QuizQuestion(question, 2, quizID,  option1, option2, option3, option4, correctOption));
+            quizDao.insert(new QuizQuestion(question, 2, quizID,  option1, option2, option3, option4, correctOption));
 
             ////MODULE 2
             moduleName = "modulo2";

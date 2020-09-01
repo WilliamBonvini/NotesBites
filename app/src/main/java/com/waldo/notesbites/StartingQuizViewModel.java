@@ -2,6 +2,8 @@ package com.waldo.notesbites;
 
 import android.app.Application;
 
+import java.util.List;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
@@ -15,11 +17,10 @@ public class StartingQuizViewModel extends AndroidViewModel {
         quizRepository = new QuizRepository(application);
     }
     public LiveData<String> getModuleNameByModuleID(int moduleID){
-         LiveData<String> result = quizRepository.getModuleNameByID(moduleID);
-         return result;
+         return quizRepository.getModuleNameByID(moduleID);
     }
 
-    public LiveData<Integer> getQuizIDByModuleID(int moduleID) {
-        return quizRepository.getQuizIDByModuleID(moduleID);
+    public LiveData<QuizIDAndQuizQuestionCountTuple> getQuizIDAndNumberOfQuestionsByModuleID(int moduleID) {
+        return quizRepository.getQuizIDAndNumberOfQuestionsByModuleID(moduleID);
     }
 }

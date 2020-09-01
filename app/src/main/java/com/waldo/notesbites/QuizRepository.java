@@ -12,13 +12,11 @@ import java.util.concurrent.ExecutionException;
 
 public class QuizRepository {
     private final QuizDao quizDao;
-    private final QuizQuestionDao quizQuestionDao;
     private List<QuizQuestion> quizQuestionList;
 
     public QuizRepository(Application application) {
         NBDatabase database = NBDatabase.getInstance(application);
         quizDao = database.quizDao();
-        quizQuestionDao = database.quizQuestionDao();
         quizQuestionList = null;
     }
 
@@ -26,7 +24,7 @@ public class QuizRepository {
 
 
     public LiveData<String> getModuleNameByID(int moduleID){
-        return quizQuestionDao.getModuleNameByModuleID(moduleID);
+        return quizDao.getModuleNameByModuleID(moduleID);
     }
 
     public LiveData<Integer> getQuizIDByModuleID(int moduleID) {
@@ -34,12 +32,12 @@ public class QuizRepository {
     }
 
     public LiveData<List<QuizQuestion>> getQuestionsByQuizID(int quizID) {
-        return quizQuestionDao.getQuestionsByQuizID(quizID);
+        return quizDao.getQuestionsByQuizID(quizID);
     }
 
 
     public LiveData<QuizQuestion> getCurrentQuizQuestionByQuizIDAndPriority(int quizID,int priority){
-        return quizQuestionDao.getCurrentQuizQuestionByQuizIDAndPriority(quizID,priority);
+        return quizDao.getCurrentQuizQuestionByQuizIDAndPriority(quizID,priority);
 
     }
 
@@ -55,6 +53,10 @@ public class QuizRepository {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public LiveData<QuizIDAndQuizQuestionCountTuple> getQuizIDAndNumberOfQuestionsByModuleID(int moduleID) {
+        return quizDao.getQuizIDAndNumberOfQuestionsByModuleID(moduleID);
     }
 
 

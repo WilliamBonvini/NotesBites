@@ -5,16 +5,12 @@ import android.content.SharedPreferences;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
-import java.util.List;
 
 public class StartingQuizActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_QUIZ = 1;
@@ -55,11 +51,12 @@ public class StartingQuizActivity extends AppCompatActivity {
     }
     public void startQuizActivity(View view) {
         StartingQuizViewModel startingQuizViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(StartingQuizViewModel.class);
-        startingQuizViewModel.getQuizIDByModuleID(moduleID).observe(this, new Observer<Integer>() {
+        startingQuizViewModel.getQuizIDAndNumberOfQuestionsByModuleID(moduleID).observe(this, new Observer<QuizIDAndQuizQuestionCountTuple>() {
             @Override
-            public void onChanged(Integer quizId) {
+            public void onChanged(QuizIDAndQuizQuestionCountTuple data) {
                 Intent intent = new Intent(StartingQuizActivity.this, QuizActivity.class);
-                intent.putExtra(QuizActivity.EXTRA_QUIZ_ID, quizId);
+                intent.putExtra(QuizActivity.EXTRA_QUIZ_ID, data.getQuizID());
+                intent.putExtra(QuizActivity.EXTRA_NUM_QUESTIONS, data.getNumberOfQuestions());
                 startActivity(intent);
             }
         });

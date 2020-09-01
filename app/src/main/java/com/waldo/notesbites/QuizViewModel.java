@@ -31,7 +31,7 @@ public class QuizViewModel extends AndroidViewModel{
 
     // @Inject tells Dagger how to create instances of LoginViewModel
     @Inject
-    public QuizViewModel(@NonNull Application application, int quizID) {
+    public QuizViewModel(@NonNull Application application, int quizID,int numberOfQuestions) {
         super(application);
 
         this.quizRepository = new QuizRepository(application);
@@ -40,9 +40,9 @@ public class QuizViewModel extends AndroidViewModel{
 
         this.oldQuestionCounter = 0;
 
-
         // save in the view model the number of questions of this particular quiz
-        numberOfQuestions = 4; //TODO: YUK
+        this.numberOfQuestions = numberOfQuestions;
+
         Log.w("QuizViewModel", "number of questions = " + String.valueOf(numberOfQuestions));
 
 

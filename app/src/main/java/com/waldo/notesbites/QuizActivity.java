@@ -24,6 +24,7 @@ import javax.inject.Inject;
 
 public class QuizActivity extends AppCompatActivity {
     public static final String EXTRA_SCORE = "extraScore";
+    public static final String EXTRA_NUM_QUESTIONS = "numQuestions";
     public static final String EXTRA_QUIZ_ID = "quizID";
     private TextView textViewQuestion;
     private TextView textViewScore;
@@ -33,6 +34,8 @@ public class QuizActivity extends AppCompatActivity {
     private RadioButton rb2;
     private RadioButton rb3;
     private RadioButton rb4;
+    private RadioButton rbSelected;
+    private RadioButton rbCorrect;
     private Button buttonConfirmNext;
     private ColorStateList textColorDefaultRb;
     private int score;
@@ -62,6 +65,7 @@ public class QuizActivity extends AppCompatActivity {
         // recover the id of the quiz relative to the selected module
         Intent intent = getIntent();
         final int quizID = intent.getIntExtra(QuizActivity.EXTRA_QUIZ_ID,0);
+        final int numOfQuestions = intent.getIntExtra(QuizActivity.EXTRA_NUM_QUESTIONS,0);
 
         // find views
         textViewQuestion = findViewById(R.id.text_view_question);
@@ -79,7 +83,7 @@ public class QuizActivity extends AppCompatActivity {
         resetColorOfOptions();
 
         // Get instance of view model, passing the quizID
-        this.quizViewModel = new ViewModelProvider(this, new MyQuizViewModelFactory(this.getApplication(),quizID)).get(QuizViewModel.class);
+        this.quizViewModel = new ViewModelProvider(this, new MyQuizViewModelFactory(this.getApplication(),quizID,numOfQuestions)).get(QuizViewModel.class);
 
 
 
@@ -101,15 +105,21 @@ public class QuizActivity extends AppCompatActivity {
 
 
 
+
         buttonConfirmNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 // triggered if the user is clicking "confirm"
                 if (!answered) {
-                    Log.w("QuizActivity","triggered onclick, you just cliked \"confirm\"");
-                    if (rb1.isChecked() || rb2.isChecked() || rb3.isChecked() || rb4.isChecked()) {
-                        checkAnswer();
+                    //the if is intered if at least one option is checked
+                    if (rbGroup.getCheckedRadioButtonId()!=-1) {
+                        rbSelected = findViewById(rbGroup.getCheckedRadioButtonId());
+                        int answerNr = rbGroup.indexOfChild(rbSelected) + 1;
+                        answered = true;
+                        updateScore();
+                        showSolution();
+                        updateButton();
                     } else {
                         Toast.makeText(QuizActivity.this, "Please select an answer", Toast.LENGTH_SHORT).show();
                     }
@@ -133,6 +143,7 @@ public class QuizActivity extends AppCompatActivity {
         resetColorOfOptions();
         // to be sure... let's get again the reference of the question counter and the number of questions
         questionCounter = quizViewModel.getQuestionCounter();
+        Log.w("QuizActivity:","questionCounter:"+questionCounter);
         numberOfQuestions = quizViewModel.getNumberOfQuestions();
 
         if(questionCounter < numberOfQuestions) {
@@ -149,7 +160,6 @@ public class QuizActivity extends AppCompatActivity {
         }else{
             finishQuiz();
         }
-
     }
 
 
@@ -168,60 +178,43 @@ public class QuizActivity extends AppCompatActivity {
 
 
 
-    private void checkAnswer() {
-        answered = true;
-        RadioButton rbSelected = findViewById(rbGroup.getCheckedRadioButtonId());
-        int answerNr = rbGroup.indexOfChild(rbSelected) + 1;
-        if(answerNr == 1){
-            if(rb1.getText().toString().equals(correctAnswer)){
-                score++;
-                textViewScore.setText("Score: " + score);
-            }
-        }else if(answerNr == 2){
-            if(rb2.getText().toString().equals(correctAnswer)){
-                score++;
-                textViewScore.setText("Score: " + score);
-            }
-        }else if(answerNr == 3){
-            if(rb3.getText().toString().equals(correctAnswer)){
-                score++;
-                textViewScore.setText("Score: " + score);
-            }
-        }else if(answerNr == 4){
-            if(rb4.getText().toString().equals(correctAnswer)){
-                score++;
-                textViewScore.setText("Score: " + score);
-            }
+
+    private void updateScore(){
+        if(rbSelected.getText().toString().equals(correctAnswer)){
+            score++;
+            textViewScore.setText("Score: " + score);
         }
-        showSolution(answerNr);
     }
 
 
 
 
-    private void showSolution(int answerNr) {
-        rb1.setTextColor(Color.RED);
-        rb2.setTextColor(Color.RED);
-        rb3.setTextColor(Color.RED);
-        rb4.setTextColor(Color.RED);
-        switch (answerNr) {
-            case 1:
-                rb1.setTextColor(Color.GREEN);
-                textViewQuestion.setText("Answer 1 is correct");
-                break;
-            case 2:
-                rb2.setTextColor(Color.GREEN);
-                textViewQuestion.setText("Answer 2 is correct");
-                break;
-            case 3:
-                rb3.setTextColor(Color.GREEN);
-                textViewQuestion.setText("Answer 3 is correct");
-                break;
-            case 4:
-                rb4.setTextColor(Color.GREEN);
-                textViewQuestion.setText("Answer 4 is correct");
-                break;
+    private void showSolution() {
+
+        // case: correct
+        if(rbSelected.getText().toString().equals(correctAnswer)){
+            rbSelected.setTextColor(Color.GREEN);
+            return;
         }
+        // case: incorrect
+        rbSelected.setTextColor(Color.RED);
+        rbCorrect = findCorrectRb();
+        rbCorrect.setTextColor(Color.GREEN);
+
+    }
+
+    private RadioButton findCorrectRb(){
+        RadioButton temp;
+        for (int i = 0; i < rbGroup.getChildCount(); i++) {
+            temp = findViewById(rbGroup.getChildAt(i).getId());
+            if(temp.getText().toString().equals(correctAnswer)){
+                return temp;
+            }
+        }
+        return null;
+    }
+
+    private void updateButton(){
         if (questionCounter < numberOfQuestions) {
             buttonConfirmNext.setText("Next");
         } else {

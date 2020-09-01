@@ -1,5 +1,6 @@
 package com.waldo.notesbites;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
@@ -15,6 +16,7 @@ public class QuizQuestion {
     private int quizQuestionID;
     private String question;
     private int priority;
+    @ColumnInfo(name = "belongingQuizID")
     private int belongingQuizID;
     private String option1;
     private String option2;

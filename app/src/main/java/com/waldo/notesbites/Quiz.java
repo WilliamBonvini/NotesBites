@@ -1,5 +1,6 @@
 package com.waldo.notesbites;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
@@ -13,6 +14,7 @@ import static androidx.room.ForeignKey.CASCADE;
         childColumns = "belongingModuleID",
         onDelete = CASCADE))
 public class Quiz {
+    @ColumnInfo(name = "quizID")
     @PrimaryKey(autoGenerate = true)
     private int quizID;
     private int belongingModuleID;
