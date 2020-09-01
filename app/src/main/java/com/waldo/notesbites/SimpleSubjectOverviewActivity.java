@@ -2,6 +2,7 @@ package com.waldo.notesbites;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -44,11 +45,13 @@ public class SimpleSubjectOverviewActivity extends AppCompatActivity {
 
                 // Add up button
                 ActionBar actionBar = getSupportActionBar();
+                assert actionBar != null;
                 actionBar.setDisplayHomeAsUpEnabled(true);
 
                 // populate description/overview
                 TextView overviewView = findViewById(R.id.simple_overview_text);
                 overviewView.setText(subject.getOverview());
+                overviewView.setMovementMethod(new ScrollingMovementMethod());
             }
 
         });
@@ -71,6 +74,7 @@ public class SimpleSubjectOverviewActivity extends AppCompatActivity {
                 sb.append(".");
 
                 moduleNamesTextView.setText(sb);
+                moduleNamesTextView.setMovementMethod(new ScrollingMovementMethod());
 
             }
         });
