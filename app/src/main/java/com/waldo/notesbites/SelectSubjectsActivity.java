@@ -26,14 +26,14 @@ public class SelectSubjectsActivity extends AppCompatActivity{
         super.onCreate((savedInstanceState));
         setContentView(R.layout.activity_select_subjects);
 
-        TextView title = findViewById(R.id.title);
-        //blink animation
-        Animation anim = new AlphaAnimation(0.8f, 1.0f);
-        anim.setDuration(500); //You can manage the blinking time with this parameter
-        anim.setStartOffset(20);
-        anim.setRepeatMode(Animation.REVERSE);
-        anim.setRepeatCount(Animation.INFINITE);
-        title.startAnimation(anim);
+//        TextView title = findViewById(R.id.title);
+//        //blink animation
+//        Animation anim = new AlphaAnimation(0.8f, 1.0f);
+//        anim.setDuration(500); //You can manage the blinking time with this parameter
+//        anim.setStartOffset(20);
+//        anim.setRepeatMode(Animation.REVERSE);
+//        anim.setRepeatCount(Animation.INFINITE);
+//        title.startAnimation(anim);
 
         final RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -78,30 +78,8 @@ public class SelectSubjectsActivity extends AppCompatActivity{
     }
 
     public void onClickConfirmSelectedSubjects(View view) throws InterruptedException {
-        final Button button = findViewById(R.id.button_confirm);
-        final Animation myAnim = AnimationUtils.loadAnimation(this, R.anim.bounce);
-
-        myAnim.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                button.setBackgroundResource(R.color.colorAccent);
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                button.setBackgroundResource(R.color.cardview_light_background);
-                Intent intent = new Intent(SelectSubjectsActivity.this,SignInActivity.class);
-                startActivity(intent);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-        button.startAnimation(myAnim);
-
-
+        Intent intent = new Intent(SelectSubjectsActivity.this,SignInActivity.class);
+        startActivity(intent);
     }
 
 
