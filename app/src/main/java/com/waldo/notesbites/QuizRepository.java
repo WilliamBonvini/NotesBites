@@ -59,6 +59,22 @@ public class QuizRepository {
         return quizDao.getQuizIDAndNumberOfQuestionsByModuleID(moduleID);
     }
 
+    public LiveData<Integer> getCorrectQuestionsByModuleID(int moduleID) {
+        return quizDao.getCorrectQuestionsByModuleID(moduleID);
+    }
+
+    public void updateCorrectQuestionsByModuleID(int moduleID, int highscoreNew) {
+        new UpdateCorrectQuestionsByModuleIDAsyncTask(quizDao).execute(moduleID,highscoreNew);
+    }
+
+
+
+
+
+
+
+
+    /////////////////////////// ASYNC TASKS ////////////////////////////////
 
     private static class GetQuizQuestionsListByQuizIDAsyncTask extends AsyncTask<Integer, Void,List<QuizQuestion>>
     {
@@ -69,6 +85,25 @@ public class QuizRepository {
         @Override
         protected List<QuizQuestion> doInBackground(Integer... quizID) {
             return quizDao.getQuizQuestionsListByQuizID(quizID[0]);
+        }
+    }
+
+
+
+
+    private static class UpdateCorrectQuestionsByModuleIDAsyncTask extends AsyncTask<Integer, Void, Void> {
+        private QuizDao quizDao;
+
+
+
+        private UpdateCorrectQuestionsByModuleIDAsyncTask(QuizDao quizDao) {
+            this.quizDao = quizDao;
+        }
+
+        @Override
+        protected Void doInBackground(Integer... params) {
+            quizDao.updateCorrectQuestionsByModuleID(params[0],params[1]);
+            return null;
         }
     }
 

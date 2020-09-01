@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,23 +15,24 @@ import androidx.lifecycle.ViewModelProvider;
 
 public class StartingQuizActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_QUIZ = 1;
-    public static final String SHARED_PREFS = "sharedPrefs";
-    public static final String KEY_HIGHSCORE = "keyHighscore";
-    private TextView textViewHighscore;
-    private int highscore;
-    public int quizID;
-    public int moduleID;
+    public static final String EXTRA_MODULE_ID = "moduleID";
+    private TextView recordScoreTextView;
+    private int moduleID;
+    private int highestScore;
+    StartingQuizViewModel startingQuizViewModel;
+    Intent goToQuizIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.w("StartingQuizActivity","onCreaaaaaaaaaaaaaaate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting_quiz);
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
         Intent intent = getIntent();
-        moduleID = intent.getIntExtra("moduleID",0);
+        moduleID = intent.getIntExtra(EXTRA_MODULE_ID,0);
 
 
-        StartingQuizViewModel startingQuizViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(StartingQuizViewModel.class);
+        startingQuizViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(StartingQuizViewModel.class);
         startingQuizViewModel.getModuleNameByModuleID(moduleID).observe(this, new Observer<String>() {
             @Override
             public void onChanged(String moduleName) {
@@ -39,51 +41,56 @@ public class StartingQuizActivity extends AppCompatActivity {
             }
         });
 
-//        textViewHighscore = findViewById(R.id.text_view_highscore);
-//        loadHighscore();
-//        Button buttonStartQuiz = findViewById(R.id.button_start_quiz);
-//        buttonStartQuiz.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startQuiz();
-//            }
-//        });
-    }
-    public void startQuizActivity(View view) {
+        recordScoreTextView = findViewById(R.id.text_view_highscore);
+        loadHighscore();
+
+
         StartingQuizViewModel startingQuizViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(StartingQuizViewModel.class);
+
+        goToQuizIntent = new Intent(StartingQuizActivity.this, QuizActivity.class);
+        /**
+         * the following observer gets called even when the user does a better score in the quiz and clicks on "finish"
+         * this is because the observer was instantiated back when the user clicked on "start quiz"
+         * and it seems it stayed alive all this time.
+         */
         startingQuizViewModel.getQuizIDAndNumberOfQuestionsByModuleID(moduleID).observe(this, new Observer<QuizIDAndQuizQuestionCountTuple>() {
+
             @Override
             public void onChanged(QuizIDAndQuizQuestionCountTuple data) {
-                Intent intent = new Intent(StartingQuizActivity.this, QuizActivity.class);
-                intent.putExtra(QuizActivity.EXTRA_QUIZ_ID, data.getQuizID());
-                intent.putExtra(QuizActivity.EXTRA_NUM_QUESTIONS, data.getNumberOfQuestions());
-                startActivity(intent);
+                goToQuizIntent.putExtra(QuizActivity.EXTRA_QUIZ_ID, data.getQuizID());
+                goToQuizIntent.putExtra(QuizActivity.EXTRA_NUM_QUESTIONS, data.getNumberOfQuestions());
+
             }
         });
+
+    }
+
+
+    public void startQuizActivity(View view) {
+        startActivityForResult(goToQuizIntent,REQUEST_CODE_QUIZ);
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE_QUIZ) {
-            if (resultCode == RESULT_OK) {
-                int score = data.getIntExtra(QuizActivity.EXTRA_SCORE, 0);
-                if (score > highscore) {
-                    updateHighscore(score);
-                }
+        if (requestCode == REQUEST_CODE_QUIZ && resultCode == RESULT_OK) {
+            int score = data.getIntExtra(QuizActivity.EXTRA_SCORE, 1000);
+            if (score > highestScore) {
+                updateHighscore(score);
             }
         }
     }
     private void loadHighscore() {
-        SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        highscore = prefs.getInt(KEY_HIGHSCORE, 0);
-        textViewHighscore.setText("Highscore: " + highscore);
+        startingQuizViewModel.getCorrectQuestionsByModuleID(moduleID).observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer correctQuestions) {
+                highestScore = correctQuestions;
+                Log.w("StartingQuizActivity","entered loadHighScore");
+                recordScoreTextView.setText("Highscore: " + correctQuestions);
+
+            }
+        });
     }
     private void updateHighscore(int highscoreNew) {
-        highscore = highscoreNew;
-        textViewHighscore.setText("Highscore: " + highscore);
-        SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt(KEY_HIGHSCORE, highscore);
-        editor.apply();
+        startingQuizViewModel.updateCorrectQuestionsByModuleID(moduleID,highscoreNew);
     }
 }

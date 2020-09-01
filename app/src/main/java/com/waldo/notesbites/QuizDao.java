@@ -1,5 +1,7 @@
 package com.waldo.notesbites;
 
+import android.os.AsyncTask;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -59,10 +61,27 @@ public interface QuizDao {
     LiveData<QuizQuestion> getCurrentQuizQuestionByQuizIDAndPriority(int quizID, int priority);
 
 
-    @Query("SELECT quizID AS quizID, 2 AS numberOfQuestions " +
+    /*
+    @Query("SELECT quizID AS quizID, COUNT(*) AS numberOfQuestions " +
             "FROM quiz_table " +
             "WHERE belongingModuleID = :moduleID")
     LiveData<QuizIDAndQuizQuestionCountTuple> getQuizIDAndNumberOfQuestionsByModuleID(int moduleID);
+
+     */
+
+    @Query("SELECT DISTINCT quizID AS quizID, count(*) AS numberOfQuestions " +
+            "FROM quiz_table JOIN quiz_question_table ON quiz_table.quizID=quiz_question_table.belongingQuizID " +
+            "WHERE belongingModuleID = :moduleID " +
+            "GROUP BY quizID")
+    LiveData<QuizIDAndQuizQuestionCountTuple> getQuizIDAndNumberOfQuestionsByModuleID(int moduleID);
+
+    @Query("SELECT correctQuestions FROM quiz_table WHERE belongingModuleID = :moduleID")
+    LiveData<Integer> getCorrectQuestionsByModuleID(int moduleID);
+
+    @Query("UPDATE quiz_table SET correctQuestions = :highScoreNew WHERE belongingModuleID = :moduleID")
+    void updateCorrectQuestionsByModuleID(int moduleID, int highScoreNew);
+
+
 
 
     /*@Query("SELECT belongingQuizID,COUNT(*) FROM quiz_question_table WHERE belongingQuizID = (SELECT quizID FROM quiz_table WHERE belongingModuleID = :moduleID) GROUP BY belongingQuizID")

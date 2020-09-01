@@ -85,9 +85,9 @@ public class ModuleActivity extends AppCompatActivity {
   }
 
 
-  public void startQuizActivity (View view){
+  public void startStartingQuizActivity (View view){
     Intent intent = new Intent(ModuleActivity.this, StartingQuizActivity.class);
-    intent.putExtra("moduleID", moduleID);
+    intent.putExtra(StartingQuizActivity.EXTRA_MODULE_ID, moduleID);
     startActivity(intent);
   }
 

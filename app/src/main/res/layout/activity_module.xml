@@ -46,7 +46,7 @@
       android:layout_height="wrap_content"
       android:layout_gravity="center"
       android:src="@drawable/quiz_icon_2x"
-      android:onClick="startQuizActivity"/>
+      android:onClick="startStartingQuizActivity"/>
 
 
 </LinearLayout>

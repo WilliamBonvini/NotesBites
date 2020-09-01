@@ -51,6 +51,7 @@ public class QuizActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.w("QuizActivity","on creaaaaaaaaaaaaaaaaaaaaaaate");
 
 
         super.onCreate(savedInstanceState);
@@ -146,7 +147,7 @@ public class QuizActivity extends AppCompatActivity {
         Log.w("QuizActivity:","questionCounter:"+questionCounter);
         numberOfQuestions = quizViewModel.getNumberOfQuestions();
 
-        if(questionCounter < numberOfQuestions) {
+        if(questionCounter <= numberOfQuestions) {
             textViewQuestion.setText(currentQuestion.getQuestion());
             rb1.setText(currentQuestion.getOption1());
             rb2.setText(currentQuestion.getOption2());
@@ -227,6 +228,7 @@ public class QuizActivity extends AppCompatActivity {
         resultIntent.putExtra(EXTRA_SCORE, score);
         setResult(RESULT_OK, resultIntent);
         finish();
+        Log.w("ehi","ehi");
     }
     /*
     @Override

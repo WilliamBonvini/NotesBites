@@ -23,4 +23,13 @@ public class StartingQuizViewModel extends AndroidViewModel {
     public LiveData<QuizIDAndQuizQuestionCountTuple> getQuizIDAndNumberOfQuestionsByModuleID(int moduleID) {
         return quizRepository.getQuizIDAndNumberOfQuestionsByModuleID(moduleID);
     }
+
+
+    public LiveData<Integer> getCorrectQuestionsByModuleID(int moduleID) {
+        return quizRepository.getCorrectQuestionsByModuleID(moduleID);
+    }
+
+    public void updateCorrectQuestionsByModuleID(int moduleID,int highscoreNew) {
+        quizRepository.updateCorrectQuestionsByModuleID(moduleID,highscoreNew);
+    }
 }
