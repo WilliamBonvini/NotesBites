@@ -26,4 +26,8 @@ public interface QuizQuestionDao {
 
     @Query("SELECT * FROM quiz_question_table WHERE belongingQuizID = :quizID")
     LiveData<List<QuizQuestion>> getQuestionsByQuizID(int quizID);
+
+
+    @Query("SELECT * FROM quiz_question_table WHERE belongingQuizID=:quizID AND priority=:priority")
+    LiveData<QuizQuestion> getCurrentQuizQuestionByQuizIDAndPriority(int quizID, int priority);
 }

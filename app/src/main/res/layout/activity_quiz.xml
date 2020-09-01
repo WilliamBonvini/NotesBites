@@ -16,8 +16,10 @@
         android:id="@+id/text_view_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Score: 0"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+        android:layout_below="@+id/toolbar"/>
     <TextView
         android:id="@+id/text_view_question_count"
         android:layout_width="wrap_content"
