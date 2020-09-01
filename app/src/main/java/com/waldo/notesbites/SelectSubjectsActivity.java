@@ -78,7 +78,7 @@ public class SelectSubjectsActivity extends AppCompatActivity{
     }
 
     public void onClickConfirmSelectedSubjects(View view) throws InterruptedException {
-        Intent intent = new Intent(SelectSubjectsActivity.this,SignInActivity.class);
+        Intent intent = new Intent(SelectSubjectsActivity.this,GuestHomepageActivity.class);
         startActivity(intent);
     }
 

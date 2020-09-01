@@ -23,29 +23,26 @@
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:orientation="horizontal"
-       android:layout_alignParentBottom="true"
+       android:layout_below="@+id/image_logo"
        android:layout_centerHorizontal="true"
       >
-      <Button
+      <ImageButton
           android:id="@+id/btn_search"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
+          android:layout_width="@android:dimen/app_icon_size"
+          android:layout_height="@android:dimen/app_icon_size"
           android:text="@string/search_subjects"
           android:onClick="startSelectSubjectsActivity"
-          android:background="@drawable/button_shape"
+          android:background="@drawable/button_add"
           android:layout_marginTop="20dp"
-          android:layout_marginEnd="20dp"
+          android:layout_marginEnd="200dp"
+          android:src="@drawable/add_black"
           />
 
-      <Button
-          android:id="@+id/signIn"
+      <com.google.android.gms.common.SignInButton
+          android:id="@+id/sign_in_button"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginTop="20dp"
-          android:text="@string/signin"
-          android:onClick="startSignInActivity"
-          android:background="@drawable/button_shape"
-
           />
    </LinearLayout>
 
@@ -55,8 +52,8 @@
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        tools:listitem="@layout/fragment_guest_homepage_single_subject"
-       android:layout_below="@+id/image_logo"
-       android:layout_above="@+id/button_linear_layout"
+       android:layout_below="@+id/button_linear_layout"
+
        />
 
 
