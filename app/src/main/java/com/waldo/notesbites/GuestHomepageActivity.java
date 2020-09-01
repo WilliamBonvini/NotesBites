@@ -45,9 +45,9 @@ public class GuestHomepageActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle("Guest Homepage");
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        toolbar.setTitle("Guest Homepage");
+//        setSupportActionBar(toolbar);
 
         //final SelectSubjectAdapter adapter = new SelectSubjectAdapter();
         final GuestHomepageAdapter adapter = new GuestHomepageAdapter();

@@ -1,40 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".GuestHomepageActivity"
+    android:background="@drawable/background_gradient"
     >
 
-   <include layout="@layout/toolbar_main"
-       android:id="@+id/toolbar"/>
+   <ImageView
+       android:id="@+id/image_logo"
+       android:layout_width="100dp"
+       android:layout_height="100dp"
+       android:src="@drawable/logo_trasparent"
+       android:layout_centerHorizontal="true"
+       />
 
 
-   <Button
-       android:layout_width="match_parent"
+
+   <LinearLayout
+       android:id="@+id/button_linear_layout"
+       android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-      android:text="@string/search_subjects"
-      android:id="@+id/btn_search"
-      android:onClick="startSelectSubjectsActivity"/>
+       android:orientation="horizontal"
+       android:layout_alignParentBottom="true"
+       android:layout_centerHorizontal="true"
+      >
+      <Button
+          android:id="@+id/btn_search"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/search_subjects"
+          android:onClick="startSelectSubjectsActivity"
+          android:background="@drawable/button_shape"
+          android:layout_marginTop="20dp"
+          android:layout_marginEnd="20dp"
+          />
+
+      <Button
+          android:id="@+id/signIn"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="20dp"
+          android:text="@string/signin"
+          android:onClick="startSignInActivity"
+          android:background="@drawable/button_shape"
+
+          />
+   </LinearLayout>
 
 
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/guest_homepage_recycler_view"
-       android:layout_width="match_parent"
-       android:layout_height="300dp"
-       tools:listitem="@layout/fragment_guest_homepage_single_subject"
-       />
-
-
-   <Button
-       android:id="@+id/signIn"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_marginTop="20dp"
-       android:text="@string/signin"
-       android:onClick="startSignInActivity"
+       tools:listitem="@layout/fragment_guest_homepage_single_subject"
+       android:layout_below="@+id/image_logo"
+       android:layout_above="@+id/button_linear_layout"
        />
 
 
-</LinearLayout>
+
+
+
+</RelativeLayout>
