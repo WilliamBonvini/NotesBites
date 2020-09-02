@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/close_button"
             android:background="@null"
-            android:onClick="startCorrectHomepage"/>
+            android:onClick="startCorrectModule"/>
         <TextView
             android:id="@+id/text_view_score"
             android:layout_width="wrap_content"

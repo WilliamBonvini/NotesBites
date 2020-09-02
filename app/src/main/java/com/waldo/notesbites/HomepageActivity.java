@@ -240,10 +240,8 @@ public class HomepageActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void startPersonalAreaActivity(View view) {
-        Intent intent = new Intent(HomepageActivity.this, PersonalAreaActivity.class);
-        startActivity(intent);
-    }
+
+
 
     public void startSubjectOverviewActivity(View view) {
         Intent intent = new Intent(HomepageActivity.this,SubjectOverviewActivity.class);

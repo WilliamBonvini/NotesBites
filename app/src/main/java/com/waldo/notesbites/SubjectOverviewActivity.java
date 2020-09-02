@@ -27,16 +27,15 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+
 import java.util.List;
 import java.util.Objects;
 
 
 public class SubjectOverviewActivity extends AppCompatActivity {
   public static final String EXTRA_SUBJECTID = "subject ID";
-  String subjectTitleText;
-  String subjectDescriptionText;
-  int subjectPhotoID;
-  private String subject;
 
 
 
@@ -47,6 +46,9 @@ public class SubjectOverviewActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     Intent intent = getIntent();
     int subjectID = Objects.requireNonNull(intent.getExtras()).getInt(SubjectOverviewActivity.EXTRA_SUBJECTID);
+
+    setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
+
 
 
 
@@ -106,7 +108,42 @@ public class SubjectOverviewActivity extends AppCompatActivity {
     intent.putExtra(ModuleActivity.EXTRA_MODULEID,view.getId());
     startActivity(intent);
   }
-}
+
+
+
+
+
+
+
+
+  @Override
+  public void onBackPressed() {
+    // Check for existing Google Sign In account, if the user is already signed in
+    // the GoogleSignInAccount will be non-null.
+    GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+    Intent intent;
+    if (account == null) {
+      intent = new Intent(SubjectOverviewActivity.this, GuestHomepageActivity.class);
+    }else {
+      intent = new Intent(SubjectOverviewActivity.this, HomepageActivity.class);
+    }
+    super.onBackPressed();
+    startActivity(intent);
+  }
+
+    /*
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed();
+        return true;
+    }
+     */
+
+  }
+
+
+
+
 
 
 /*

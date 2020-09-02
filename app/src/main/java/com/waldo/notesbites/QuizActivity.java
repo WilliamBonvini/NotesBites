@@ -263,9 +263,7 @@ public class QuizActivity extends AppCompatActivity {
         rb.setChecked(true);
     }
 
-    public void startCorrectHomepage(View view) {
-
-
+    public void startCorrectModule(View view) {
 
         Intent intent = new Intent(QuizActivity.this, ModuleActivity.class);
         intent.putExtra(ModuleActivity.EXTRA_MODULEID,quizViewModel.getModuleID());
