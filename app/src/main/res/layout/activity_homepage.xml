@@ -124,6 +124,7 @@
                 android:text="@string/go_to_modules"
                 android:onClick="startSubjectOverviewActivity"
                 android:visibility="invisible"
+                android:layout_gravity="center"
                 />
         </LinearLayout>
     </LinearLayout>

@@ -183,7 +183,7 @@ public class HomepageActivity extends AppCompatActivity {
                             2f, 1f, // Start and end values for the X axis scaling
                             1f, 1f); // Start and end values for the Y axis scaling
                     anim.setFillAfter(true); // Needed to keep the result of the animation
-                    anim.setDuration(1000);
+                    anim.setDuration(300);
                     recyclerView.startAnimation(anim);
                     anim.setAnimationListener(new Animation.AnimationListener() {
                         @Override
