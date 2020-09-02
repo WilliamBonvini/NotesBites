@@ -69,6 +69,8 @@ public class SubjectOverviewActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(subjectName);
         setSupportActionBar(toolbar);
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.setDisplayHomeAsUpEnabled(true);
       }
     });
 
