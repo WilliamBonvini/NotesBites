@@ -32,11 +32,8 @@ public class HomepageSubjectsAdapter extends RecyclerView.Adapter<HomepageSubjec
         holder.textViewTitle.setText(currentSubject.getName());
         holder.textViewDescription.setText(currentSubject.getDescription());
         boolean selected = currentSubject.isSelected();
-        if(selected){
-            holder.homepageLayout.setBackgroundResource(R.color.colorAccent);
-        }else{
-            holder.homepageLayout.setBackgroundResource(R.color.cardview_light_background);
-        }
+
+        holder.homepageLayout.setBackgroundResource(R.color.nb_white);
 
     }
 

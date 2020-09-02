@@ -109,6 +109,7 @@ public class HomepageActivity extends AppCompatActivity {
         final LinearLayout.LayoutParams lay = (LinearLayout.LayoutParams) recyclerView.getLayoutParams();
         lay.weight = 4f;
         recyclerView.setLayoutParams(lay);
+        //recyclerView.setBackgroundColor(getResources().getColor(R.color.nb_white));
 
         mySubjecy.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
@@ -118,6 +119,7 @@ public class HomepageActivity extends AppCompatActivity {
             }
 
         });
+
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -177,6 +179,7 @@ public class HomepageActivity extends AppCompatActivity {
                 //homepageViewModel.setRecentModulesBySubjectID(subject.getSubjectID());
 
 
+
                 //half for subjects and half for modules
                 if(lay.weight != 2f){
                     Animation anim = new ScaleAnimation(
@@ -212,6 +215,8 @@ public class HomepageActivity extends AppCompatActivity {
 
                 lay.weight = 2f;
                 recyclerView.setLayoutParams(lay);
+//                LinearLayout subjectLayout = findViewById(R.id.guest_homepage_linear_layout);
+//                subjectLayout.setBackgroundResource(R.color.nb_color);
 
 
 

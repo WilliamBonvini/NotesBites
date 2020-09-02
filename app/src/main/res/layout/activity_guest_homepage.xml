@@ -9,10 +9,6 @@
     android:weightSum="4"
     >
 
-
-
-
-
    <LinearLayout
        android:id="@+id/button_linear_layout"
        android:layout_width="wrap_content"
