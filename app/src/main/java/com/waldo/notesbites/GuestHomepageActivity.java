@@ -122,7 +122,7 @@ public class GuestHomepageActivity extends AppCompatActivity {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             // Signed in successfully, show authenticated UI.
-            startActivity(new Intent(GuestHomepageActivity.this, SignInPart2Activity.class));
+            startActivity(new Intent(GuestHomepageActivity.this, HomepageActivity.class));
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
@@ -136,7 +136,7 @@ public class GuestHomepageActivity extends AppCompatActivity {
         // the GoogleSignInAccount will be non-null.
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if(account != null) {
-            startActivity(new Intent(GuestHomepageActivity.this, SignInPart2Activity.class));
+            startActivity(new Intent(GuestHomepageActivity.this, HomepageActivity.class));
         }
         super.onStart();
     }

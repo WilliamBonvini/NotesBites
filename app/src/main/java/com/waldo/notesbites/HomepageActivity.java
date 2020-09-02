@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
@@ -15,9 +16,17 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
 import java.util.List;
 
 public class HomepageActivity extends AppCompatActivity {
+
+    GoogleSignInClient mGoogleSignInClient;
 
 
     public static String PERSON_NAME = "PERSON_NAME";
@@ -25,13 +34,27 @@ public class HomepageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        //setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
-        Intent intent = getIntent();
-        PERSON_NAME = (String) intent.getExtras().get(PERSON_NAME);
+//        Intent intent = getIntent();
+//        PERSON_NAME = (String) intent.getExtras().get(PERSON_NAME);
 
-        TextView welcome_text = findViewById(R.id.welcome_text);
-        welcome_text.setText("welcome " + PERSON_NAME);
+
+        Button sign_out = findViewById(R.id.btn_logOut);
+        // Configure sign-in to request the user's ID, email address, and basic
+        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        // Build a GoogleSignInClient with the options specified by gso.
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        sign_out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signOut();
+            }
+        });
 
         // create recycler view and adapter for the subjects
         final RecyclerView recyclerView = findViewById(R.id.homepage_subjects_recycler_view);
@@ -132,5 +155,17 @@ public class HomepageActivity extends AppCompatActivity {
         Log.w("subject id vale:",String.valueOf(view.getId()));
         intent.putExtra(SubjectOverviewActivity.EXTRA_SUBJECTID,view.getId());
         startActivity(intent);
+    }
+
+    private void signOut() {
+        mGoogleSignInClient.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(HomepageActivity.this,"Successfully signed out",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(HomepageActivity.this, GuestHomepageActivity.class));
+                        finish();
+                    }
+                });
     }
 }
