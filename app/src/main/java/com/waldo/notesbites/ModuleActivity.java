@@ -42,17 +42,20 @@ public class ModuleActivity extends AppCompatActivity {
       public void onChanged(final Module module) {
         // find UI components!
         Toolbar toolbar = findViewById(R.id.toolbar);
-        TextView moduleDescriptionTextView = findViewById(R.id.module_description);
+        TextView moduleNameTextView = findViewById(R.id.module_title);
+        //TextView moduleDescriptionTextView = findViewById(R.id.module_description);
         ImageButton videoContentImageButton = findViewById(R.id.videoContentImageButton);
 
         // populate description!
-        moduleDescriptionTextView.setText(module.getDescription());
+        //moduleDescriptionTextView.setText(module.getDescription());
 
         // set toolbar and add up button!
-        toolbar.setTitle(module.getName());
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        
+        // set module name!
+        moduleNameTextView.setText(module.getName());
 
         // set Youtube url!
         videoContentImageButton.setOnClickListener(new View.OnClickListener() {

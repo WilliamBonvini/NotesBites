@@ -17,6 +17,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -114,7 +115,7 @@ public class SubjectOverviewActivity extends AppCompatActivity {
 
 
 
-
+/*
 
   @Override
   public void onBackPressed() {
@@ -129,6 +130,25 @@ public class SubjectOverviewActivity extends AppCompatActivity {
     }
     super.onBackPressed();
     startActivity(intent);
+  }
+
+*/
+  @Override
+  public boolean onKeyDown(int keyCode, KeyEvent event)
+  {
+    //replaces the default 'Back' button action
+    if(keyCode==KeyEvent.KEYCODE_BACK)   {
+      GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+      Intent intent;
+      if (account == null) {
+        intent = new Intent(SubjectOverviewActivity.this, GuestHomepageActivity.class);
+      }else {
+        intent = new Intent(SubjectOverviewActivity.this, HomepageActivity.class);
+      }
+      startActivity(intent);
+      finish();
+    }
+    return true;
   }
 
     /*
