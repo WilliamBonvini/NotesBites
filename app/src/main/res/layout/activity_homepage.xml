@@ -7,6 +7,7 @@
     tools:context=".HomepageActivity"
     android:background="@drawable/background_gradient"
     android:weightSum="12"
+    android:id="@+id/linear_layout_general"
     >
 
 
@@ -50,15 +51,7 @@
                 android:layout_weight="2"
 
                 />
-            <ImageButton
-                android:id="@+id/btn_personal_area"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:onClick="startPersonalAreaActivity"
-                android:background="@drawable/button_add"
-                android:src="@drawable/person_black"
-                android:layout_weight="3"
-                />
+
         </LinearLayout>
 
     </LinearLayout>
@@ -69,12 +62,12 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:weightSum="2"
+        android:weightSum="4"
         >
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:id="@+id/my_subjects"
             android:text="My Subjects"
             android:textSize="25sp"
@@ -83,7 +76,7 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:layout_height="wrap_content"
             android:id="@+id/recent_activities"
             android:text="Recent Activities"
@@ -99,18 +92,18 @@
         android:layout_height="0dp"
         android:layout_weight="8"
         android:orientation="horizontal"
-        android:weightSum="2"
+        android:weightSum="4"
         >
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/homepage_subjects_recycler_view"
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:layout_height="match_parent"
             tools:listitem="@layout/fragment_guest_homepage_single_subject"
             />
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:layout_height="match_parent"
             android:weightSum="7"
             android:orientation="vertical"

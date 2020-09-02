@@ -1,14 +1,22 @@
 package com.waldo.notesbites;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
@@ -30,6 +38,7 @@ public class HomepageActivity extends AppCompatActivity {
 
 
     public static String PERSON_NAME = "PERSON_NAME";
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +47,44 @@ public class HomepageActivity extends AppCompatActivity {
 
 //        Intent intent = getIntent();
 //        PERSON_NAME = (String) intent.getExtras().get(PERSON_NAME);
+        final LinearLayout linearLayout = findViewById(R.id.linear_layout_general);
+        ImageView logo = findViewById(R.id.image_logo);
+        logo.setOnTouchListener(new OnSwipeTouchListener(this) {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onSwipeLeft() {
+                linearLayout.setBackground(getDrawable(R.drawable.background_gradient2));
+            }
+
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void onSwipeRight() {
+                linearLayout.setBackground(getDrawable(R.drawable.background_gradient));
+            }
+        });
+
+        final TextView mySubjecy = findViewById(R.id.my_subjects);
+        final LinearLayout linearLayout_middle = findViewById(R.id.linear_layout_middle);
+        LinearLayout linearLayout_bottom = findViewById(R.id.linear_layout_bottom);
+
+//        mySubjecy.setOnTouchListener(new OnSwipeTouchListener(this) {
+//            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+//            @Override
+//            public void onSwipeLeft() {
+//                LinearLayout.LayoutParams lay = (LinearLayout.LayoutParams) mySubjecy.getLayoutParams();
+//                lay.weight = 1f;
+//                mySubjecy.setLayoutParams(lay);
+//            }
+//
+//            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+//            @Override
+//            public void onSwipeRight() {
+//                LinearLayout.LayoutParams lay = (LinearLayout.LayoutParams) mySubjecy.getLayoutParams();
+//                lay.weight = 2f;
+//                mySubjecy.setLayoutParams(lay);
+//            }
+//        });
+
 
 
         Button sign_out = findViewById(R.id.btn_logOut);
@@ -58,6 +105,21 @@ public class HomepageActivity extends AppCompatActivity {
 
         // create recycler view and adapter for the subjects
         final RecyclerView recyclerView = findViewById(R.id.homepage_subjects_recycler_view);
+        //make recycler view subject take all screen
+        final LinearLayout.LayoutParams lay = (LinearLayout.LayoutParams) recyclerView.getLayoutParams();
+        lay.weight = 4f;
+        recyclerView.setLayoutParams(lay);
+
+        mySubjecy.setOnTouchListener(new OnSwipeTouchListener(this) {
+            @Override
+            public void onSwipeRight() {
+                lay.weight = 4f;
+                recyclerView.setLayoutParams(lay);
+            }
+
+        });
+
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         final HomepageSubjectsAdapter adapter_subjects = new HomepageSubjectsAdapter();
@@ -106,21 +168,54 @@ public class HomepageActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
         //TODO: when we rotate the phone it says "welcome null" --> include it in a observe(), and the problem is solved
 
 
         adapter_subjects.setOnItemClickListener(new HomepageSubjectsAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(Subject subject) {
+            public void onItemClick(final Subject subject) {
                 //homepageViewModel.setRecentModulesBySubjectID(subject.getSubjectID());
-                goToSubjectsModulesButton.setId(subject.getSubjectID());                    //  masterpiece
-                homepageViewModel.updateRecentModulesMediator(subject.getSubjectID());
-                homepageViewModel.setSubjectJustPressed(true);
+
+
+                //half for subjects and half for modules
+                if(lay.weight != 2f){
+                    Animation anim = new ScaleAnimation(
+                            2f, 1f, // Start and end values for the X axis scaling
+                            1f, 1f); // Start and end values for the Y axis scaling
+                    anim.setFillAfter(true); // Needed to keep the result of the animation
+                    anim.setDuration(1000);
+                    recyclerView.startAnimation(anim);
+                    anim.setAnimationListener(new Animation.AnimationListener() {
+                        @Override
+                        public void onAnimationStart(Animation animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animation animation) {
+                            goToSubjectsModulesButton.setId(subject.getSubjectID());                    //  masterpiece
+                            homepageViewModel.updateRecentModulesMediator(subject.getSubjectID());
+                            homepageViewModel.setSubjectJustPressed(true);
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animation animation) {
+
+                        }
+                    });
+                }
+                else{
+                    goToSubjectsModulesButton.setId(subject.getSubjectID());                    //  masterpiece
+                    homepageViewModel.updateRecentModulesMediator(subject.getSubjectID());
+                    homepageViewModel.setSubjectJustPressed(true);
+                }
+
+                lay.weight = 2f;
+                recyclerView.setLayoutParams(lay);
+
+
+
+
 
 
 
