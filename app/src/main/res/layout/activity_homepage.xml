@@ -8,6 +8,13 @@
     <include layout="@layout/toolbar_main"
         android:id="@+id/toolbar" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_logOut"
+        android:text="logOut"
+        />
+
     <TextView
         android:id="@+id/homepage_text"
         android:layout_width="wrap_content"
