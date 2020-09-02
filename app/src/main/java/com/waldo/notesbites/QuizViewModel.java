@@ -24,19 +24,22 @@ public class QuizViewModel extends AndroidViewModel{
     private LiveData<QuizQuestion> currentQuizQuestion;
 
 
+    private int moduleID;
     private int quizID;
     private int questionCounter;
     private int oldQuestionCounter;
 
 
-    // @Inject tells Dagger how to create instances of LoginViewModel
-    @Inject
-    public QuizViewModel(@NonNull Application application, int quizID,int numberOfQuestions) {
+
+    public QuizViewModel(@NonNull Application application, int moduleID, int quizID,int numberOfQuestions) {
         super(application);
 
         this.quizRepository = new QuizRepository(application);
 
         this.quizID = quizID;
+
+        this.moduleID = moduleID;
+
 
         this.oldQuestionCounter = 0;
 
@@ -86,6 +89,7 @@ public class QuizViewModel extends AndroidViewModel{
 
 
 
+    public int getModuleID(){ return moduleID;}
 
     public int getQuestionCounter() {
         return questionCounter;

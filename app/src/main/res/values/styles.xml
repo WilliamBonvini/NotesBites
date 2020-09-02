@@ -7,4 +7,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="nb_radio_button" parent="Theme.AppCompat.Light">
+        <!--<item name="colorControlNormal">@color/nb_white</item>-->
+        <item name="colorControlActivated">@color/nb_color</item>
+    </style>
+
+
 </resources>

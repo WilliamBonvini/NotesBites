@@ -57,6 +57,7 @@ public class StartingQuizActivity extends AppCompatActivity {
 
             @Override
             public void onChanged(QuizIDAndQuizQuestionCountTuple data) {
+                goToQuizIntent.putExtra(QuizActivity.EXTRA_MOD_ID,moduleID);
                 goToQuizIntent.putExtra(QuizActivity.EXTRA_QUIZ_ID, data.getQuizID());
                 goToQuizIntent.putExtra(QuizActivity.EXTRA_NUM_QUESTIONS, data.getNumberOfQuestions());
 

@@ -4,12 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A4B9BC"
+    android:background="@drawable/background_gradient"
     android:padding="16dp"
     tools:context="com.waldo.notesbites.StartingQuizActivity">
 
-    <include layout="@layout/toolbar_main"
-        android:id="@+id/toolbar"/>
+    <!--<include layout="@layout/toolbar_main"
+        android:id="@+id/toolbar"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"/>
 
     <TextView
         android:id="@+id/text_module_name"
@@ -18,9 +23,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:text="ModuleName"
-        android:textColor="@android:color/black"
+        android:textColor="@color/nb_color"
+        android:textStyle="bold"
         android:textSize="35sp"
-        android:layout_below="@id/toolbar"/>
+        />
     <TextView
         android:id="@+id/text_view_highscore"
         android:layout_width="wrap_content"
@@ -34,7 +40,9 @@
         android:id="@+id/button_start_quiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/nb_color"
         android:layout_centerInParent="true"
         android:text="@string/start_quiz"
+        android:backgroundTint="@color/nb_white"
         android:onClick="startQuizActivity"/>
 </RelativeLayout>

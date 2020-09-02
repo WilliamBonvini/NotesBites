@@ -28,6 +28,7 @@ public class QuizActivity extends AppCompatActivity {
     public static final String EXTRA_SCORE = "extraScore";
     public static final String EXTRA_NUM_QUESTIONS = "numQuestions";
     public static final String EXTRA_QUIZ_ID = "quizID";
+    public static final String EXTRA_MOD_ID = "moduleID";
     private TextView textViewQuestion;
     private TextView textViewScore;
     private TextView textViewQuestionCount;
@@ -68,6 +69,7 @@ public class QuizActivity extends AppCompatActivity {
 
         // recover the id of the quiz relative to the selected module
         Intent intent = getIntent();
+        final int moduleID = intent.getIntExtra(QuizActivity.EXTRA_MOD_ID,0);
         final int quizID = intent.getIntExtra(QuizActivity.EXTRA_QUIZ_ID,0);
         final int numOfQuestions = intent.getIntExtra(QuizActivity.EXTRA_NUM_QUESTIONS,0);
 
@@ -92,7 +94,7 @@ public class QuizActivity extends AppCompatActivity {
         resetColorOfOptions();
 
         // Get instance of view model, passing the quizID
-        this.quizViewModel = new ViewModelProvider(this, new MyQuizViewModelFactory(this.getApplication(),quizID,numOfQuestions)).get(QuizViewModel.class);
+        this.quizViewModel = new ViewModelProvider(this, new MyQuizViewModelFactory(this.getApplication(),moduleID,quizID,numOfQuestions)).get(QuizViewModel.class);
 
 
 
@@ -172,7 +174,7 @@ public class QuizActivity extends AppCompatActivity {
             rb3.setText(currentQuestion.getOption3());
             rb4.setText(currentQuestion.getOption4());
             correctAnswer = currentQuestion.getCorrectOption();
-            textViewQuestionCount.setText("Question: " + questionCounter + "/" + numberOfQuestions);
+            textViewQuestionCount.setText("Question " + questionCounter + "/" + numberOfQuestions);
             answered = false;
             buttonConfirmNext.setText("Confirm");
 
@@ -259,6 +261,15 @@ public class QuizActivity extends AppCompatActivity {
         RadioButton rb = (RadioButton)findViewById(view.getId());
         checkedRbID = rb.getId();
         rb.setChecked(true);
+    }
+
+    public void startCorrectHomepage(View view) {
+
+
+
+        Intent intent = new Intent(QuizActivity.this, ModuleActivity.class);
+        intent.putExtra(ModuleActivity.EXTRA_MODULEID,quizViewModel.getModuleID());
+        startActivity(intent);
     }
     /*
     @Override
