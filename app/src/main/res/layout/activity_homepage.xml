@@ -1,137 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:orientation="vertical"
+    tools:context=".HomepageActivity"
+    android:background="@drawable/background_gradient"
+    android:weightSum="12"
+    >
 
 
-    <include layout="@layout/toolbar_main"
-        android:id="@+id/toolbar" />
-
-    <Button
+    <LinearLayout
+        android:id="@+id/linear_layout_top"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_logOut"
-        android:text="logOut"
-        />
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        >
+        <ImageButton
+            android:id="@+id/btn_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/search_subjects"
+            android:onClick="startSelectSubjectsActivity"
+            android:background="@drawable/button_add"
+            android:src="@drawable/add_black"
+            android:layout_weight="2"
+            />
+        <ImageView
+            android:id="@+id/image_logo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/logo_trasparent"
+            android:layout_weight="6"
+            />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:weightSum="5"
+            >
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:id="@+id/btn_logOut"
+                android:text="logOut"
+                android:layout_weight="2"
 
-    <TextView
-        android:id="@+id/homepage_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="NotesBites"
-        android:layout_below="@id/toolbar"
-        android:layout_centerHorizontal="true"
-        android:textSize="50dp"
-        android:layout_marginTop="30dp"
-        android:textColor="@color/colorPrimary"
-        />
+                />
+            <ImageButton
+                android:id="@+id/btn_personal_area"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:onClick="startPersonalAreaActivity"
+                android:background="@drawable/button_add"
+                android:src="@drawable/person_black"
+                android:layout_weight="3"
+                />
+        </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/welcome_text"
-        android:layout_below="@id/homepage_text"
-        android:layout_centerHorizontal="true"
-        android:textSize="20sp"
-        android:text="welcome back"
-        android:layout_marginTop="20dp"
-        />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/search_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/welcome_text"
-        android:layout_marginTop="20dp"
-        android:text="Search Subjects"
-        android:layout_toStartOf="@id/divider"
-        android:layout_alignParentStart="true"
-        android:onClick="startSelectSubjectsActivity"
-        />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="5dp"
-        android:layout_height="match_parent"
-        android:background="?android:attr/listDivider"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/welcome_text"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/personal_area_button"
-        android:layout_below="@id/welcome_text"
-        android:layout_marginTop="20dp"
-        android:layout_toEndOf="@id/divider"
-        android:layout_alignParentEnd="true"
-        android:text="@string/personal_area"
-        android:onClick="startPersonalAreaActivity"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/my_subjects"
-        android:text="My Subjects"
-        android:layout_below="@id/search_button"
-        android:textSize="25sp"
-        android:layout_marginTop="30dp"
-        android:layout_toStartOf="@id/divider"
-        android:layout_alignParentStart="true"
-        android:textAlignment="center"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/recent_activities"
-        android:text="Recent Activities"
-        android:layout_below="@id/personal_area_button"
-        android:textSize="25sp"
-        android:layout_marginTop="30dp"
-        android:layout_toEndOf="@id/divider"
-        android:textAlignment="center"
-        android:layout_alignParentEnd="true"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/homepage_subjects_recycler_view"
+    <LinearLayout
+        android:id="@+id/linear_layout_middle"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        tools:listitem="@layout/fragment_guest_homepage_single_subject"
-        android:layout_below="@+id/my_subjects"
-        android:layout_toStartOf="@id/divider"
-        android:layout_marginTop="15dp"
-        />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/my_subjects"
+            android:text="My Subjects"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/homepage_recent_module_recycler_view"
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/recent_activities"
+            android:text="Recent Activities"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_layout_bottom"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        tools:listitem="@layout/fragment_recent_modules"
-        android:layout_below="@+id/recent_activities"
-        android:layout_toEndOf="@id/divider"
-        android:layout_marginTop="15dp"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/homepage_go_to_subjects_modules_button"
-        android:layout_below="@id/homepage_recent_module_recycler_view"
-        android:layout_marginTop="20dp"
-        android:layout_toEndOf="@id/divider"
-        android:layout_alignParentEnd="true"
-        android:text="@string/go_to_modules"
-        android:onClick="startSubjectOverviewActivity"
-        android:visibility="invisible"
-        />
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/homepage_subjects_recycler_view"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/fragment_guest_homepage_single_subject"
+            />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:weightSum="7"
+            android:orientation="vertical"
+            >
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/homepage_recent_module_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_weight="6"
+                android:layout_height="0dp"
+                tools:listitem="@layout/fragment_recent_modules"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_next_shape"
+                android:id="@+id/homepage_go_to_subjects_modules_button"
+                android:text="@string/go_to_modules"
+                android:onClick="startSubjectOverviewActivity"
+                android:visibility="invisible"
+                />
+        </LinearLayout>
+    </LinearLayout>
 
-
-
-
-
-
-
-</RelativeLayout>
+</LinearLayout>

@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp">
+    android:layout_marginTop="1dp">
 
     <RelativeLayout
         android:id="@+id/recent_modules_relative_layout"
