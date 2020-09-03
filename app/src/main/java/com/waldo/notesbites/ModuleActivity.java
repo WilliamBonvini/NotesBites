@@ -53,7 +53,7 @@ public class ModuleActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-        
+
         // set module name!
         moduleNameTextView.setText(module.getName());
 
@@ -110,8 +110,6 @@ public class ModuleActivity extends AppCompatActivity {
 
 
     /*
-
-
     String belongingSubject = (String) intent.getExtras().get(EXTRA_SUBJECT_NAME);
     SQLiteOpenHelper databaseHelper = new DatabaseHelper(this);
     try {
@@ -122,22 +120,18 @@ public class ModuleActivity extends AppCompatActivity {
         // get the data from the only tuple you have retrieved
         moduleTitle = cursor.getString(0);
         String descriptionText = cursor.getString(1);
-
         // populate the belonging subject text view
         //TextView belongingSubjectTextView = (TextView) findViewById(R.id.belongingSubject);
         //belongingSubjectTextView.setText(belongingSubject);
-
         // set toolbar and add up button
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(belongingSubject + " - " + moduleTitle);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-
         // populate the module title
         //TextView moduleTitleTextView = (TextView)findViewById(R.id.module_title);
         //moduleTitleTextView.setText(moduleTitle);
-
         // populate the module description
         TextView moduleDescriptionTextView = (TextView) findViewById(R.id.module_description);
         moduleDescriptionTextView.setText(descriptionText);
@@ -148,23 +142,18 @@ public class ModuleActivity extends AppCompatActivity {
       Toast.makeText(this, "Database Unavailable", Toast.LENGTH_SHORT).show();
     }
   }
-
   public void startNotesActivity(View view){
     Intent intent = new Intent(ModuleActivity.this, NotesActivity.class);
     intent.putExtra(NotesActivity.MODULE_ID,moduleID);
     startActivity(intent);
   }
-
   public void startVideoContentActivity(View view) {
     startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://www.youtube.com/watch?v=jNQXAC9IVRw")));
   }
-
   public void startQuizActivity(View view){
     Intent intent = new Intent(ModuleActivity.this, StartingScreenActivity.class);
     startActivity(intent);
   }
-
-
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
@@ -172,11 +161,7 @@ public class ModuleActivity extends AppCompatActivity {
         onBackPressed();
         return true;
     }
-
     return(super.onOptionsItemSelected(item));
   }
-
-
 }
-
 */

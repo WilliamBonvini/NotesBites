@@ -16,14 +16,46 @@
         android:id="@+id/linear_layout"
         android:orientation="vertical"
         android:weightSum="10">
-        <ImageView
-            android:id="@+id/image_logo"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/logo_trasparent"
-            />
+            >
+            <ImageView
+                android:id="@+id/image_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/logo_trasparent"
+                />
+
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignEnd="@id/image_logo"
+                android:orientation="vertical"
+                android:weightSum="6">
+                <ImageButton
+                    android:id="@+id/button_confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_gravity="end"
+
+                    android:layout_marginVertical="30dp"
+                    android:background="@drawable/button_next_shape"
+                    android:onClick="onClickConfirmSelectedSubjects"
+                    android:src="@drawable/arrow_forward_black"
+                    android:layout_weight="3"
+
+                    />
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
 
 
 
@@ -31,11 +63,14 @@
             android:id="@+id/text_description"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="0.8"
             android:layout_below="@+id/image_logo"
             android:text="@string/select_subjects_message_2"
+            android:gravity="center_vertical"
+            android:layout_gravity="center"
             android:textAlignment="center"
-            android:textSize="10pt"
+            app:autoSizeTextType="uniform"
+            android:layout_marginVertical="15dp"
             />
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:id="@+id/cardView"
@@ -43,7 +78,6 @@
             android:layout_height="0dp"
             android:layout_weight="6"
             tools:context=".SelectSubjectsActivity"
-            android:layout_marginTop="15dp"
 
             >
 
@@ -61,20 +95,6 @@
     </LinearLayout>
 
 
-
-    <ImageButton
-        android:id="@+id/button_confirm"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:onClick="onClickConfirmSelectedSubjects"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/button_next_shape"
-        android:src="@drawable/arrow_forward_black"
-
-        />
 
 
 </LinearLayout>
