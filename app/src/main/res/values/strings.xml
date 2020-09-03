@@ -14,6 +14,6 @@
     <string name="signin">SignIn</string>
     <string name="personal_area">Personal Area</string>
     <string name="skip_sign_in">skip sign in</string>
-    <string name="start_quiz">Start Quiz</string>
-    <string name="go_to_modules">go to modules</string>
+    <string name="start_quiz">Start</string>
+    <string name="go_to_modules">all modules</string>
 </resources>
