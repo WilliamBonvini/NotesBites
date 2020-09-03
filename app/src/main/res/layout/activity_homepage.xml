@@ -28,7 +28,9 @@
             android:background="@drawable/button_add"
             android:src="@drawable/add_black"
             android:layout_weight="2"
-            android:layout_gravity="center"
+            android:layout_gravity="top"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="15dp"
             />
         <ImageView
             android:id="@+id/image_logo"
@@ -45,7 +47,9 @@
             android:layout_weight="2"
             android:src="@drawable/exit_to_app"
             android:background="@drawable/button_add"
-            android:layout_gravity="center"
+            android:layout_gravity="top"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
 
             />
 
@@ -104,26 +108,28 @@
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="match_parent"
-            android:weightSum="7"
+            android:weightSum="10"
             android:orientation="vertical"
             >
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/homepage_recent_module_recycler_view"
                 android:layout_width="match_parent"
-                android:layout_weight="6"
+                android:layout_weight="8"
                 android:layout_height="0dp"
                 tools:listitem="@layout/fragment_recent_modules"
                 />
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:background="@drawable/button_next_shape"
                 android:id="@+id/homepage_go_to_subjects_modules_button"
                 android:text="@string/go_to_modules"
                 android:onClick="startSubjectOverviewActivity"
                 android:visibility="invisible"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 />
         </LinearLayout>
     </LinearLayout>

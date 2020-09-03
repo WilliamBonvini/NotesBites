@@ -92,6 +92,7 @@
         android:scaleType="fitXY"
         android:background="@null"
         android:layout_weight="4"
+
         />
     <View android:layout_height="match_parent"
         android:layout_width="0dp"

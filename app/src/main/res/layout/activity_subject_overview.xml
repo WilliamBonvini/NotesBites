@@ -21,15 +21,15 @@
       android:layout_width="match_parent"
       android:layout_height="0dp"
       android:layout_weight="2"
-      android:layout_below="@id/toolbar"
-      android:textSize="20sp"/>
+      android:textSize="20sp"
+      android:layout_marginStart="15dp"
+      android:layout_marginEnd="15dp"/>
 
   <ImageView
       android:id="@+id/subject_image"
       android:layout_width="match_parent"
       android:layout_height="0dp"
       android:layout_weight="5"
-      android:layout_below="@id/subject_description"
       />
 
   <androidx.recyclerview.widget.RecyclerView
@@ -38,6 +38,5 @@
       android:layout_height="0dp"
       android:layout_weight="12"
       tools:listitem="@layout/fragment_subject_overview_activity"
-      android:layout_below="@+id/subject_image"
       />
 </LinearLayout>
