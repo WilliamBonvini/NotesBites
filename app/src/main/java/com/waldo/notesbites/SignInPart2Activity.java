@@ -40,7 +40,7 @@ public class SignInPart2Activity extends AppCompatActivity {
         setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
 
         sign_out = findViewById(R.id.log_out);
-        nameTV = findViewById(R.id.name);
+        nameTV = findViewById(R.id.overview_text);
         emailTV = findViewById(R.id.email);
         idTV = findViewById(R.id.id);
         photoIV = findViewById(R.id.photo);

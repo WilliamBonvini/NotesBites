@@ -73,6 +73,10 @@ public class SubjectsRepository {
         return subjectDao.getDescriptionFromID(subjectID);
     }
 
+    public LiveData<String> gerOverviewFromSubjectID(int subjectID) {
+        return subjectDao.getOverviewFromSubjectID(subjectID);
+    }
+
 
     /////////////////////////// ASYNC TASKS ////////////////////////////////////
 

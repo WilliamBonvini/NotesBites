@@ -43,6 +43,10 @@ public class SubjectOverviewViewModel extends AndroidViewModel {
         return subjectsRepository.getDescriptionFromSubjectID(subjectID);
     }
 
+    public LiveData<String> getOverviewFromSubjectID(int subjectID) {
+        return subjectsRepository.gerOverviewFromSubjectID(subjectID);
+    }
+
 //    public void insert(Subject subject){
 //        modulesRepository.insert(subject);
 //    }

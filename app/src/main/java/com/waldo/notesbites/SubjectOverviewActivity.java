@@ -3,11 +3,15 @@ package com.waldo.notesbites;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.transition.AutoTransition;
+import androidx.transition.TransitionManager;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -20,9 +24,13 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -37,6 +45,10 @@ import java.util.Objects;
 
 public class SubjectOverviewActivity extends AppCompatActivity {
   public static final String EXTRA_SUBJECTID = "subject ID";
+
+  ConstraintLayout expandableView;
+  Button arrowBtn;
+  CardView cardView;
 
 
 
@@ -59,6 +71,25 @@ public class SubjectOverviewActivity extends AppCompatActivity {
     recyclerView.setLayoutManager(new LinearLayoutManager(this));
     recyclerView.setHasFixedSize(true);
 
+    expandableView = findViewById(R.id.expandableView);
+    arrowBtn = findViewById(R.id.arrowBtn);
+    cardView = findViewById(R.id.cardView);
+    arrowBtn.setOnClickListener(new View.OnClickListener(){
+
+      @Override
+      public void onClick(View v) {
+        if(expandableView.getVisibility()==View.GONE){
+          TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
+          expandableView.setVisibility(View.VISIBLE);
+          arrowBtn.setBackgroundResource(R.drawable.ic_baseline_keyboard_arrow_down_24);
+        }else{
+          TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
+          expandableView.setVisibility(View.GONE);
+          arrowBtn.setBackgroundResource(R.drawable.ic_baseline_keyboard_arrow_up_24);
+        }
+      }
+    });
+
 
 
     final SubjectOverviewAdapter adapter = new SubjectOverviewAdapter();
@@ -66,32 +97,37 @@ public class SubjectOverviewActivity extends AppCompatActivity {
 
     final SubjectOverviewViewModel subjectOverviewViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(SubjectOverviewViewModel.class);
 
+
     subjectOverviewViewModel.getSubjectNameFromID(subjectID).observe(this, new Observer<String>() {
       @Override
       public void onChanged(String subjectName) {
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(subjectName);
-        setSupportActionBar(toolbar);
-//        ActionBar actionBar = getSupportActionBar();
-//        actionBar.setDisplayHomeAsUpEnabled(true);
+        TextView title = findViewById(R.id.subject_title);
+        title.setText(subjectName);
+
+
       }
     });
+
 
     subjectOverviewViewModel.getImageIDFromSubjectID(subjectID).observe(this, new Observer<Integer>() {
       @Override
       public void onChanged(Integer imageID) {
-        ImageView imageView = findViewById(R.id.subject_image);
+        ImageView imageView = findViewById(R.id.subject_overview_image_view);
         imageView.setImageResource(imageID);
       }
     });
 
-    subjectOverviewViewModel.getDescriptionFromSubjectID(subjectID).observe(this, new Observer<String>() {
+
+    subjectOverviewViewModel.getOverviewFromSubjectID(subjectID).observe(this, new Observer<String>() {
       @Override
-      public void onChanged(String description) {
-        TextView textDescription = findViewById(R.id.subject_description);
-        textDescription.setText(description);
+      public void onChanged(String overview) {
+        TextView overviewTextView = findViewById(R.id.overview_content);
+        overviewTextView.setText(overview);
       }
     });
+
+
+
 
     subjectOverviewViewModel.getModulesFromSubject(subjectID).observe(this, new Observer<List<Module>>() {
       @Override
@@ -100,6 +136,13 @@ public class SubjectOverviewActivity extends AppCompatActivity {
         adapter.setModules(modules);
       }
     });
+
+
+
+
+
+
+
 
   }
 
@@ -159,7 +202,7 @@ public class SubjectOverviewActivity extends AppCompatActivity {
     }
      */
 
-  }
+}
 
 
 

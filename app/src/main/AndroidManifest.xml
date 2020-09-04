@@ -37,6 +37,10 @@
         <activity android:name=".SignInActivity" android:label="Sign In"/>
         <activity android:name=".SignInPart2Activity" android:label="Sign In"/>
 
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>

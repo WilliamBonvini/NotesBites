@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/name"
+            android:id="@+id/overview_text"
             android:text="Name: NAME HERE"
             android:textSize="18sp"
             android:textColor="@color/colorPrimary"

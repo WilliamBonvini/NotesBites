@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     android:orientation="vertical"
-    android:background="@drawable/background_gradient"
+    android:background="@drawable/textured_paper"
     tools:context="com.waldo.notesbites.QuizActivity"
     android:weightSum="20">
 
@@ -35,7 +35,7 @@
             android:layout_marginRight="20dp"
             android:gravity="end"
             android:textStyle="bold"
-            android:textColor="@color/nb_color"
+            android:textColor="@color/nb_green"
             android:layout_weight="1"
             />
 
@@ -68,7 +68,7 @@
                 android:text="Question 1/x"
                 app:autoSizeTextType="uniform"
                 android:textStyle="bold"
-                android:textColor="@color/nb_color"
+                android:textColor="@color/nb_green"
                 android:gravity="bottom"
                 android:layout_gravity="bottom"
                 android:layout_weight="8"

@@ -5,8 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".GuestHomepageActivity"
-    android:background="@drawable/background_gradient"
+    android:background="@drawable/textured_paper"
     android:weightSum="4"
+
     >
 
    <LinearLayout
@@ -23,7 +24,7 @@
           android:layout_height="wrap_content"
           android:text="@string/search_subjects"
           android:onClick="startSelectSubjectsActivity"
-          android:background="@drawable/button_add"
+          android:background="@null"
           android:layout_marginTop="20dp"
           android:layout_marginEnd="10dp"
           android:layout_marginStart="10dp"
@@ -34,7 +35,7 @@
           android:id="@+id/image_logo"
           android:layout_width="0dp"
           android:layout_height="match_parent"
-          android:src="@drawable/logo_trasparent"
+          android:src="@drawable/new_logo_transparent"
           android:layout_weight="5"
           />
 
@@ -54,8 +55,10 @@
        android:layout_width="wrap_content"
        android:layout_height="0dp"
        android:layout_weight="3"
+       android:fadeScrollbars="true"
        tools:listitem="@layout/fragment_guest_homepage_single_subject"
        android:layout_marginTop="20dp"
+       android:layout_marginBottom="10dp"
 
        />
 

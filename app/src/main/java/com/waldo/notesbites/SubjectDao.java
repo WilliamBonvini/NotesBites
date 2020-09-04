@@ -50,6 +50,9 @@ public interface SubjectDao {
 
     @Query("SELECT subjectID FROM subject_table WHERE name = :subjectName")
     int getSubjectIDbySubjectName(String subjectName);
+
+    @Query("SELECT overview FROM subject_table WHERE subjectID=:subjectID")
+    LiveData<String> getOverviewFromSubjectID(int subjectID);
 }
 
 

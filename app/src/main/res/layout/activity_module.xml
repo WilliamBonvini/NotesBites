@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/nb_black"
+    android:background="@drawable/textured_paper"
     android:weightSum="20"
     tools:context="com.waldo.notesbites.ModuleActivity">
 
@@ -27,7 +27,6 @@
         android:layout_gravity="center"
         app:cardCornerRadius="30dp"
         app:cardUseCompatPadding="true"
-        app:cardBackgroundColor="@color/nb_white"
 
 
 
@@ -41,6 +40,7 @@
           android:text="Introduction to AI"
           android:textColor="@color/nb_black"
           app:autoSizeTextType="uniform"
+          android:background="@drawable/groovepaper_repeat"
 
           android:gravity="center"
           android:textAlignment="center"
@@ -71,7 +71,7 @@
           android:layout_width="wrap_content"
           android:layout_height="match_parent"
           android:adjustViewBounds="true"
-          android:background="@null"
+          android:background="@drawable/groovepaper_repeat"
 
           android:onClick="startNotesActivity"
           android:scaleType="fitXY"

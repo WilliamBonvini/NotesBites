@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".HomepageActivity"
-    android:background="@drawable/background_gradient"
+    android:background="@drawable/textured_paper"
     android:weightSum="12"
     android:id="@+id/linear_layout_general"
     >
@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:text="@string/search_subjects"
             android:onClick="startSelectSubjectsActivity"
-            android:background="@color/nb_white"
+            android:background="@null"
             android:src="@drawable/add_black"
             android:layout_weight="2"
             android:layout_gravity="top"
@@ -36,7 +36,7 @@
             android:id="@+id/image_logo"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:src="@drawable/logo_trasparent"
+            android:src="@drawable/new_logo_transparent"
             android:layout_weight="6"
             />
 
@@ -46,7 +46,7 @@
             android:id="@+id/btn_logOut"
             android:layout_weight="2"
             android:src="@drawable/exit_to_app"
-            android:background="@color/nb_white"
+            android:background="@null"
             android:layout_gravity="top"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
@@ -60,7 +60,7 @@
         android:id="@+id/linear_layout_middle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:orientation="horizontal"
         android:weightSum="4"
         >
@@ -70,6 +70,7 @@
             android:layout_weight="2"
             android:id="@+id/my_subjects"
             android:text="My Subjects"
+            android:textStyle="bold"
             android:textSize="25sp"
             android:textAlignment="center"
             android:layout_gravity="center"
@@ -81,6 +82,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/recent_activities"
             android:text="Recent Activities"
+            android:visibility="invisible"
             android:textSize="25sp"
             android:textAlignment="center"
             android:layout_gravity="center"
@@ -92,7 +94,7 @@
         android:id="@+id/linear_layout_bottom"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
+        android:layout_weight="8"
         android:orientation="horizontal"
         android:weightSum="4"
         >
@@ -102,6 +104,9 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
+            android:layout_marginBottom="20dp"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:fadeScrollbars="true"
             tools:listitem="@layout/fragment_guest_homepage_single_subject"
 
             />
@@ -118,19 +123,25 @@
                 android:layout_width="match_parent"
                 android:layout_weight="8"
                 android:layout_height="0dp"
+                android:scrollbarAlwaysDrawHorizontalTrack="true"
+                android:fadeScrollbars="true"
                 tools:listitem="@layout/fragment_recent_modules"
                 />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:background="@drawable/button_next_shape"
                 android:id="@+id/homepage_go_to_subjects_modules_button"
                 android:text="@string/go_to_modules"
+                android:paddingHorizontal="2dp"
                 android:onClick="startSubjectOverviewActivity"
                 android:visibility="invisible"
                 android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginVertical="2dp"
                 />

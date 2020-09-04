@@ -31,6 +31,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class HomepageActivity extends AppCompatActivity {
@@ -206,7 +208,12 @@ public class HomepageActivity extends AppCompatActivity {
                         public void onAnimationRepeat(Animation animation) {
 
                         }
+
                     });
+
+                    TextView recentActivitiesTextView;
+                    recentActivitiesTextView = findViewById(R.id.recent_activities);
+                    recentActivitiesTextView.setVisibility(View.VISIBLE);
                 }
                 else{
                     goToSubjectsModulesButton.setId(subject.getSubjectID());                    //  masterpiece
