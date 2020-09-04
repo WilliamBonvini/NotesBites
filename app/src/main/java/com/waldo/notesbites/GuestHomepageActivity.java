@@ -73,6 +73,9 @@ public class GuestHomepageActivity extends AppCompatActivity {
             public void onChanged(List<Subject> subjects) {
                 // update RecyclerView when data in the subjects data changes (the change could occur only to the column "selected")
                 adapter.setSubjects(subjects);
+                if(subjects.size() == 0){
+                    startSelectSubjectsActivity2();
+                }
             }
         });
 
@@ -99,6 +102,11 @@ public class GuestHomepageActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void startSelectSubjectsActivity2() {
+        Intent intent = new Intent(GuestHomepageActivity.this, SelectSubjectsActivity.class);
+        startActivity(intent);
     }
 
     private void signIn() {

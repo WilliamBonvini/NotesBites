@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SelectSubjectsActivity">
+        <activity android:name=".GuestHomepageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -22,7 +22,7 @@
 
         <activity android:name=".SubjectOverviewActivity"/>
 
-        <activity android:name=".GuestHomepageActivity"/>
+        <activity android:name=".SelectSubjectsActivity"/>
 
         <activity android:name=".HomepageActivity" android:label="Homepage"/>
         <activity android:name=".NotesActivity"/>
