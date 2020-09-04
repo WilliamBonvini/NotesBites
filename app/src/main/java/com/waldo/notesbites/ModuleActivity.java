@@ -22,6 +22,7 @@ public class ModuleActivity extends AppCompatActivity {
   private ModuleViewModel moduleViewModel;
   private int moduleID;
   private String moduleTitle;
+  private int belongingSubjectID;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +33,9 @@ public class ModuleActivity extends AppCompatActivity {
     Intent intent = getIntent();
 
     moduleID = (Integer) intent.getExtras().get(EXTRA_MODULEID);
-    Log.w("ripeto, moduleID vale: ", String.valueOf(moduleID));
 
     moduleViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(ModuleViewModel.class);
     moduleViewModel.updateLastOpenedDate(moduleID);  //TODO: è proprio il posto migliore in cui metterlo? ...
-    Log.w("moduleActivity","called OnCreate");
     moduleViewModel.getModuleByModuleID(moduleID).observe(this, new Observer<Module>() {
       @Override
       public void onChanged(final Module module) {
@@ -50,6 +49,7 @@ public class ModuleActivity extends AppCompatActivity {
         //moduleDescriptionTextView.setText(module.getDescription());
 
         // set toolbar and add up button!
+        toolbar.setTitle("All Modules");
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -65,7 +65,15 @@ public class ModuleActivity extends AppCompatActivity {
           }
         });
 
-        // todo:the following UI component are still present in the layout but probably we want to get rid of them
+
+        //set belonging subject, it will be needed to override the up buttton (back button)
+        belongingSubjectID = module.getBelongingSubjectID();
+
+
+
+
+
+        // todo:the following UI components are still present in the layout but probably we want to get rid of them
         // in case we don't, here is the code to populate them:
         // TextView belongingSubjectTextView = findViewById(R.id.belongingSubject);
         // TextView moduleTitleTextView = findViewById(R.id.module_title);
@@ -95,6 +103,7 @@ public class ModuleActivity extends AppCompatActivity {
   }
 
 
+
   @Override
   public boolean onOptionsItemSelected (MenuItem item){
     switch (item.getItemId()) {
@@ -103,65 +112,25 @@ public class ModuleActivity extends AppCompatActivity {
         return true;
     }
 
+    //
+
     return (super.onOptionsItemSelected(item));
   }
 
-}
-
-
-    /*
-    String belongingSubject = (String) intent.getExtras().get(EXTRA_SUBJECT_NAME);
-    SQLiteOpenHelper databaseHelper = new DatabaseHelper(this);
-    try {
-      SQLiteDatabase db = databaseHelper.getReadableDatabase();
-      // code to read the data from the database
-      Cursor cursor = db.query("MODULE",new String[]{"NAME","DESCRIPTION"},"_id=?",new String[]{Integer.toString(moduleID)},null,null,null);
-      if(cursor.moveToFirst()){
-        // get the data from the only tuple you have retrieved
-        moduleTitle = cursor.getString(0);
-        String descriptionText = cursor.getString(1);
-        // populate the belonging subject text view
-        //TextView belongingSubjectTextView = (TextView) findViewById(R.id.belongingSubject);
-        //belongingSubjectTextView.setText(belongingSubject);
-        // set toolbar and add up button
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(belongingSubject + " - " + moduleTitle);
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        // populate the module title
-        //TextView moduleTitleTextView = (TextView)findViewById(R.id.module_title);
-        //moduleTitleTextView.setText(moduleTitle);
-        // populate the module description
-        TextView moduleDescriptionTextView = (TextView) findViewById(R.id.module_description);
-        moduleDescriptionTextView.setText(descriptionText);
-      }
-      cursor.close();
-      db.close();
-    }catch(SQLiteException e){
-      Toast.makeText(this, "Database Unavailable", Toast.LENGTH_SHORT).show();
-    }
-  }
-  public void startNotesActivity(View view){
-    Intent intent = new Intent(ModuleActivity.this, NotesActivity.class);
-    intent.putExtra(NotesActivity.MODULE_ID,moduleID);
-    startActivity(intent);
-  }
-  public void startVideoContentActivity(View view) {
-    startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://www.youtube.com/watch?v=jNQXAC9IVRw")));
-  }
-  public void startQuizActivity(View view){
-    Intent intent = new Intent(ModuleActivity.this, StartingScreenActivity.class);
-    startActivity(intent);
-  }
   @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-      case android.R.id.home:
-        onBackPressed();
-        return true;
-    }
-    return(super.onOptionsItemSelected(item));
+  public void onBackPressed()
+  {
+    super.onBackPressed();
+    Log.w("moduleActivity","entered unBackPressed");
+    Intent goToSubjectOverview = new Intent(ModuleActivity.this, SubjectOverviewActivity.class);
+    goToSubjectOverview.putExtra(SubjectOverviewActivity.EXTRA_SUBJECTID,belongingSubjectID);
+    Log.w("moduleactivity","gonna start activity?");
+    startActivity(goToSubjectOverview);
+    Log.w("moduleActivity","it started the activity");
+
+
+    finish();
+
   }
 }
-*/
+
