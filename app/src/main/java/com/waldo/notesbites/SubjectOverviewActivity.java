@@ -14,6 +14,7 @@ import androidx.transition.AutoTransition;
 import androidx.transition.TransitionManager;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -49,6 +50,8 @@ public class SubjectOverviewActivity extends AppCompatActivity {
   ConstraintLayout expandableView;
   Button arrowBtn;
   CardView cardView;
+  ImageView subjectImageView;
+  RecyclerView modulesRecyclerView;
 
 
 
@@ -67,33 +70,59 @@ public class SubjectOverviewActivity extends AppCompatActivity {
 
     setContentView(R.layout.activity_subject_overview);
 
-    final RecyclerView recyclerView = findViewById(R.id.subject_overview_recycler_view);
-    recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    recyclerView.setHasFixedSize(true);
+    final RecyclerView modulesRecyclerView = findViewById(R.id.subject_overview_recycler_view);
+    modulesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+    modulesRecyclerView.setHasFixedSize(true);
 
     expandableView = findViewById(R.id.expandableView);
     arrowBtn = findViewById(R.id.arrowBtn);
     cardView = findViewById(R.id.cardView);
+    // make sure the expandable view is gone each time the activity is recreated  //todo: when user goes in landscape mode we'd like the visibility = visible if he had it like that in portrait mode
+    expandableView.setVisibility(View.GONE);
+
     arrowBtn.setOnClickListener(new View.OnClickListener(){
 
       @Override
       public void onClick(View v) {
         if(expandableView.getVisibility()==View.GONE){
           TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
+
+          // set overview visible
           expandableView.setVisibility(View.VISIBLE);
+
+
+          // set recycler view gone
+          modulesRecyclerView.setVisibility(View.GONE);
+
+
+
+
+
+
+          //set arrow down
           arrowBtn.setBackgroundResource(R.drawable.ic_baseline_keyboard_arrow_down_24);
         }else{
           TransitionManager.beginDelayedTransition(cardView, new AutoTransition());
+          // set view gone
           expandableView.setVisibility(View.GONE);
+          // set recycler view gone
+          modulesRecyclerView.setVisibility(View.VISIBLE);
+          // set arrow up
           arrowBtn.setBackgroundResource(R.drawable.ic_baseline_keyboard_arrow_up_24);
+
+
+
+
+
         }
       }
     });
 
 
 
+
     final SubjectOverviewAdapter adapter = new SubjectOverviewAdapter();
-    recyclerView.setAdapter(adapter);
+    modulesRecyclerView.setAdapter(adapter);
 
     final SubjectOverviewViewModel subjectOverviewViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(SubjectOverviewViewModel.class);
 
@@ -147,6 +176,29 @@ public class SubjectOverviewActivity extends AppCompatActivity {
   }
 
 
+  /**
+   * Override method in such a way that when the user goes in landscape mode the subject image is not displayed
+   * @param newConfig
+   */
+  @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    subjectImageView = findViewById(R.id.subject_overview_image_view);
+
+    // Checks the orientation of the screen
+    if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+      subjectImageView.setVisibility(View.GONE);
+      Log.w("sf","LANDSCAPE");
+
+
+    } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+      subjectImageView.setVisibility(View.VISIBLE);
+      Log.w("sf","PORTRAIT");
+
+    }
+  }
+
+
   public void onClickStartModuleActivity(View view) {
     Intent intent = new Intent(SubjectOverviewActivity.this, ModuleActivity.class);
     intent.putExtra(ModuleActivity.EXTRA_MODULEID,view.getId());
@@ -193,6 +245,20 @@ public class SubjectOverviewActivity extends AppCompatActivity {
     }
     return true;
   }
+
+  public void onClickGoToHomepage(View view) {
+    GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+    Intent intent;
+    if (account == null) {
+      intent = new Intent(SubjectOverviewActivity.this, GuestHomepageActivity.class);
+    }else {
+      intent = new Intent(SubjectOverviewActivity.this, HomepageActivity.class);
+    }
+    startActivity(intent);
+    finish();
+  }
+
+
 
     /*
     switch (item.getItemId()) {

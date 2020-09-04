@@ -86,7 +86,7 @@ public class StartingQuizActivity extends AppCompatActivity {
             public void onChanged(Integer correctQuestions) {
                 highestScore = correctQuestions;
                 Log.w("StartingQuizActivity","entered loadHighScore");
-                recordScoreTextView.setText("Highscore: " + correctQuestions);
+                recordScoreTextView.setText("Highest Score: " + correctQuestions);
 
             }
         });

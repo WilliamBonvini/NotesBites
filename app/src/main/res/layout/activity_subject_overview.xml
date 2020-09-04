@@ -3,11 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/subject_overview_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.waldo.notesbites.SubjectOverviewActivity"
 
-    android:background="@drawable/irongrip_repeating">
+    android:background="@drawable/textured_paper">
 
 
 
@@ -20,88 +21,50 @@
       android:layout_height="0dp"
       android:orientation="horizontal"
       android:layout_marginVertical="4dp"
-      android:gravity="center">
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        style="@style/CardView.Light"
-        >
-      <TextView
-          android:id="@+id/subject_title"
+      android:gravity="center"
+    >
+
+      <androidx.cardview.widget.CardView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:textSize="30sp"
-          android:text="Artificial Neural Networks and Deep Learning"
-          android:textStyle="bold"
-          android:layout_marginHorizontal="20dp"
-          android:textColor="@color/nb_color"
-          android:textAlignment="center"
-          />
-    </androidx.cardview.widget.CardView>
+          android:layout_marginTop="8dp"
+          android:layout_marginBottom="8dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginEnd="8dp"
+          >
+        <TextView
+            android:background="@drawable/groovepaper_repeat"
+            android:id="@+id/subject_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:text="Artificial Neural Networks and Deep Learning"
+            android:textStyle="bold"
+            android:textColor="@color/nb_black"
+            android:textAlignment="center"
+            />
+      </androidx.cardview.widget.CardView>
   </LinearLayout>
+
   <androidx.cardview.widget.CardView
       android:id="@+id/cardView"
+      style="@style/CardView.Light"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      app:layout_constraintStart_toStartOf="@id/subject_overview_subject_name_layout"
-      app:layout_constraintEnd_toEndOf="@id/subject_overview_subject_name_layout"
-      app:layout_constraintTop_toBottomOf="@id/subject_overview_subject_name_layout"
-      android:layout_marginTop="8dp"
-      android:layout_marginBottom="8dp"
-      android:layout_marginStart="8dp"
       android:layout_marginEnd="8dp"
-      style="@style/CardView.Light"
+      android:layout_marginStart="8dp"
+      app:layout_constraintTop_toBottomOf="@+id/subject_overview_subject_name_layout"
+
+      app:layout_constraintEnd_toEndOf="@id/subject_overview_subject_name_layout"
+      app:layout_constraintStart_toStartOf="@id/subject_overview_subject_name_layout"
       >
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/groovepaper_repeat"
         android:paddingBottom="12dp">
-      <ImageView
-          android:id="@+id/subject_overview_image_view"
-          android:layout_width="0dp"
-          android:layout_height="0dp"
-          android:src="@drawable/logo"
-          android:scaleType="centerCrop"
-          app:layout_constraintDimensionRatio="H,16:9"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          android:text="ciaaao"/>
-      <androidx.cardview.widget.CardView
-          android:id="@+id/view"
-          android:layout_width="50dp"
-          android:layout_height="50dp"
-          android:layout_marginTop="16dp"
-          android:layout_marginStart="12dp"
-          android:elevation="12dp"
-          app:cardCornerRadius="25dp"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/subject_overview_image_view">
-          <ImageView
-              android:id="@+id/circleImage"
-              android:layout_width="50dp"
-              android:layout_height="50dp"
-              android:src="@drawable/ic_baseline_info_24"
-              android:scaleType="centerCrop"/>
-      </androidx.cardview.widget.CardView>
-      <TextView
-        android:id="@+id/overview_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Subject Overview"
-        android:layout_marginTop="16dp"
-        style="@style/TextAppearance.AppCompat.Title"
-        android:layout_marginStart="12dp"
-        app:layout_constraintStart_toEndOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/subject_overview_image_view"
-        app:layout_constraintBottom_toBottomOf="@id/view"
-      />
-
-
 
       <Button
           android:id="@+id/arrowBtn"
@@ -113,24 +76,75 @@
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintTop_toTopOf="@+id/view" />
 
+      <ImageView
+          android:id="@+id/subject_overview_image_view"
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          android:layout_marginTop="4dp"
+          android:scaleType="centerCrop"
+          android:src="@drawable/new_logo_transparent"
+          android:text="ciaaao"
+          app:layout_constraintDimensionRatio="H,16:9"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+          android:id="@+id/overview_text"
+          style="@style/TextAppearance.AppCompat.Title"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="12dp"
+          android:layout_marginTop="16dp"
+          android:text="Subject Overview"
+          android:textColor="@color/nb_black"
+          app:layout_constraintBottom_toBottomOf="@id/view"
+          app:layout_constraintStart_toEndOf="@+id/view"
+          app:layout_constraintTop_toBottomOf="@+id/subject_overview_image_view" />
+
+
+      <androidx.cardview.widget.CardView
+          android:id="@+id/view"
+          android:layout_width="50dp"
+          android:layout_height="50dp"
+          android:layout_marginStart="12dp"
+          android:layout_marginTop="16dp"
+          android:background="@drawable/groovepaper_small"
+          android:elevation="12dp"
+          app:cardCornerRadius="25dp"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/subject_overview_image_view">
+
+        <ImageView
+            android:id="@+id/circleImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_baseline_info_24" />
+      </androidx.cardview.widget.CardView>
+
       <androidx.constraintlayout.widget.ConstraintLayout
           android:id="@+id/expandableView"
           android:layout_width="match_parent"
-          android:layout_height="wrap_content"
+          android:layout_height="match_parent"
           android:paddingBottom="12dp"
           android:visibility="gone"
-          app:layout_constraintTop_toBottomOf="@+id/overview_text"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintEnd_toEndOf="parent">
+          app:layout_constraintTop_toBottomOf="@+id/overview_text">
+
         <TextView
             android:id="@+id/overview_content"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="22dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-            android:text="Ciaaaaaaaaaaaaaaaaaao"/>
+            android:layout_marginTop="22dp"
+            android:text="testo di prova \ntesto di prova"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="19sp"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
       </androidx.constraintlayout.widget.ConstraintLayout>
@@ -147,21 +161,27 @@
       android:paddingTop="12dp"
       android:layout_marginBottom="12dp"
       tools:listitem="@layout/fragment_subject_overview_activity"
-      app:layout_constraintTop_toBottomOf="@+id/cardView"
       app:layout_constraintStart_toStartOf="@+id/cardView"
       app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/cardView"
+      app:layout_constraintBottom_toTopOf="@id/subject_overview_home_button"
+
+      android:visibility="visible"
       />
 
-
-
-
-
-
-
-
-
-
-
+  <ImageButton
+      android:id="@+id/subject_overview_home_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@drawable/ic_baseline_home_24"
+      app:layout_constraintTop_toBottomOf="@id/subject_overview_recycler_view"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toStartOf="@id/subject_overview_recycler_view"
+      app:layout_constraintEnd_toEndOf="@id/subject_overview_recycler_view"
+      android:layout_marginBottom="16dp"
+      android:background="@null"
+      android:onClick="onClickGoToHomepage"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

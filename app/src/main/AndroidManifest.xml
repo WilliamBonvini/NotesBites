@@ -20,7 +20,9 @@
 
         <activity android:name=".ModuleActivity"/>
 
-        <activity android:name=".SubjectOverviewActivity"/>
+        <activity android:name=".SubjectOverviewActivity"
+            android:configChanges="orientation"
+            />
 
         <activity android:name=".SelectSubjectsActivity"/>
 

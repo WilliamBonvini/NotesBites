@@ -10,10 +10,11 @@
 
     <color name="nb_color">#6078EA</color>
     <color name="nb_white">#FFFFFF</color>
-    <color name="nb_black">#000000</color>
+    <color name="nb_black">#B2000000</color>
     <color name="nb_yellow">#FFD180 </color>
     <color name="nb_green">#2A7536</color>
     <color name="nb_red">#8C0101</color>
     <color name="nb_new_color">#5B8F3363</color>
+    <color name="nb_darkgrey">#56000000</color>
 
 </resources>
