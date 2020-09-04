@@ -7,7 +7,7 @@
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:weightSum="15"
-    android:background="@drawable/background_gradient">
+    android:background="@drawable/textured_paper">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
             android:layout_height="0dp"
             android:layout_weight="3"
             android:layout_gravity="center"
-            android:src="@drawable/logo_trasparent"
+            android:src="@drawable/new_logo_transparent"
             />
 
 
@@ -31,7 +31,7 @@
             android:id="@+id/text_description"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5"
+            android:layout_weight="1"
             android:text="@string/select_subjects_message_2"
             android:layout_marginHorizontal="5dp"
             android:layout_gravity="center"
@@ -43,7 +43,7 @@
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="6.5"
+            android:layout_weight="6"
             tools:context=".SelectSubjectsActivity"
             android:layout_marginTop="15dp"
 
@@ -76,7 +76,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/button_next_shape"
+        android:background="@null"
         android:src="@drawable/arrow_forward_black"
 
         />

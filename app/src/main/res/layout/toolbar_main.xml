@@ -4,6 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:textAlignment="center"
-    android:background="?attr/colorPrimary"
+    android:background="@color/nb_new_color"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 

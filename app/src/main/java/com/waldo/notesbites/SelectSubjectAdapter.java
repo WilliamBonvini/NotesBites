@@ -46,7 +46,7 @@ public class SelectSubjectAdapter extends RecyclerView.Adapter<SelectSubjectAdap
         holder.infoButton.setId(currentSubject.getSubjectID());  // the line on the left is a masterpiece
         boolean selected = currentSubject.isSelected();
         if(selected){
-            holder.selectSubjectLayout.setBackgroundResource(R.color.nb_color);
+            holder.selectSubjectLayout.setBackgroundResource(R.color.nb_new_color);
             Animation anim = new AlphaAnimation(0.6f, 1.0f);
             anim.setDuration(500); //You can manage the blinking time with this parameter
             anim.setStartOffset(20);

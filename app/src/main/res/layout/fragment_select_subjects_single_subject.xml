@@ -12,7 +12,8 @@
         android:id="@+id/select_subject_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/groovepaper_repeat">
 
         <RelativeLayout
             android:layout_width="wrap_content"

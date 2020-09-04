@@ -14,4 +14,6 @@
     <color name="nb_yellow">#FFD180 </color>
     <color name="nb_green">#2A7536</color>
     <color name="nb_red">#8C0101</color>
+    <color name="nb_new_color">#8F3363</color>
+
 </resources>

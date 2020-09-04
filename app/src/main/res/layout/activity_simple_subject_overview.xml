@@ -4,8 +4,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@drawable/background_gradient"
-    android:weightSum="4">
+    android:background="@drawable/textured_paper"
+    android:weightSum="4"
+    >
 
     <include layout="@layout/toolbar_main"
         android:id="@+id/toolbar"/>
@@ -13,7 +14,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3">
+        android:layout_weight="3"
+        >
 
 
         <androidx.cardview.widget.CardView
@@ -21,6 +23,7 @@
             android:layout_height="match_parent"
             android:layout_margin="20dp"
             app:cardCornerRadius="30dp"
+
             >
             <TextView
                 android:layout_width="match_parent"
@@ -31,6 +34,7 @@
                 android:scrollbars = "vertical"
                 android:layout_marginVertical="10dp"
                 android:layout_marginHorizontal="20dp"
+                android:background="@drawable/groovepaper_repeat"
 
                 android:text="esempio di testo"
                 />
@@ -61,6 +65,7 @@
                 android:layout_marginVertical="10dp"
                 android:layout_marginHorizontal="20dp"
                 android:textSize="25sp"
+                android:background="@drawable/groovepaper_repeat"
 
 
                 android:text="inserisci moduli"/>
