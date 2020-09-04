@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="10dp"
     android:orientation="vertical"
     android:background="@drawable/background_gradient"
     tools:context="com.waldo.notesbites.QuizActivity"
@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:layout_weight="8"
+        android:layout_weight="7"
         android:weightSum="4"
         >
         <LinearLayout
@@ -127,95 +127,98 @@
         android:layout_height="0dp"
         android:id="@+id/options_layout"
         android:orientation="horizontal"
-        android:layout_weight="8"
+        android:layout_weight="9"
         android:weightSum="10"
         >
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="2" />
+
 
         <LinearLayout
             android:id="@+id/options_internal_layout"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
             android:orientation="vertical"
+            android:weightSum="4"
             >
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:textAlignment="center"
                 android:layout_gravity="center"
                 app:cardUseCompatPadding="true"
                 app:cardCornerRadius="15dp"
+                android:layout_weight="1"
                 >
                 <RadioButton
                     android:id="@+id/radio_button1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="3dp"
                     android:text="Option 1"
                     android:onClick="checkCheck"
-                    android:theme="@style/nb_radio_button"/>
+                    android:theme="@style/nb_radio_button"
+                    android:scrollbars = "vertical"/>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 app:cardCornerRadius="15dp"
                 android:layout_gravity="center"
-                app:cardUseCompatPadding="true">
+                app:cardUseCompatPadding="true"
+                android:layout_weight="1">
                 <RadioButton
                     android:id="@+id/radio_button2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="Option 1"
+                    android:layout_height="match_parent"
+                    android:layout_margin="3dp"
+                    android:text="Option 2"
                     android:onClick="checkCheck"
-                    android:theme="@style/nb_radio_button"/>
+                    android:theme="@style/nb_radio_button"
+                    android:scrollbars = "vertical"/>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 app:cardCornerRadius="15dp"
                 android:layout_gravity="center"
-                app:cardUseCompatPadding="true">
+                app:cardUseCompatPadding="true"
+                android:layout_weight="1">
                 <RadioButton
                     android:id="@+id/radio_button3"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="Option 1"
+                    android:layout_height="match_parent"
+                    android:layout_margin="3dp"
+                    android:text="Option 3"
                     android:onClick="checkCheck"
-                    android:theme="@style/nb_radio_button"/>
+                    android:theme="@style/nb_radio_button"
+                    android:scrollbars = "vertical"/>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_gravity="center"
                 app:cardCornerRadius="15dp"
-                app:cardUseCompatPadding="true">
+                app:cardUseCompatPadding="true"
+                android:layout_weight="1">
 
                 <RadioButton
                     android:id="@+id/radio_button4"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="3dp"
                     android:onClick="checkCheck"
-                    android:text="Option 1"
-                    android:theme="@style/nb_radio_button" />
+                    android:text="Option 4"
+                    android:theme="@style/nb_radio_button"
+                    android:scrollbars = "vertical"/>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="2" />
+
 
     </LinearLayout>
 

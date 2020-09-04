@@ -5,6 +5,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -170,9 +171,13 @@ public class QuizActivity extends AppCompatActivity {
         if(questionCounter <= numberOfQuestions) {
             textViewQuestion.setText(currentQuestion.getQuestion());
             rb1.setText(currentQuestion.getOption1());
+            rb1.setMovementMethod(new ScrollingMovementMethod());
             rb2.setText(currentQuestion.getOption2());
+            rb2.setMovementMethod(new ScrollingMovementMethod());
             rb3.setText(currentQuestion.getOption3());
+            rb3.setMovementMethod(new ScrollingMovementMethod());
             rb4.setText(currentQuestion.getOption4());
+            rb4.setMovementMethod(new ScrollingMovementMethod());
             correctAnswer = currentQuestion.getCorrectOption();
             textViewQuestionCount.setText("Question " + questionCounter + "/" + numberOfQuestions);
             answered = false;
