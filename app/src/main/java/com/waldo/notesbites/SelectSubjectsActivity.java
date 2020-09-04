@@ -57,10 +57,8 @@ public class SelectSubjectsActivity extends AppCompatActivity{
             public void onItemClick(Subject subject) {
                 if (!subject.isSelected()){
                     selectSubjectsViewModel.setSelectedTrue(subject.getSubjectID());
-                    Log.w("com.waldo.notesbites","true!");
                 }else{
                     selectSubjectsViewModel.setSelectedFalse(subject.getSubjectID());
-                    Log.w("com.waldo.notesbites","false!");
 
                 }
 

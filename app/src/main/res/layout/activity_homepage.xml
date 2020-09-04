@@ -103,10 +103,10 @@
             android:id="@+id/homepage_subjects_recycler_view"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
             android:layout_marginBottom="20dp"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:layout_weight="2"
             android:fadeScrollbars="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
             tools:listitem="@layout/fragment_guest_homepage_single_subject"
 
             />
@@ -139,6 +139,8 @@
                 android:id="@+id/homepage_go_to_subjects_modules_button"
                 android:text="@string/go_to_modules"
                 android:textSize="20dp"
+                android:textCursorDrawable="@color/nb_black"
+                android:textStyle="bold"
                 android:paddingHorizontal="2dp"
                 android:onClick="startSubjectOverviewActivity"
                 android:visibility="invisible"

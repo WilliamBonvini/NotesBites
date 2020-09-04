@@ -94,4 +94,10 @@ public class StartingQuizActivity extends AppCompatActivity {
     private void updateHighscore(int highscoreNew) {
         startingQuizViewModel.updateCorrectQuestionsByModuleID(moduleID,highscoreNew);
     }
+
+    public void gotToModuleActivity(View view) {
+        Intent intent = new Intent(StartingQuizActivity.this,ModuleActivity.class);
+        intent.putExtra(ModuleActivity.EXTRA_MODULEID,moduleID);
+        startActivity(intent);
+    }
 }

@@ -173,7 +173,6 @@ public class HomepageActivity extends AppCompatActivity {
             }
         });
 
-        //TODO: when we rotate the phone it says "welcome null" --> include it in a observe(), and the problem is solved
 
 
         adapter_subjects.setOnItemClickListener(new HomepageSubjectsAdapter.OnItemClickListener() {
