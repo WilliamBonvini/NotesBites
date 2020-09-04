@@ -129,6 +129,7 @@ public class QuizActivity extends AppCompatActivity {
                         rbSelected = findViewById(getCheckedRadioButtonId());
                         answered = true;
                         clearCheck();
+                        setRbsInvisible();
                         updateScore();
                         showSolution();
                         updateButton();
@@ -139,9 +140,10 @@ public class QuizActivity extends AppCompatActivity {
                 }
 
 
-                // triggered if the user is clicking "next" ( the program will observe achange in currentQuizQuestion and trigger the onChanged method
+                // triggered if the user is clicking "next" ( the program will observe a change in currentQuizQuestion and trigger the onChanged method
                 Log.w("QuizActivity","triggered onclick, you just cliked \"next\"");
                 clearCheck();
+                setRbsVisible();
                 quizViewModel.incrementQuestionCounter();
                 quizViewModel.updatemCurrentQuizQuestion(quizViewModel.getQuestionCounter());
 
@@ -158,6 +160,22 @@ public class QuizActivity extends AppCompatActivity {
         }
         return -1;
 
+    }
+
+    public void setRbsInvisible(){
+        for (int i = 0; i < radioButtonList.size(); i++) {
+            if(radioButtonList.get(i).isChecked()){
+                radioButtonList.get(i).setVisibility(View.GONE);
+            }
+        }
+    }
+
+    public void setRbsVisible(){
+        for (int i = 0; i < radioButtonList.size(); i++) {
+            if(radioButtonList.get(i).isChecked()){
+                radioButtonList.get(i).setVisibility(View.VISIBLE);
+            }
+        }
     }
 
 
