@@ -116,7 +116,7 @@ public abstract class NBDatabase extends RoomDatabase {
 
             /////////////// IOT
             SUBJECT_NAME = "Internet of Things";
-            subjectDao.insert(new Subject(SUBJECT_NAME,"as taught during the academic year 2019/2020",R.drawable.iot,"The use of Smart Things is nowadays is more and more widespread and concerns very different areas, such as business intelligence, domotics, healthcare, logistics and industry 4.0; for these reasons the impact of IoT on daily life concerns all those objects that can be connected to each other and communicate data on their state of use or the surrounding environment.",false));
+            subjectDao.insert(new Subject(SUBJECT_NAME,"as taught during the academic year 2019/2020",R.drawable.iot_img,"The use of Smart Things is nowadays is more and more widespread and concerns very different areas, such as business intelligence, domotics, healthcare, logistics and industry 4.0; for these reasons the impact of IoT on daily life concerns all those objects that can be connected to each other and communicate data on their state of use or the surrounding environment.",false));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
 
             // MODULE 1
@@ -177,9 +177,145 @@ public abstract class NBDatabase extends RoomDatabase {
             correctOption = "It has guaranteed performance but coordination is required";
             quizDao.insert(new QuizQuestion(question, 2, quizID,  option1, option2, option3, option4, correctOption));
 
-            moduleDao.insert(new Module("modulo3","bangarang",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo4","bangarang",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo5","bangarang",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            // MODULE 3
+            MODULE_NAME = "The Long Range Communication Technologies for IoT";
+            moduleDao.insert(new Module(MODULE_NAME,"bangarang",3,"IOT/IoT_module3.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
+            // Quiz
+            quizDao.insert(new Quiz(moduleID, 0));
+            quizID = quizDao.getQuizIDbyModuleID(moduleID);
+            question = "In LoraWAN, the wireless links between end-nodes and gateway:";
+            option1 = "there is and association phase in order to increase the performance";
+            option2 = "are association-less, in order to increasy the simplicity";
+            option3 = "generally are association-less, but sometimes and end-device can associate to a specific gateway in order to increase the performances";
+            option4 = "there isn't a standard, every end-node and gateway can decide to associate or not";
+            correctOption = "are association-less, in order to increasy the simplicity";
+            quizDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
+            question = "The spreading factor (SF) represents the number of symbols sent per bit of information; which of the following is the correct answer:";
+            option1 = "Higher SF implies fewer chirps are sent per second. The benefit of high SF is that more extended airtime results in better sensitivity.";
+            option2 = "Lower SF implies fewer chirps are sent per second. The benefit of low SF is that more extended airtime results in better sensitivity.";
+            option3 = "Lower SF means more chirps are sent per second: hence, you can encode more data per second. This results in better sensitivity.";
+            option4 = "Higher SF implies more chirps are sent per second. The benefit of high SF is that less airtime results in better sensitivity.";
+            correctOption = "Higher SF implies fewer chirps are sent per second. The benefit of high SF is that more extended airtime results in better sensitivity.";
+            quizDao.insert(new QuizQuestion(question, 2, quizID,  option1, option2, option3, option4, correctOption));
+            question = "ALOHA protocol:";
+            option1 = "Time is continuous. The first packet in the transmission queue is transmitted as soon as ready. If the ACK does not come, the transmission is reattempted after a random number of slots X.";
+            option2 = "Time is discrete. The first packet in the transmission queue is transmitted as soon as ready. If the ACK does not come, the transmission is reattempted after a random number of slots X.";
+            option3 = "Time is continuous. The first packet in the transmission queue is transmitted as soon as ready. If the ACK does not come, the transmission is aborted.";
+            option4 = "Time is discrete. The first packet in the transmission queue is transmitted as soon as ready. If the ACK does not come, the transmission is reattempted immediately.";
+            correctOption = "Time is continuous. The first packet in the transmission queue is transmitted as soon as ready. If the ACK does not come, the transmission is reattempted after a random number of slots X.";
+            quizDao.insert(new QuizQuestion(question, 3, quizID,  option1, option2, option3, option4, correctOption));
+
+            // MODULE 4
+            MODULE_NAME = "Short Range Communication Technologies and Protocols";
+            moduleDao.insert(new Module(MODULE_NAME,"bangarang",4,"IOT/IoT_module4.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
+            // Quiz
+            quizDao.insert(new Quiz(moduleID, 0));
+            quizID = quizDao.getQuizIDbyModuleID(moduleID);
+            question = "ZigBee and 6LowPAN:";
+            option1 = "They both not extends IP to the Internet of Things";
+            option2 = "They both extends IP to the Internet of Things";
+            option3 = "ZigBee extends IP to the Internet of Things, 6LowPAN doesn't.";
+            option4 = "6LowPAN extends IP to the Internet of Things, ZigBee doesn't.";
+            correctOption = "6LowPAN extends IP to the Internet of Things, ZigBee doesn't.";
+            quizDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
+            question = "802.15.4 Channel Access:";
+            option1 = "Combines a mixture of Scheduled and Random Access. Random Access is implemented through PAN coordinator, Scheduled Access allowed between RFDs and between RFD/FFD and PAN Coordinator";
+            option2 = "Combines a mixture of Scheduled and Random Access. Scheduled Access is implemented through PAN coordinator, Random Access allowed between RFDs and between RFD/FFD and PAN Coordinator ";
+            option3 = "It only uses Scheduled Access which is implemented through PAN coordinator";
+            option4 = "It only uses Random Access which is implemented through PAN coordinator";
+            correctOption = "Combines a mixture of Scheduled and Random Access. Scheduled Access is implemented through PAN coordinator, Random Access allowed between RFDs and between RFD/FFD and PAN Coordinator ";
+            quizDao.insert(new QuizQuestion(question, 2, quizID,  option1, option2, option3, option4, correctOption));
+
+            // MODULE 5
+            MODULE_NAME = "6LowPAN";
+            moduleDao.insert(new Module(MODULE_NAME,"bangarang",5,"IOT/IoT_module5.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
+            // Quiz
+            quizDao.insert(new Quiz(moduleID, 0));
+            quizID = quizDao.getQuizIDbyModuleID(moduleID);
+            question = "Which of the following describes a Simple LoWPAN architecture:";
+            option1 = "There is a edge router, but it doesn't provide any connection to the internet.";
+            option2 = "no connection to the internet";
+            option3 = "There are multiple LoWPANs, each one controlled by an edge router. The router are then connected by a common backbone link";
+            option4 = "There is a edge router that is a device that interconnects the IoT network to the backend ";
+            correctOption = "There is a edge router that is a device that interconnects the IoT network to the backend ";
+            quizDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
+            question = "Why we need some adaptation features in 6LoWPAN:";
+            option1 = "IPv6 packet have very large header w.r.t. the limited sizes that we have at Medium Access Control (127 Byte) in 6LoWPAN so we need to compress the header, both of IPv6 and UDP.";
+            option2 = "IPv6 packet have very large header w.r.t. the limited sizes that we have at Medium Access Control (127 Byte) in 6LoWPAN so we need to implement a fragmentation in order to not lose information of the header of IPv6.";
+            option3 = "IPv6 packet have a smaller header w.r.t. what we have at Medium Access Control in 6LoWPAN so we can aggregate the IPv6 and UDP header in order to save some space.";
+            option4 = "IPv6 packet have a header of the same size that we have at Medium Access Control (127 Byte) in 6LoWPAN, therefore we don't need to compress the header of IPv6.";
+            correctOption = "IPv6 packet have very large header w.r.t. the limited sizes that we have at Medium Access Control (127 Byte) in 6LoWPAN so we need to compress the header, both of IPv6 and UDP.";
+            quizDao.insert(new QuizQuestion(question, 2, quizID,  option1, option2, option3, option4, correctOption));
+
+            // MODULE 6
+            MODULE_NAME = "Application Layer Protocols for the IoT";
+            moduleDao.insert(new Module(MODULE_NAME,"bangarang",6,"IOT/IoT_module6.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
+            // Quiz
+            quizDao.insert(new Quiz(moduleID, 0));
+            quizID = quizDao.getQuizIDbyModuleID(moduleID);
+            question = "Which of the following is not a characteristic of COAP:";
+            option1 = "Asynchronous transaction model: allows delay between request and response; resource may not be ready due to duty cycle";
+            option2 = "messages don't have a header";
+            option3 = "UDP binding with reliability and multicast support: COAP builds on top of UDP and not TCP for simplicity";
+            option4 = "URI support";
+            correctOption = "messages don't have a header";
+            quizDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
+            question = "MQTT";
+            option1 = "has a publish/subscribe paradigm: the clients don't know each other. Every clients can be a publisher and a subcriber.";
+            option2 = "has a publish/subscribe paradigm: the clients know each other. Some clients are publisher and other are subcriber.";
+            option3 = "has a Client/Server protocol: resources must be asked by a client to a server";
+            option4 = "has a Client/Server protocol:  the clients know each other. They can communicate among themselves to retrieve data.";
+            correctOption = "has a publish/subscribe paradigm: the clients don't know each other. Every clients can be a publisher and a subcriber.";
+            quizDao.insert(new QuizQuestion(question, 2, quizID,  option1, option2, option3, option4, correctOption));
+            question = "What Quality of Service 1 means:";
+            option1 = "it means that the client publish the message (sends the message to the broker) and then he doesn't care no more.";
+            option2 = "there is a double check. First there is the PUBLISH message, then the ACK (PUBREC). Then the client sends a PUBREL saying that has received the ACK (is an ACK for the ACK). Lastly the broker sends a PUBCOMP to indicate the completion of the exchange";
+            option3 = "the MQTT clients stores the message and keep retransmitting it until it is acknowledged by the MQTT broker but the message can be received multiple times.";
+            option4 = "QoS1 means that the Client sends the request to the server and expets 1 message as response.";
+            correctOption = "the MQTT clients stores the message and keep retransmitting it until it is acknowledged by the MQTT broker but the message can be received multiple times.";
+            quizDao.insert(new QuizQuestion(question, 3, quizID,  option1, option2, option3, option4, correctOption));
+
+            // MODULE 7
+            MODULE_NAME = "IoT Platforms";
+            moduleDao.insert(new Module(MODULE_NAME,"bangarang",7,"IOT/IoT_module7.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
+            // Quiz
+            quizDao.insert(new Quiz(moduleID, 0));
+            quizID = quizDao.getQuizIDbyModuleID(moduleID);
+            question = "What are the desired feature of a IoT platform:";
+            option1 = "Device management, Security, Data analysis, Power management";
+            option2 = "Device management, Privacy, Data analysis, Power management";
+            option3 = "Device management, Data management, Data analysis, Security";
+            option4 = "Device management, Data management, Data analysis";
+            correctOption = "Device management, Data management, Data analysis, Security";
+            quizDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
+
+            // MODULE 8
+            MODULE_NAME = "Radio Frequency Identification";
+            moduleDao.insert(new Module(MODULE_NAME,"bangarang",8,"IOT/IoT_module8.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
+            // Quiz
+            quizDao.insert(new Quiz(moduleID, 0));
+            quizID = quizDao.getQuizIDbyModuleID(moduleID);
+            question = "Which of the following definitions regarding the types of tags is false:";
+            option1 = "Semi-Active: mostly active,  operational power provided by battery but it has a limited capacity which is recharged from the reader radiated power.";
+            option2 = "Passive: they have no battery, operational power scavenged from reader radiated power. 98% of the tags are of this type.";
+            option3 = "Semi-Passive: mostly passive, but also equipted with some battery which is used only for calculation to power the computation unit";
+            option4 = "Active: more similar to sensor nodes; operational power provided by battery, transmitter built into tag";
+            correctOption = "Semi-Active: mostly active,  operational power provided by battery but it has a limited capacity which is recharged from the reader radiated power.";
+            quizDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
+            question = "What is RFID collision arbitration:";
+            option1 = "The signal of the reader power up all tags in range. All tags turned on send back their ID in broadcast, there may be conflicts. Problem at the reader to distinguish all the ID received.";
+            option2 = "The signal of the reader power up all tags in range. All tags turned on send back their ID to the reader, there may be conflicts. Problem at the reader to distinguish all the ID received.";
+            option3 = "The signal of the reader is not powerful enough to turn on the tag, which can't sent his ID to the reader.";
+            option4 = "The signal of the reader is not powerful enough to turn on the tag, which can't sent his ID in broadcast.";
+            correctOption = "The signal of the reader power up all tags in range. All tags turned on send back their ID to the reader, there may be conflicts. Problem at the reader to distinguish all the ID received.";
+            quizDao.insert(new QuizQuestion(question, 2, quizID,  option1, option2, option3, option4, correctOption));
+
 
 
             //////////////// RL
