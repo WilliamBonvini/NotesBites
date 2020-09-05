@@ -11,33 +11,30 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GuestHomepageActivity">
+        <activity android:name=".presentation.guesthomepage.GuestHomepageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".ModuleActivity"/>
+        <activity android:name=".presentation.module.ModuleActivity"/>
 
-        <activity android:name=".SubjectOverviewActivity"
+        <activity android:name=".presentation.subjectoverview.SubjectOverviewActivity"
             android:configChanges="orientation"
             />
 
-        <activity android:name=".SelectSubjectsActivity"/>
+        <activity android:name=".presentation.selectsubjects.SelectSubjectsActivity"/>
 
-        <activity android:name=".HomepageActivity" android:label="Homepage"/>
-        <activity android:name=".NotesActivity"/>
-        <activity android:name=".StartingQuizActivity"/>
+        <activity android:name=".presentation.homepage.HomepageActivity" android:label="Homepage"/>
+        <activity android:name=".presentation.notes.NotesActivity"/>
+        <activity android:name=".presentation.startingquiz.StartingQuizActivity"/>
 
-        <activity android:name=".SimpleSubjectOverviewActivity"/>
+        <activity android:name=".presentation.simplesubjectoverview.SimpleSubjectOverviewActivity"/>
 
 
 
-        <activity android:name=".VideoContentActivity"/>
-        <activity android:name=".QuizActivity"/>
-        <activity android:name=".SignInActivity" android:label="Sign In"/>
-        <activity android:name=".SignInPart2Activity" android:label="Sign In"/>
+        <activity android:name=".presentation.quiz.QuizActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

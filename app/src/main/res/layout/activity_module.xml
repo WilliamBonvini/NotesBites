@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@drawable/textured_paper"
     android:weightSum="20"
-    tools:context="com.waldo.notesbites.ModuleActivity">
+    tools:context="com.waldo.notesbites.presentation.module.ModuleActivity">
 
   <include layout="@layout/toolbar_main"
       android:id="@+id/toolbar" />

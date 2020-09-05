@@ -7,7 +7,7 @@
     android:padding="10dp"
     android:orientation="vertical"
     android:background="@drawable/textured_paper"
-    tools:context="com.waldo.notesbites.QuizActivity"
+    tools:context="com.waldo.notesbites.presentation.quiz.QuizActivity"
     android:weightSum="20">
 
 
