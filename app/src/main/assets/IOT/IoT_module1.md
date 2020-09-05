@@ -10,9 +10,7 @@ At the edge of a IoT system we can find:
 
 ### Mote Architecture
 
-![Schermata 2020-03-18 alle 13.36.26](/Users/filippoantonielli/Desktop/Internet of Things/Foto/Schermata 2020-03-18 alle 13.36.26.png)
-
-Usually all the components are powered by only a battery pack.
+<img src="file:///android_asset/IOT/img/img1.png" >
 
 **(Ideal) ADC**:
 
@@ -44,7 +42,7 @@ The communication part is what consumes more. The power consumption of the sensi
 
 To save battery the radio transceiver (communication peripherals) is sleeping (OFF). Then it wakes up (WakeUP phase) and is operative for a certain amount of time.
 
-![Schermata 2020-03-20 alle 08.58.47](/Users/filippoantonielli/Desktop/Internet of Things/Foto/Schermata 2020-03-20 alle 08.58.47.png)
+<img src="file:///android_asset/IOT/img/img2.png" >
 
 The WakeUp part is wasted time: is the time for the radio transceiver to start operating. In the WakeUp part we are consuming energy without doing any job. The Sleep part lasts much longer w.r.t. the active part: usually $f_{active}=1 $%. ($f_{active}$ is the fraction of time in which our radio transceiver is awake).
 
