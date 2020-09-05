@@ -59,56 +59,56 @@ public abstract class NBDatabase extends RoomDatabase {
             String option1, option2, option3, option4, correctOption;
             ///////////////// AI
             SUBJECT_NAME = "Artificial Intelligence";
-            subjectDao.insert(new Subject(SUBJECT_NAME,"as taught during the academic year 2018/2019",R.drawable.ai,"The goal of the course is to introduce the students to basic problems, models, and techniques of Artificial Intelligence (AI), and to enable them to model and solve specific AI problems. The course covers the most fundamental concepts, modelling approaches, and resolution methods of core AI, and also provides an introduction to the history of the discipline and to some philosophical issues involved. The teaching method is traditional (classroom lessons).",false ));
+            subjectDao.insert(new Subject(SUBJECT_NAME,"academic year 2018/2019",R.drawable.ai,"The goal of the course is to introduce the students to basic problems, models, and techniques of Artificial Intelligence (AI), and to enable them to model and solve specific AI problems. The course covers the most fundamental concepts, modelling approaches, and resolution methods of core AI, and also provides an introduction to the history of the discipline and to some philosophical issues involved. The teaching method is traditional (classroom lessons).",false ));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
             ////MODULE 1
             MODULE_NAME = "Introduction to AI";
-            moduleDao.insert(new Module(MODULE_NAME,"bangarang",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module(MODULE_NAME,"",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             // Quiz
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             quizDao.insert(new Quiz(moduleID, 0));
 
             ////MODULE 2
             MODULE_NAME = "Agents' Building Approaches";
-            moduleDao.insert(new Module(MODULE_NAME,"bangarang",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module(MODULE_NAME,"",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             // Quiz
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             quizDao.insert(new Quiz(moduleID, 0));
             //// MODULE 3
-            moduleDao.insert(new Module("modulo3","bangarang",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("modulo3","",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             //// MODULE 4
-            moduleDao.insert(new Module("modulo4","bangarang",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("modulo4","",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             //// MODULE 5
-            moduleDao.insert(new Module("modulo5","bangarang",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("modulo5","",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
 
 
 
 
             //////////////// MACHINE LEARNING
             SUBJECT_NAME = "Machine Learning";
-            subjectDao.insert(new Subject(SUBJECT_NAME,"as taught during the academic year 2018/2019",R.drawable.ml,"The course is an introduction to the area of Artificial Intelligence, known as Machine Learning, that deals with the development of algorithmic techniques to extract knowledge from large amount of data (e.g., retail databases, web logs, etc.). The course focuses mainly on supervised and unsupervised techniques, e.g., decision trees, decision rules, induction of Horn clauses, hierarchical clustering, etc. And it will consider mainly Data Mining applications.",false ));
+            subjectDao.insert(new Subject(SUBJECT_NAME,"academic year 2018/2019",R.drawable.ml,"The course is an introduction to the area of Artificial Intelligence, known as Machine Learning, that deals with the development of algorithmic techniques to extract knowledge from large amount of data (e.g., retail databases, web logs, etc.). The course focuses mainly on supervised and unsupervised techniques, e.g., decision trees, decision rules, induction of Horn clauses, hierarchical clustering, etc. And it will consider mainly Data Mining applications.",false ));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
-            moduleDao.insert(new Module("introduction to ML","bangarang",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo2","bangarang",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo3","bangarang",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo4","bangarang",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo5","bangarang",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("introduction to ML","",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("modulo2","",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("modulo3","",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("modulo4","",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("modulo5","",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
 
 
 
             /////////// ANN2DL
             SUBJECT_NAME = "Artificial Neural Networks and Deep Learning";
-            subjectDao.insert(new Subject(SUBJECT_NAME,"as taught during the academic year 2019/2020",R.drawable.ann2dl,"Neural networks are mature, flexible, and powerful non-linear data-driven models that have successfully been applied to solve complex tasks in science and engineering. The advent of the deep learning paradigm, i.e., the use of (neural) network to simultaneously learn an optimal data representation and the corresponding model, has further boosted neural networks and the data-driven paradigm.\n" +
+            subjectDao.insert(new Subject(SUBJECT_NAME,"academic year 2019/2020",R.drawable.ann2dl,"Neural networks are mature, flexible, and powerful non-linear data-driven models that have successfully been applied to solve complex tasks in science and engineering. The advent of the deep learning paradigm, i.e., the use of (neural) network to simultaneously learn an optimal data representation and the corresponding model, has further boosted neural networks and the data-driven paradigm.\n" +
                     "\n" +
                     "Nowadays, deep neural network can outperform traditional hand-crafted algorithms, achieving human performance in solving many complex tasks, such as natural language processing, text modeling, gene expression modeling, and image recognition. The course provides a broad introduction to neural networks (NN), starting from the traditional feedforward (FFNN) and recurrent (RNN) neural networks, till the most successful deep-learning models such as convolutional neural networks (CNN) and long short-term memories (LSTM).\n" +
                     "\n" +
                     "The course major goal is to provide students with the theoretical background and the practical skills to understand and use NN, and at the same time become familiar and with Deep Learning for solving complex engineering problems.",false));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
-            moduleDao.insert(new Module("Introduction","bangarang",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Agents' building approaches","bangarang",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Markov Decision Processes","bangarang",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Game Theory","bangarang",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Nash Equilibrium","bangarang",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Introduction","",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Agents' building approaches","",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Markov Decision Processes","",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Game Theory","",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Nash Equilibrium","",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
 
 
 
@@ -116,12 +116,12 @@ public abstract class NBDatabase extends RoomDatabase {
 
             /////////////// IOT
             SUBJECT_NAME = "Internet of Things";
-            subjectDao.insert(new Subject(SUBJECT_NAME,"as taught during the academic year 2019/2020",R.drawable.iot_img,"The use of Smart Things is nowadays is more and more widespread and concerns very different areas, such as business intelligence, domotics, healthcare, logistics and industry 4.0; for these reasons the impact of IoT on daily life concerns all those objects that can be connected to each other and communicate data on their state of use or the surrounding environment.",false));
+            subjectDao.insert(new Subject(SUBJECT_NAME,"academic year 2019/2020",R.drawable.iot_img,"The use of Smart Things is nowadays is more and more widespread and concerns very different areas, such as business intelligence, domotics, healthcare, logistics and industry 4.0; for these reasons the impact of IoT on daily life concerns all those objects that can be connected to each other and communicate data on their state of use or the surrounding environment.",false));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
 
             // MODULE 1
             MODULE_NAME = "The Things";
-            moduleDao.insert(new Module(MODULE_NAME,"bangarang",1,"iot/IoT_module1.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module(MODULE_NAME,"",1,"iot/IoT_module1.md","https://www.youtube.com/watch?v=LlhmzVL5bm8",subjectID));
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             // Quiz
             quizDao.insert(new Quiz(moduleID, 0));
@@ -157,7 +157,7 @@ public abstract class NBDatabase extends RoomDatabase {
 
             // MODULE 2
             MODULE_NAME = "Communication Technologies for the IoT";
-            moduleDao.insert(new Module(MODULE_NAME,"bangarang",2,"iot/IoT_module2.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module(MODULE_NAME,"",2,"iot/IoT_module2.md","https://www.youtube.com/watch?v=WtRpFLx34BY",subjectID));
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             // Quiz
             quizDao.insert(new Quiz(moduleID, 0));
@@ -179,7 +179,7 @@ public abstract class NBDatabase extends RoomDatabase {
 
             // MODULE 3
             MODULE_NAME = "The Long Range Communication Technologies for IoT";
-            moduleDao.insert(new Module(MODULE_NAME,"bangarang",3,"iot/IoT_module3.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module(MODULE_NAME,"",3,"iot/IoT_module3.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             // Quiz
             quizDao.insert(new Quiz(moduleID, 0));
@@ -208,7 +208,7 @@ public abstract class NBDatabase extends RoomDatabase {
 
             // MODULE 4
             MODULE_NAME = "Short Range Communication Technologies and Protocols";
-            moduleDao.insert(new Module(MODULE_NAME,"bangarang",4,"iot/IoT_module4.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module(MODULE_NAME,"",4,"iot/IoT_module4.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             // Quiz
             quizDao.insert(new Quiz(moduleID, 0));
@@ -230,7 +230,7 @@ public abstract class NBDatabase extends RoomDatabase {
 
             // MODULE 5
             MODULE_NAME = "6LowPAN";
-            moduleDao.insert(new Module(MODULE_NAME,"bangarang",5,"iot/IoTmodule5.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module(MODULE_NAME,"",5,"iot/IoTmodule5.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             // Quiz
             quizDao.insert(new Quiz(moduleID, 0));
@@ -252,7 +252,7 @@ public abstract class NBDatabase extends RoomDatabase {
 
             // MODULE 6
             MODULE_NAME = "Application Layer Protocols for the IoT";
-            moduleDao.insert(new Module(MODULE_NAME,"bangarang",6,"iot/IoT_module6","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module(MODULE_NAME,"",6,"iot/IoT_module6","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             // Quiz
             quizDao.insert(new Quiz(moduleID, 0));
@@ -281,7 +281,7 @@ public abstract class NBDatabase extends RoomDatabase {
 
             // MODULE 7
             MODULE_NAME = "IoT Platforms";
-            moduleDao.insert(new Module(MODULE_NAME,"bangarang",7,"iot/IoT_module7","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module(MODULE_NAME,"",7,"iot/IoT_module7","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             // Quiz
             quizDao.insert(new Quiz(moduleID, 0));
@@ -296,7 +296,7 @@ public abstract class NBDatabase extends RoomDatabase {
 
             // MODULE 8
             MODULE_NAME = "Radio Frequency Identification";
-            moduleDao.insert(new Module(MODULE_NAME,"bangarang",8,"iot/IoT_module8.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module(MODULE_NAME,"",8,"iot/IoT_module8.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             // Quiz
             quizDao.insert(new Quiz(moduleID, 0));
@@ -320,20 +320,20 @@ public abstract class NBDatabase extends RoomDatabase {
 
             //////////////// RL
             SUBJECT_NAME = "Reinforcement Learning";
-            subjectDao.insert(new Subject(SUBJECT_NAME,"as taught during the academic year 2018/2019",R.drawable.rl,"Reinforcement learning (RL) is an area of machine learning concerned with how software agents ought to take actions in an environment in order to maximize the notion of cumulative reward. Reinforcement learning is one of three basic machine learning paradigms, alongside supervised learning and unsupervised learning.",false));
+            subjectDao.insert(new Subject(SUBJECT_NAME,"academic year 2018/2019",R.drawable.rl,"Reinforcement learning (RL) is an area of machine learning concerned with how software agents ought to take actions in an environment in order to maximize the notion of cumulative reward. Reinforcement learning is one of three basic machine learning paradigms, alongside supervised learning and unsupervised learning.",false));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
-            moduleDao.insert(new Module("introduction to RL","bangarang",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo2","bangarang",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo3","bangarang",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo4","bangarang",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo5","bangarang",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("introduction to RL","",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("modulo2","",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("modulo3","",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("modulo4","",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("modulo5","",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
 
 
 
 
             //////////////// RS
             SUBJECT_NAME = "Recommender Systems";
-            subjectDao.insert(new Subject(SUBJECT_NAME,"as taught during the academic year 2019/2020",R.drawable.rs,"Recommender systems are algorithms that mimic the psychology and personality of humans, in order to predict their needs and desires. More formally, recommender systems adopt data-mining and machine-learning techniques to help users in finding attractive and useful products. Products can be almost anything: physical items (e.g., smartphones), places (e.g., restaurants), digital content (e.g., movies and music), and many more. Recommender systems produce recommendations based on different inputs: demographic information about users, ratings and comments on products, individual’s or community’s past preferences and choices, social networks, context of use.\n" +
+            subjectDao.insert(new Subject(SUBJECT_NAME,"academic year 2019/2020",R.drawable.rs,"Recommender systems are algorithms that mimic the psychology and personality of humans, in order to predict their needs and desires. More formally, recommender systems adopt data-mining and machine-learning techniques to help users in finding attractive and useful products. Products can be almost anything: physical items (e.g., smartphones), places (e.g., restaurants), digital content (e.g., movies and music), and many more. Recommender systems produce recommendations based on different inputs: demographic information about users, ratings and comments on products, individual’s or community’s past preferences and choices, social networks, context of use.\n" +
                     "\n" +
                     "During the last years, recommender systems have seen an increasing adoption in various services. The most famous success story of a recommender system is Netflix. The Netflix company launched a competition (www.netflixprize.com) offering a 1 million dollar prize to anyone able to create a better recommendation system than the one adopted by Netflix itself for its video-streaming service.\n" +
                     "\n" +
@@ -341,38 +341,38 @@ public abstract class NBDatabase extends RoomDatabase {
                     "\n" +
                     " ",false));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
-            moduleDao.insert(new Module("introduction to RS","bangarang",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo2","bangarang",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo3","bangarang",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo4","bangarang",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo5","bangarang",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("introduction to RS","",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("modulo2","",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("modulo3","",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("modulo4","",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("modulo5","",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
 
 
             ////////////////// AAAMS
             SUBJECT_NAME = "Autonomous Agents and Multiagent Systems";
-            subjectDao.insert(new Subject(SUBJECT_NAME,"as taught during the academic year 2019/2020",R.drawable.aaams,"Computer systems are increasingly distributed and interconnected. This trend naturally leads to the development of systems composed of autonomous decision-making entities, called autonomous agents, that interact with each other in complex environments. Agent-based systems are an abstraction of specific computing systems deployed in several applications, including electronic commerce, control of industrial processes, logistics, ambient intelligence, web services, robotics, space systems, and modeling of complex systems.\n" +
+            subjectDao.insert(new Subject(SUBJECT_NAME,"academic year 2019/2020",R.drawable.aaams,"Computer systems are increasingly distributed and interconnected. This trend naturally leads to the development of systems composed of autonomous decision-making entities, called autonomous agents, that interact with each other in complex environments. Agent-based systems are an abstraction of specific computing systems deployed in several applications, including electronic commerce, control of industrial processes, logistics, ambient intelligence, web services, robotics, space systems, and modeling of complex systems.\n" +
                     "\n" +
                     "This course aims at presenting general techniques for developing multiagent systems, independently of the applicative domains. In particular, the course will present methods for developing single agents, able to make rational decisions in situations affected by uncertainty, and for developing systems composed of multiple agents, with special emphasis on the interaction mechanisms between the agents. Moreover, some real-world applications of agent systems will be discussed. At the end of the course, students will acquire the ability to design and develop distributed systems based on the agent paradigm.",false));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
-            moduleDao.insert(new Module("Introduction","bangarang",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Agents' building approaches","bangarang",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Markov Decision Processes","bangarang",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Game Theory","bangarang",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Nash Equilibrium","bangarang",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Negotiation Part 1","bangarang",6,"aaams/6_negotiation_1.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Negotiation Part 2","bangarang",7,"aaams/7_negotiation_2.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Computational Social Choice Part 1","bangarang",8,"aaams/8_computational_social_choice_1.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Computational Social Choice Part 2","bangarang",9,"aaams/9_computational_social_choice_2.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Introduction to Auctions","bangarang",10,"aaams/10_auctions_1.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Multiple Items Auctions","bangarang",11,"aaams/11_auctions_multiple_items.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Computational Coalition Formation Part 1","bangarang",12,"aaams/12_computational_coal_form_1.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Computational Coalition Formation Part 2","bangarang",13,"aaams/13_computational_coal_form_2.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Multiagent Planning Part 1","bangarang",14,"aaams/14_multiagent_planning_1.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Multiagent Planning Part 2","bangarang",15,"aaams/15_multiagent_planning_2.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Introduction to DCOP","bangarang",16,"aaams/16_dcop.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("DCOP Algorithms","bangarang",17,"aaams/17_dcop_dpop_maxsum.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Multiagent Learning Part 1","bangarang",18,"aaams/18_multiagent_learning.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Multiagent Learning Part 2","bangarang",19,"aaams/19_multiagent_learning_2.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Introduction","",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Agents' building approaches","",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Markov Decision Processes","",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Game Theory","",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Nash Equilibrium","",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Negotiation Part 1","",6,"aaams/6_negotiation_1.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Negotiation Part 2","",7,"aaams/7_negotiation_2.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Computational Social Choice Part 1","",8,"aaams/8_computational_social_choice_1.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Computational Social Choice Part 2","",9,"aaams/9_computational_social_choice_2.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Introduction to Auctions","",10,"aaams/10_auctions_1.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Multiple Items Auctions","",11,"aaams/11_auctions_multiple_items.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Computational Coalition Formation Part 1","",12,"aaams/12_computational_coal_form_1.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Computational Coalition Formation Part 2","",13,"aaams/13_computational_coal_form_2.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Multiagent Planning Part 1","",14,"aaams/14_multiagent_planning_1.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Multiagent Planning Part 2","",15,"aaams/15_multiagent_planning_2.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Introduction to DCOP","",16,"aaams/16_dcop.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("DCOP Algorithms","",17,"aaams/17_dcop_dpop_maxsum.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Multiagent Learning Part 1","",18,"aaams/18_multiagent_learning.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Multiagent Learning Part 2","",19,"aaams/19_multiagent_learning_2.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
 
 
             return null;

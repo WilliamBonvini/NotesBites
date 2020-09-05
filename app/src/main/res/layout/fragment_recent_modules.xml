@@ -26,13 +26,6 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             />
 
-        <TextView
-            android:id="@+id/recent_module_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/recent_module_name"
-            android:text="Description" />
-
 
 
     </RelativeLayout>

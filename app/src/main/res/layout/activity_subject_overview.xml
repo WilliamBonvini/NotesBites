@@ -138,7 +138,7 @@
         <TextView
             android:id="@+id/overview_content"
             android:layout_width="match_parent"
-            android:layout_height="280dp"
+            android:layout_height="260dp"
             android:scrollbars = "vertical"
             android:layout_marginStart="12dp"
             android:layout_marginTop="40dp"

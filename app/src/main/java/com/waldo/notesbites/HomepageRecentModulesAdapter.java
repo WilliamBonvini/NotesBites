@@ -29,7 +29,6 @@ public class HomepageRecentModulesAdapter extends RecyclerView.Adapter<HomepageR
     public void onBindViewHolder(@NonNull HomepageHolder holder, int position) {
         Module recentModule = recentModules.get(position);
         holder.recent_module_name.setText(recentModule.getName());
-        holder.recent_module_description.setText(recentModule.getDescription());
 //        boolean selected = recentModule.isSelected();
 //        if(selected){
 //            holder.recent_modules_relative_layout.setBackgroundResource(R.color.colorAccent);
@@ -60,7 +59,6 @@ public class HomepageRecentModulesAdapter extends RecyclerView.Adapter<HomepageR
         public HomepageHolder(View itemView) {
             super(itemView);
             recent_module_name = itemView.findViewById(R.id.recent_module_name);
-            recent_module_description = itemView.findViewById(R.id.recent_module_description);
             recent_modules_relative_layout = itemView.findViewById(R.id.recent_modules_relative_layout);
 
             itemView.setOnClickListener(new View.OnClickListener() {
