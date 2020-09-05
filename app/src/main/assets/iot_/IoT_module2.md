@@ -48,7 +48,7 @@ IoT communication networks protocols exchange packets (like the Internet).
 
 Communication protocols are commonly layered. Each layer provides some services/functionalities to upper layers
 
-<img src="file:///android_asset/iot/img/img3.png" >
+<img src="file:///android_asset/iot_/img/img3.png" >
 
 ## Bits over cables
 

@@ -121,7 +121,7 @@ public abstract class NBDatabase extends RoomDatabase {
 
             // MODULE 1
             MODULE_NAME = "The Things";
-            moduleDao.insert(new Module(MODULE_NAME,"",1,"iot_/IoT_module1.md","https://www.youtube.com/watch?v=LlhmzVL5bm8",subjectID));
+            moduleDao.insert(new Module(MODULE_NAME,"",1, "iot_/IoT_module1.md","https://www.youtube.com/watch?v=LlhmzVL5bm8",subjectID));
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             // Quiz
             quizDao.insert(new Quiz(moduleID, 0));
@@ -157,7 +157,7 @@ public abstract class NBDatabase extends RoomDatabase {
 
             // MODULE 2
             MODULE_NAME = "Communication Technologies for the IoT";
-            moduleDao.insert(new Module(MODULE_NAME,"",2,"iot_/IoT_module2.md","https://www.youtube.com/watch?v=WtRpFLx34BY",subjectID));
+            moduleDao.insert(new Module(MODULE_NAME,"",2, "iot_/IoT_module2.md","https://www.youtube.com/watch?v=WtRpFLx34BY",subjectID));
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             // Quiz
             quizDao.insert(new Quiz(moduleID, 0));
@@ -179,7 +179,7 @@ public abstract class NBDatabase extends RoomDatabase {
 
             // MODULE 3
             MODULE_NAME = "The Long Range Communication Technologies for IoT";
-            moduleDao.insert(new Module(MODULE_NAME,"",3,"iot_/IoT_module3.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module(MODULE_NAME,"",3, "iot_/IoT_module3.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             // Quiz
             quizDao.insert(new Quiz(moduleID, 0));
@@ -208,7 +208,7 @@ public abstract class NBDatabase extends RoomDatabase {
 
             // MODULE 4
             MODULE_NAME = "Short Range Communication Technologies and Protocols";
-            moduleDao.insert(new Module(MODULE_NAME,"",4,"iot_/IoT_module4.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module(MODULE_NAME,"",4, "iot_/IoT_module4.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             // Quiz
             quizDao.insert(new Quiz(moduleID, 0));
@@ -230,7 +230,7 @@ public abstract class NBDatabase extends RoomDatabase {
 
             // MODULE 5
             MODULE_NAME = "6LowPAN";
-            moduleDao.insert(new Module(MODULE_NAME,"",5,"iot_/IoTmodule5.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module(MODULE_NAME,"",5, "iot_/IoTmodule5.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             // Quiz
             quizDao.insert(new Quiz(moduleID, 0));
@@ -252,7 +252,7 @@ public abstract class NBDatabase extends RoomDatabase {
 
             // MODULE 6
             MODULE_NAME = "Application Layer Protocols for the IoT";
-            moduleDao.insert(new Module(MODULE_NAME,"",6,"iot_/IoT_module6","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module(MODULE_NAME,"",6, "iot_/IoT_module6","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             // Quiz
             quizDao.insert(new Quiz(moduleID, 0));
@@ -281,7 +281,7 @@ public abstract class NBDatabase extends RoomDatabase {
 
             // MODULE 7
             MODULE_NAME = "IoT Platforms";
-            moduleDao.insert(new Module(MODULE_NAME,"",7,"iot_/IoT_module7","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module(MODULE_NAME,"",7, "iot_/IoT_module7","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             // Quiz
             quizDao.insert(new Quiz(moduleID, 0));
@@ -296,7 +296,7 @@ public abstract class NBDatabase extends RoomDatabase {
 
             // MODULE 8
             MODULE_NAME = "Radio Frequency Identification";
-            moduleDao.insert(new Module(MODULE_NAME,"",8,"iot_/IoT_module8.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module(MODULE_NAME,"",8, "iot_/IoT_module8.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             // Quiz
             quizDao.insert(new Quiz(moduleID, 0));

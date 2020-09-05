@@ -10,7 +10,7 @@ They cost low both for operators (to deploy) and the users since they rely on un
 
 **LoraWAN Protocol Stack**:
 
-<img src="file:///android_asset/iot/img/img4.png" >
+<img src="file:///android_asset/iot_/img/img4.png" >
 
 ### Physical Layer
 
