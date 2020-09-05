@@ -13,51 +13,103 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class QuizReader {
-    private File quizFile;
-
-    public QuizReader()  {
-
+    private String questionContent;
+    private String question;
+    private String option1;
+    private String option2;
+    private String option3;
+    private String option4;
+    private String correct;
+    private QuizDao quizDao;
+    private int moduleID;
+    private int priority;
+    private int quizID;
+    public QuizReader(QuizDao quizDao,int moduleID){
+        this.quizDao = quizDao;
+        this.moduleID = moduleID;
+        quizDao.insert(new Quiz(moduleID, 0));
+        quizID = quizDao.getQuizIDbyModuleID(moduleID);
     }
 
-    public void setQuiz(){
-        ClassLoader cl = getClass().getClassLoader();
-        assert cl != null;
-        this.quizFile = new File(cl.getResource("C:\\Users\\Willi\\Desktop\\GitHub\\NotesBites\\app\\src\\main\\assets\\aaams\\quiz.txt").getFile());
+    public void setQuestionConfig(int priority,String questionContent){
+        this.priority = priority;
+        this.questionContent = questionContent;
     }
 
-    public void populateDB(){
+    public void readString(String string){
+        String[] arr = string.split("\n");
+        question = arr[0];
+        option1  = arr[1];
+        option2  = arr[2];
+        option3  = arr[3];
+        option4  = arr[4];
+        correct = arr[Integer.parseInt(arr[5])];
+    }
 
-        BufferedReader reader = null;
-        try {
+    public void insertInDB(){
 
-            InputStream targetStream = new FileInputStream(quizFile);
-            reader = new BufferedReader(
-                    new InputStreamReader(targetStream));
-
-            // do reading, usually loop until end of file reading
-            String mLine;
-            while ((mLine = reader.readLine()) != null) {
-                Log.w("reader",mLine);
-            }
-        } catch (
-                IOException e) {
-            //log the exception
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    //log the exception
-                }
-            }
-        }
-
+        quizDao.insert(new QuizQuestion(question, priority, quizID,  option1, option2, option3, option4,correct));
 
     }
 
 
 
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public String getOption1() {
+        return option1;
+    }
+
+    public void setOption1(String option1) {
+        this.option1 = option1;
+    }
+
+    public String getOption2() {
+        return option2;
+    }
+
+    public void setOption2(String option2) {
+        this.option2 = option2;
+    }
+
+    public String getOption3() {
+        return option3;
+    }
+
+    public void setOption3(String option3) {
+        this.option3 = option3;
+    }
+
+    public String getOption4() {
+        return option4;
+    }
+
+    public void setOption4(String option4) {
+        this.option4 = option4;
+    }
+
+    public String getCorrect() {
+        return correct;
+    }
+
+    public void setCorrect(String correct) {
+        this.correct = correct;
+    }
 
 
+
+    public void setQuestionContent(String questionContent) {
+        this.questionContent = questionContent;
+    }
+
+    public String getQuizContent() {
+        return questionContent;
+    }
 
 }
