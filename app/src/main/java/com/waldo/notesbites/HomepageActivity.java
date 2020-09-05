@@ -119,6 +119,9 @@ public class HomepageActivity extends AppCompatActivity {
             public void onSwipeRight() {
                 lay.weight = 4f;
                 recyclerView.setLayoutParams(lay);
+                TextView recentActivitiesTextView;
+                recentActivitiesTextView = findViewById(R.id.recent_activities);
+                recentActivitiesTextView.setVisibility(View.INVISIBLE);
             }
 
         });
@@ -180,8 +183,6 @@ public class HomepageActivity extends AppCompatActivity {
             public void onItemClick(final Subject subject) {
                 //homepageViewModel.setRecentModulesBySubjectID(subject.getSubjectID());
 
-
-
                 //half for subjects and half for modules
                 if(lay.weight != 2f){
                     Animation anim = new ScaleAnimation(
@@ -224,12 +225,6 @@ public class HomepageActivity extends AppCompatActivity {
                 recyclerView.setLayoutParams(lay);
 //                LinearLayout subjectLayout = findViewById(R.id.guest_homepage_linear_layout);
 //                subjectLayout.setBackgroundResource(R.color.nb_color);
-
-
-
-
-
-
 
             }
         });
