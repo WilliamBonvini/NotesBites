@@ -10,7 +10,7 @@ They cost low both for operators (to deploy) and the users since they rely on un
 
 **LoraWAN Protocol Stack**:
 
-<img src="file:///android_asset/IOT/img/img4.png" >
+<img src="file:///android_asset/iot/img/img4.png" >
 
 ### Physical Layer
 
@@ -36,20 +36,20 @@ Time is continuous. The first packet in the transmission queue is transmitted as
 
 *Assumptions:*
 
-- Stationarity: $S_{in}=S_{out} \to$ incoming traffic = outgoing traffic
-- Traffic G distributed according Poisson process: packet arrivals is a Poisson point process with parameter $\lambda$. Transmissions last T. $G=T\times \lambda$
+- Stationarity: $$S_{in}=S_{out} \to$$ incoming traffic = outgoing traffic
+- Traffic G distributed according Poisson process: packet arrivals is a Poisson point process with parameter $$\lambda$$. Transmissions last T. $$G=T\times \lambda$$
 
-G traffic on the channel: transmissions + retransmissions so $S_{out}<= G$
+G traffic on the channel: transmissions + retransmissions so $$S_{out}<= G$$
 
-The probability $P_S$ for a packet transmission to be successful is the probability that no other packet starts transmission in his "conflict" period 2T
+The probability $$P_S$$ for a packet transmission to be successful is the probability that no other packet starts transmission in his "conflict" period 2T
 $$
 P_S=P(N(t-T,t+T)=0)=e^{-2G}
 $$
-The throughput is: $S=GP_S=Ge^{-2G}$
+The throughput is: $$S=GP_S=Ge^{-2G}$$
 
 ### LoraWAN Performance Evaluation
 
-LoraWAN stations may have different SF so different transmission durations. If we have $N_1$ stations with arrival frequency $\lambda_1$ and transmission duration $T_1$ and $N_2$ stations with arrival frequency $\lambda_2$ and transmission duration $T_2$ the probability that a transmission of type 1 collides, $P_1$, is:
+LoraWAN stations may have different SF so different transmission durations. If we have $$N_1$$ stations with arrival frequency $$\lambda_1$$ and transmission duration $$T_1$$ and $$N_2$$ stations with arrival frequency $$\lambda_2$$ and transmission duration $$T_2$$ the probability that a transmission of type 1 collides, $$P_1$$, is:
 $$
 P_1 \sim 1-e^{-(N_1\lambda_1)2T_1}e^{-N_2\lambda_2(T_1+T_2)}
 $$
@@ -57,7 +57,7 @@ The probability that a generic transmission collides is:
 $$
 P=\frac{\lambda_1N_1}{\lambda_1N_1+\lambda_2N_2}P_1+\frac{\lambda_2N_2}{\lambda_1N_1+\lambda_2N_2}P_2
 $$
-The previous expression can be generalized in case of n different classes of stations with transmission durations $T_i$, scale $N_i$ and arrival frequency $\lambda_i$
+The previous expression can be generalized in case of n different classes of stations with transmission durations $$T_i$$, scale $$N_i$$ and arrival frequency $$\lambda_i$$
 $$
 P=\sum_{i=1}^n \frac{\lambda_1N_i}{\sum_{i=1}^n \lambda_iN_i}P_i
 $$
