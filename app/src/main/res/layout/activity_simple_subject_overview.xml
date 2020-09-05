@@ -15,13 +15,15 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
+        android:layout_margin="20dp"
+        android:background="@drawable/textured_paper"
         >
 
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20dp"
+            android:background="@drawable/textured_paper"
             app:cardCornerRadius="30dp"
 
             >

@@ -39,28 +39,36 @@
             android:textSize="20sp"
             android:layout_marginTop="10dp"
             />
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:id="@+id/cardView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="6"
-            tools:context=".SelectSubjectsActivity"
-            android:layout_marginTop="15dp"
-
+            android:background="@drawable/textured_paper"
             >
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/cardView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:listitem="@layout/fragment_select_subjects_single_subject"
-                android:scrollbarAlwaysDrawHorizontalTrack="true"
-                android:scrollbarAlwaysDrawVerticalTrack="true"
-                android:fadingEdge="vertical"
-                />
+
+                tools:context=".SelectSubjectsActivity"
+                android:layout_marginTop="15dp"
+
+                >
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/fragment_select_subjects_single_subject"
+                    android:scrollbarAlwaysDrawHorizontalTrack="true"
+                    android:scrollbarAlwaysDrawVerticalTrack="true"
+                    android:fadingEdge="vertical"
+                    />
 
 
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        </LinearLayout>
 
 
     </LinearLayout>
