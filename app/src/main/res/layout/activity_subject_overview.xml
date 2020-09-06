@@ -22,29 +22,29 @@
       android:orientation="horizontal"
       android:layout_marginVertical="4dp"
       android:gravity="center"
-    >
+      >
 
-      <androidx.cardview.widget.CardView
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        >
+      <TextView
+          android:background="@drawable/groovepaper_repeat"
+          android:id="@+id/subject_title"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginTop="8dp"
-          android:layout_marginBottom="8dp"
-          android:layout_marginStart="8dp"
-          android:layout_marginEnd="8dp"
-          >
-        <TextView
-            android:background="@drawable/groovepaper_repeat"
-            android:id="@+id/subject_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            android:gravity="center"
-            android:text="Artificial Neural Networks and Deep Learning"
-            android:textStyle="bold"
-            android:textColor="@color/nb_black"
-            android:textAlignment="center"
-            />
-      </androidx.cardview.widget.CardView>
+          android:textSize="30sp"
+          android:gravity="center"
+          android:text="Artificial Neural Networks and Deep Learning"
+          android:textStyle="bold"
+          android:textColor="@color/nb_black"
+          android:textAlignment="center"
+          />
+    </androidx.cardview.widget.CardView>
   </LinearLayout>
 
   <androidx.cardview.widget.CardView
@@ -182,23 +182,23 @@
       android:layout_marginBottom="16dp"
       android:background="@null"
       android:onClick="onClickGoToHomepage"
-    />
+      />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-<!--
+    <!--
 
-  <ImageView
-      android:id="@+id/subject_image"
-      android:layout_width="match_parent"
-      android:layout_height="0dp"
-      android:layout_weight="5"
-      android:layout_marginTop="15dp"
-      android:layout_marginBottom="15dp"
-      />
-
-
+      <ImageView
+          android:id="@+id/subject_image"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="5"
+          android:layout_marginTop="15dp"
+          android:layout_marginBottom="15dp"
+          />
 
 
--->
+
+
+    -->

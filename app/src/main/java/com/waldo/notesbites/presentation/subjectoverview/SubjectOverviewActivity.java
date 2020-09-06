@@ -157,7 +157,11 @@ public class SubjectOverviewActivity extends AppCompatActivity {
 
 
 
-
+    Configuration configuration = getResources().getConfiguration();
+    if(configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+      subjectImageView = findViewById(R.id.subject_overview_image_view);
+      subjectImageView.setVisibility(View.GONE);
+    }
 
 
 
