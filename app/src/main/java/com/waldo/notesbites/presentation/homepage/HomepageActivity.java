@@ -44,16 +44,12 @@ public class HomepageActivity extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
 
 
-    public static String PERSON_NAME = "PERSON_NAME";
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
-        //setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
-//        Intent intent = getIntent();
-//        PERSON_NAME = (String) intent.getExtras().get(PERSON_NAME);
         final LinearLayout linearLayout = findViewById(R.id.linear_layout_general);
         ImageView logo = findViewById(R.id.image_logo);
         logo.setOnTouchListener(new OnSwipeTouchListener(this) {
@@ -71,26 +67,6 @@ public class HomepageActivity extends AppCompatActivity {
         });
 
         final TextView mySubjecy = findViewById(R.id.my_subjects);
-        final LinearLayout linearLayout_middle = findViewById(R.id.linear_layout_middle);
-        LinearLayout linearLayout_bottom = findViewById(R.id.linear_layout_bottom);
-
-//        mySubjecy.setOnTouchListener(new OnSwipeTouchListener(this) {
-//            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-//            @Override
-//            public void onSwipeLeft() {
-//                LinearLayout.LayoutParams lay = (LinearLayout.LayoutParams) mySubjecy.getLayoutParams();
-//                lay.weight = 1f;
-//                mySubjecy.setLayoutParams(lay);
-//            }
-//
-//            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-//            @Override
-//            public void onSwipeRight() {
-//                LinearLayout.LayoutParams lay = (LinearLayout.LayoutParams) mySubjecy.getLayoutParams();
-//                lay.weight = 2f;
-//                mySubjecy.setLayoutParams(lay);
-//            }
-//        });
 
 
 
@@ -116,7 +92,6 @@ public class HomepageActivity extends AppCompatActivity {
         final LinearLayout.LayoutParams lay = (LinearLayout.LayoutParams) recyclerView.getLayoutParams();
         lay.weight = 4f;
         recyclerView.setLayoutParams(lay);
-        //recyclerView.setBackgroundColor(getResources().getColor(R.color.nb_white));
 
         mySubjecy.setOnTouchListener(new OnSwipeTouchListener(this) {
             @Override
