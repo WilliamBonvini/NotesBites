@@ -47,7 +47,6 @@ public class QuizRepository {
     public List<QuizQuestion> getQuizQuestionsListByQuizID(int quizID){
         try {
             if(quizQuestionList == null){
-                //return quizDao.getQuizQuestionsListByQuizID(quizID);
                 return new GetQuizQuestionsListByQuizIDAsyncTask(quizDao).execute(quizID).get();
             }
             return quizQuestionList;

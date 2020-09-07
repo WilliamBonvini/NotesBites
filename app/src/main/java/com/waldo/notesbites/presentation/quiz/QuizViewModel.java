@@ -117,7 +117,6 @@ public class QuizViewModel extends AndroidViewModel{
 
 
     private void loadQuizQuestionAsynchronously() {
-        //currentQuizQuestion.setValue(quizRepository.getQuizQuestionsListByQuizID(quizID).get(questionCounter));
         quizRepository.getQuizQuestionsListByQuizID(quizID).get(questionCounter);
 
     }

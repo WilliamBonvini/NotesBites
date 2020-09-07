@@ -72,8 +72,8 @@ public abstract class NBDatabase extends RoomDatabase {
             subjectDao.insert(new Subject(SUBJECT_NAME,"academic year 2018/2019", R.drawable.ai,"The goal of the course is to introduce the students to basic problems, models, and techniques of Artificial Intelligence (AI), and to enable them to model and solve specific AI problems. The course covers the most fundamental concepts, modelling approaches, and resolution methods of core AI, and also provides an introduction to the history of the discipline and to some philosophical issues involved. The teaching method is traditional (classroom lessons).",false ));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
             ////MODULE 1
-            MODULE_NAME = "Introduction to AI";
-            moduleDao.insert(new Module(MODULE_NAME,"",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            MODULE_NAME = "Search Problems";
+            moduleDao.insert(new Module(MODULE_NAME,"",1,"ai/1_search_problems.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             // Quiz
             quizDao.insert(new Quiz(moduleID, 0));
@@ -87,17 +87,28 @@ public abstract class NBDatabase extends RoomDatabase {
             quizDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
 
             ////MODULE 2
-            MODULE_NAME = "Agents' Building Approaches";
-            moduleDao.insert(new Module(MODULE_NAME,"",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            MODULE_NAME = "CSPs";
+            moduleDao.insert(new Module(MODULE_NAME,"",2,"ai/2_csps.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             // Quiz
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             quizDao.insert(new Quiz(moduleID, 0));
             //// MODULE 3
-            moduleDao.insert(new Module("modulo3","",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Logic Part 1","",3,"ai/3_logic_1.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             //// MODULE 4
-            moduleDao.insert(new Module("modulo4","",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Logic Part 2","",4,"ai/4_logic_2.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             //// MODULE 5
-            moduleDao.insert(new Module("modulo5","",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Alpha Beta Pruning","",5,"ai/5_alpha_beta_pruning_montecarlo_tree_search.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            //// MODULE 6
+            moduleDao.insert(new Module("Montecarlo Tree Search","",6,"ai/6_montecarlo_tree_search.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            //// MODULE 7
+            moduleDao.insert(new Module("Planning","",7,"ai/7_planning.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            //// MODULE 8
+            moduleDao.insert(new Module("Tips","",8,"ai/8_tips.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            //// MODULE 9
+            moduleDao.insert(new Module("Theory Q&A","",9,"ai/9_theory_qanda.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            //// MODULE 10
+            moduleDao.insert(new Module("References","",10,"ai/10_references.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+
 
 
 
@@ -119,10 +130,10 @@ public abstract class NBDatabase extends RoomDatabase {
             option4 = "Energy efficiency is not a big problem nowadays, thanks to the wireless charging.";
             correctOption = "Recharching or battery replacement may be immaterial or too expensive, and it is not always feasible to use a secondary battery which is rechargeable.";
             quizDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
-            moduleDao.insert(new Module("modulo2","",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo3","",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo4","",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo5","",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("PAC","",2,"ml/2_pac.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("VC Dimension","",3,"ml/3_vc_dimension.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Ridge Regression","",4,"ml/4_ridge.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Ridge vs Lasso","",5,"ml/5_ridge_vs_lasso.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
 
 
 
@@ -130,11 +141,9 @@ public abstract class NBDatabase extends RoomDatabase {
             SUBJECT_NAME = "Artificial Neural Networks and Deep Learning";
             subjectDao.insert(new Subject(SUBJECT_NAME,"academic year 2019/2020",R.drawable.ann2dl,"Neural networks are mature, flexible, and powerful non-linear data-driven models that have successfully been applied to solve complex tasks in science and engineering. The advent of the deep learning paradigm, i.e., the use of (neural) network to simultaneously learn an optimal data representation and the corresponding model, has further boosted neural networks and the data-driven paradigm.\n" +
                     "\n" +
-                    "Nowadays, deep neural network can outperform traditional hand-crafted algorithms, achieving human performance in solving many complex tasks, such as natural language processing, text modeling, gene expression modeling, and image recognition. The course provides a broad introduction to neural networks (NN), starting from the traditional feedforward (FFNN) and recurrent (RNN) neural networks, till the most successful deep-learning models such as convolutional neural networks (CNN) and long short-term memories (LSTM).\n" +
-                    "\n" +
-                    "The course major goal is to provide students with the theoretical background and the practical skills to understand and use NN, and at the same time become familiar and with Deep Learning for solving complex engineering problems.",false));
+                    "Nowadays, deep neural network can outperform traditional hand-crafted algorithms, achieving human performance in solving many complex tasks, such as natural language processing, text modeling, gene expression modeling, and image recognition.",false));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
-            MODULE_NAME = "Introduction";
+            MODULE_NAME = "Introduction to ANN2DL";
             moduleDao.insert(new Module(MODULE_NAME,"",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
             // Quiz
@@ -148,10 +157,10 @@ public abstract class NBDatabase extends RoomDatabase {
             correctOption = "Recharching or battery replacement may be immaterial or too expensive, and it is not always feasible to use a secondary battery which is rechargeable.";
             quizDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
 
-            moduleDao.insert(new Module("Agents' building approaches","",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Markov Decision Processes","",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Game Theory","",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("Nash Equilibrium","",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Feed Forward Neural Nets","",2,"ann2dl/2_ffnn.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Convolutional Neural Nets","",3,"ann2dl/3_cnn.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Recurrent Neural Nets","",4,"ann2dl/4_rnn.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Seq2Seq Models","",5,"ann2dl/5_seq2seq.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
 
 
 
@@ -379,23 +388,17 @@ public abstract class NBDatabase extends RoomDatabase {
             correctOption = "Recharching or battery replacement may be immaterial or too expensive, and it is not always feasible to use a secondary battery which is rechargeable.";
             quizDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
 
-            moduleDao.insert(new Module("modulo2","",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo3","",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo4","",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo5","",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Policy Iteration","",2,"rl/2_policy_iteration.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Value Iteration","",3,"rl/3_value_iteration.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Value vs Policy Iteration","",4,"rl/4_value_vs_policy_iteration.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Prediction vs Control","",5,"rl/5_prediction_vs_control.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
 
 
 
 
             //////////////// RS
             SUBJECT_NAME = "Recommender Systems";
-            subjectDao.insert(new Subject(SUBJECT_NAME,"academic year 2019/2020",R.drawable.rs,"Recommender systems are algorithms that mimic the psychology and personality of humans, in order to predict their needs and desires. More formally, recommender systems adopt data-mining and machine-learning techniques to help users in finding attractive and useful products. Products can be almost anything: physical items (e.g., smartphones), places (e.g., restaurants), digital content (e.g., movies and music), and many more. Recommender systems produce recommendations based on different inputs: demographic information about users, ratings and comments on products, individual’s or community’s past preferences and choices, social networks, context of use.\n" +
-                    "\n" +
-                    "During the last years, recommender systems have seen an increasing adoption in various services. The most famous success story of a recommender system is Netflix. The Netflix company launched a competition (www.netflixprize.com) offering a 1 million dollar prize to anyone able to create a better recommendation system than the one adopted by Netflix itself for its video-streaming service.\n" +
-                    "\n" +
-                    "The technology behind recommender systems has evolved over the past years into a rich collection of tools that enable practitioners and researchers to develop effective recommenders. We will study the most important of those algorithms, including how they work, how to use them, how to evaluate them, and their strengths and weaknesses in practice. The algorithms we will study include content-based filtering, collaborative filtering, dimensionality reduction, hybrid techniques, cros-domain and context aware techniques. The approach will be hands-on, with the evaluation based on a competition similar to the Netflix prize, which will involve implementation and testing of algorithms. We will also explore the design space for recommender systems, including designing recommender and the surrounding social issues such as identity, privacy, and manipulation.\n" +
-                    "\n" +
-                    " ",false));
+            subjectDao.insert(new Subject(SUBJECT_NAME,"academic year 2019/2020",R.drawable.rs,"Recommender systems are algorithms that mimic the psychology and personality of humans, in order to predict their needs and desires. More formally, recommender systems adopt data-mining and machine-learning techniques to help users in finding attractive and useful products. Products can be almost anything: physical items (e.g., smartphones), places (e.g., restaurants), digital content (e.g., movies and music), and many more. Recommender systems produce recommendations based on different inputs.",false));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
             MODULE_NAME = "introduction to RS";
             moduleDao.insert(new Module("introduction to RS","",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
@@ -411,10 +414,10 @@ public abstract class NBDatabase extends RoomDatabase {
             correctOption = "Recharching or battery replacement may be immaterial or too expensive, and it is not always feasible to use a secondary battery which is rechargeable.";
             quizDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
 
-            moduleDao.insert(new Module("modulo2","",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo3","",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo4","",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            moduleDao.insert(new Module("modulo5","",5,"aaams/5_nash_equilibrium.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Personalized Recommenders","",2,"recsys/2_personalized_non_ml.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Association Rules","",3,"recsys/3_association_rules.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Slim","",4,"recsys/4_slim_and_more.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleDao.insert(new Module("Matrix Factorization","",5,"recsys/5_matrix_factorization.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
 
 
             ////////////////// AAAMS
