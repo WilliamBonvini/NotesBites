@@ -74,9 +74,17 @@ public abstract class NBDatabase extends RoomDatabase {
             ////MODULE 1
             MODULE_NAME = "Introduction to AI";
             moduleDao.insert(new Module(MODULE_NAME,"",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
-            // Quiz
             moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
+            // Quiz
             quizDao.insert(new Quiz(moduleID, 0));
+            quizID = quizDao.getQuizIDbyModuleID(moduleID);
+            question = "Why Energy Efficiency is a must?";
+            option1 = "Recharching or battery replacement may be immaterial or too expensive, and it is not always feasible to use a secondary battery which is rechargeable.";
+            option2 = "Recharging a mote can take a very long time and in that period it can communicate with other motes.";
+            option3 = "It is absolutely impossible to reacharge a mote, so when its battery dies all the motes connected to that network needs to be replaced.";
+            option4 = "Energy efficiency is not a big problem nowadays, thanks to the wireless charging.";
+            correctOption = "Recharching or battery replacement may be immaterial or too expensive, and it is not always feasible to use a secondary battery which is rechargeable.";
+            quizDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
 
             ////MODULE 2
             MODULE_NAME = "Agents' Building Approaches";
@@ -98,7 +106,19 @@ public abstract class NBDatabase extends RoomDatabase {
             SUBJECT_NAME = "Machine Learning";
             subjectDao.insert(new Subject(SUBJECT_NAME,"academic year 2018/2019",R.drawable.ml,"The course is an introduction to the area of Artificial Intelligence, known as Machine Learning, that deals with the development of algorithmic techniques to extract knowledge from large amount of data (e.g., retail databases, web logs, etc.). The course focuses mainly on supervised and unsupervised techniques, e.g., decision trees, decision rules, induction of Horn clauses, hierarchical clustering, etc. And it will consider mainly Data Mining applications.",false ));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
-            moduleDao.insert(new Module("introduction to ML","",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            MODULE_NAME = "Introduction to ML";
+            moduleDao.insert(new Module(MODULE_NAME,"",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
+            // Quiz
+            quizDao.insert(new Quiz(moduleID, 0));
+            quizID = quizDao.getQuizIDbyModuleID(moduleID);
+            question = "Why Energy Efficiency is a must?";
+            option1 = "Recharching or battery replacement may be immaterial or too expensive, and it is not always feasible to use a secondary battery which is rechargeable.";
+            option2 = "Recharging a mote can take a very long time and in that period it can communicate with other motes.";
+            option3 = "It is absolutely impossible to reacharge a mote, so when its battery dies all the motes connected to that network needs to be replaced.";
+            option4 = "Energy efficiency is not a big problem nowadays, thanks to the wireless charging.";
+            correctOption = "Recharching or battery replacement may be immaterial or too expensive, and it is not always feasible to use a secondary battery which is rechargeable.";
+            quizDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
             moduleDao.insert(new Module("modulo2","",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleDao.insert(new Module("modulo3","",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleDao.insert(new Module("modulo4","",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
@@ -114,7 +134,20 @@ public abstract class NBDatabase extends RoomDatabase {
                     "\n" +
                     "The course major goal is to provide students with the theoretical background and the practical skills to understand and use NN, and at the same time become familiar and with Deep Learning for solving complex engineering problems.",false));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
-            moduleDao.insert(new Module("Introduction","",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            MODULE_NAME = "Introduction";
+            moduleDao.insert(new Module(MODULE_NAME,"",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
+            // Quiz
+            quizDao.insert(new Quiz(moduleID, 0));
+            quizID = quizDao.getQuizIDbyModuleID(moduleID);
+            question = "Why Energy Efficiency is a must?";
+            option1 = "Recharching or battery replacement may be immaterial or too expensive, and it is not always feasible to use a secondary battery which is rechargeable.";
+            option2 = "Recharging a mote can take a very long time and in that period it can communicate with other motes.";
+            option3 = "It is absolutely impossible to reacharge a mote, so when its battery dies all the motes connected to that network needs to be replaced.";
+            option4 = "Energy efficiency is not a big problem nowadays, thanks to the wireless charging.";
+            correctOption = "Recharching or battery replacement may be immaterial or too expensive, and it is not always feasible to use a secondary battery which is rechargeable.";
+            quizDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
+
             moduleDao.insert(new Module("Agents' building approaches","",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleDao.insert(new Module("Markov Decision Processes","",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleDao.insert(new Module("Game Theory","",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
@@ -332,7 +365,20 @@ public abstract class NBDatabase extends RoomDatabase {
             SUBJECT_NAME = "Reinforcement Learning";
             subjectDao.insert(new Subject(SUBJECT_NAME,"academic year 2018/2019",R.drawable.rl,"Reinforcement learning (RL) is an area of machine learning concerned with how software agents ought to take actions in an environment in order to maximize the notion of cumulative reward. Reinforcement learning is one of three basic machine learning paradigms, alongside supervised learning and unsupervised learning.",false));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
-            moduleDao.insert(new Module("introduction to RL","",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            MODULE_NAME = "introduction to RL";
+            moduleDao.insert(new Module(MODULE_NAME,"",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
+            // Quiz
+            quizDao.insert(new Quiz(moduleID, 0));
+            quizID = quizDao.getQuizIDbyModuleID(moduleID);
+            question = "Why Energy Efficiency is a must?";
+            option1 = "Recharching or battery replacement may be immaterial or too expensive, and it is not always feasible to use a secondary battery which is rechargeable.";
+            option2 = "Recharging a mote can take a very long time and in that period it can communicate with other motes.";
+            option3 = "It is absolutely impossible to reacharge a mote, so when its battery dies all the motes connected to that network needs to be replaced.";
+            option4 = "Energy efficiency is not a big problem nowadays, thanks to the wireless charging.";
+            correctOption = "Recharching or battery replacement may be immaterial or too expensive, and it is not always feasible to use a secondary battery which is rechargeable.";
+            quizDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
+
             moduleDao.insert(new Module("modulo2","",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleDao.insert(new Module("modulo3","",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleDao.insert(new Module("modulo4","",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
@@ -351,7 +397,20 @@ public abstract class NBDatabase extends RoomDatabase {
                     "\n" +
                     " ",false));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
+            MODULE_NAME = "introduction to RS";
             moduleDao.insert(new Module("introduction to RS","",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
+            // Quiz
+            quizDao.insert(new Quiz(moduleID, 0));
+            quizID = quizDao.getQuizIDbyModuleID(moduleID);
+            question = "Why Energy Efficiency is a must?";
+            option1 = "Recharching or battery replacement may be immaterial or too expensive, and it is not always feasible to use a secondary battery which is rechargeable.";
+            option2 = "Recharging a mote can take a very long time and in that period it can communicate with other motes.";
+            option3 = "It is absolutely impossible to reacharge a mote, so when its battery dies all the motes connected to that network needs to be replaced.";
+            option4 = "Energy efficiency is not a big problem nowadays, thanks to the wireless charging.";
+            correctOption = "Recharching or battery replacement may be immaterial or too expensive, and it is not always feasible to use a secondary battery which is rechargeable.";
+            quizDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
+
             moduleDao.insert(new Module("modulo2","",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleDao.insert(new Module("modulo3","",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleDao.insert(new Module("modulo4","",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
@@ -364,7 +423,20 @@ public abstract class NBDatabase extends RoomDatabase {
                     "\n" +
                     "This course aims at presenting general techniques for developing multiagent systems, independently of the applicative domains. In particular, the course will present methods for developing single agents, able to make rational decisions in situations affected by uncertainty, and for developing systems composed of multiple agents, with special emphasis on the interaction mechanisms between the agents. Moreover, some real-world applications of agent systems will be discussed. At the end of the course, students will acquire the ability to design and develop distributed systems based on the agent paradigm.",false));
             subjectID = subjectDao.getSubjectIDbySubjectName(SUBJECT_NAME);
-            moduleDao.insert(new Module("Introduction","",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            MODULE_NAME = "introduction";
+            moduleDao.insert(new Module(MODULE_NAME,"",1,"aaams/1_Introduction.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
+            moduleID = moduleDao.getModuleIDByModuleName(MODULE_NAME);
+            // Quiz
+            quizDao.insert(new Quiz(moduleID, 0));
+            quizID = quizDao.getQuizIDbyModuleID(moduleID);
+            question = "Why Energy Efficiency is a must?";
+            option1 = "Recharching or battery replacement may be immaterial or too expensive, and it is not always feasible to use a secondary battery which is rechargeable.";
+            option2 = "Recharging a mote can take a very long time and in that period it can communicate with other motes.";
+            option3 = "It is absolutely impossible to reacharge a mote, so when its battery dies all the motes connected to that network needs to be replaced.";
+            option4 = "Energy efficiency is not a big problem nowadays, thanks to the wireless charging.";
+            correctOption = "Recharching or battery replacement may be immaterial or too expensive, and it is not always feasible to use a secondary battery which is rechargeable.";
+            quizDao.insert(new QuizQuestion(question, 1, quizID,  option1, option2, option3, option4, correctOption));
+
             moduleDao.insert(new Module("Agents' building approaches","",2,"aaams/2_agents_building_approaches.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleDao.insert(new Module("Markov Decision Processes","",3,"aaams/3_mdp.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
             moduleDao.insert(new Module("Game Theory","",4,"aaams/4_game_theory.md","https://www.youtube.com/watch?v=jNQXAC9IVRw",subjectID));
