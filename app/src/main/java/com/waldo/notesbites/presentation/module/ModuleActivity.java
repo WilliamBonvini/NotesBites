@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.waldo.notesbites.R;
 import com.waldo.notesbites.data.model.Module;
@@ -103,9 +104,14 @@ public class ModuleActivity extends AppCompatActivity {
 
 
   public void startStartingQuizActivity (View view){
-    Intent intent = new Intent(ModuleActivity.this, StartingQuizActivity.class);
-    intent.putExtra(StartingQuizActivity.EXTRA_MODULE_ID, moduleID);
-    startActivity(intent);
+    if (moduleID >=21 && moduleID<=28){
+      Intent intent = new Intent(ModuleActivity.this, StartingQuizActivity.class);
+      intent.putExtra(StartingQuizActivity.EXTRA_MODULE_ID, moduleID);
+      startActivity(intent);
+    }else{
+      Toast.makeText(this,"No Quiz Available", Toast.LENGTH_SHORT).show();
+    }
+
   }
 
 
