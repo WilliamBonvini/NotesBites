@@ -2,7 +2,7 @@
 
 NotesBites is a mobile app for Android that gathers notes from a range of subjects related to Artificial Intelligence and IoT.
 
-[![Presentation Video](assets/screen.png)](https://www.youtube.com/watch?v=ukX8XPgEzD8)
+[![Presentation Video](resources/screen.png)](https://www.youtube.com/watch?v=ukX8XPgEzD8)
 
 
 
@@ -16,6 +16,8 @@ The available courses are:
 - Recommender Systems
 - Artificial Neural Networks and Deep Learning 
 - Reinforcement Learning   
+
+An exhaustive documentation on the project can be found in the folder "resources". 
 
 Authors:
 
